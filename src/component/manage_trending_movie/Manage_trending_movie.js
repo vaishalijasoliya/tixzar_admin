@@ -167,31 +167,7 @@ const Manage_trending_movie = (props) => {
                     >
                         <Box className={Styles.listpopuy22}>
                             <Box className={Styles.Search_div}>
-                                {/* <TextField
-                                    placeholder="Search"
-                                    className={Styles.Search_Bar_input}
-                                    id="input-with-icon-textfield"
-                                    onChange={(e) => {
-                                        console.log(e.target.value, 'is_value____')
-                                        Search_bar_(e)
-                                    }}
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <img src="./image/MagnifyingGlass.svg" />
-                                            </InputAdornment>
-                                        ),
-                                        endAdornment: (
-                                            <Button size="small" style={{
-                                                minWidth: '35px'
-                                            }} onClick={handleClick}>
-                                                <img src="./image/Faders.svg" />
-                                            </Button>
-                                        )
-                                    }}
-                                    variant="outlined"
-                                /> */}
-                                <></>
+                                
                                 <Autocomplete
                                     sx={{ flex: 1, }}
                                     fullWidth
@@ -242,6 +218,7 @@ const Manage_trending_movie = (props) => {
 
                                     />
                             </Box>
+ </Box>
                             <Box className={Styles.listboxpoputdata}>
                                 <Button className={Styles.listbtoommovi}>
                                     <Avatar className={Styles.avtarmovigo} src="./image/Movie_3.png"></Avatar>
