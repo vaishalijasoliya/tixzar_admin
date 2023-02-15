@@ -1,0 +1,138 @@
+@font-face {
+    font-family: Gilroy-Bold;
+    src: url(../../styles/font/Gilroy-Font/Gilroy-Bold.ttf);
+}
+
+@font-face {
+    font-family: Quicksand-400;
+    src: url(../../styles/font/Quicksand/static/Quicksand-Regular.ttf);
+}
+
+.listmenuuppohot {
+    // display: flex;
+    justify-content: center;
+    // margin: 0px 0px 0px 10px;
+    padding: 10px 0px 0px 30px;
+    // padding-top: 20px;
+}
+
+.avtaruplo {
+    // border: 2px solid #009947;
+    border-radius: 5px;
+    width: 180px;
+    height: 250px;
+}
+
+.iconbtnop {
+    position: relative;
+    left: 122px;
+    bottom: 58px;
+}
+
+.iconbtnop:hover {
+    background-color: transparent !important;
+}
+
+.myimmmglist {
+    background: #634BBF !important;
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.listloevetypo {
+    display: flex;
+}
+
+.listloevetypo p {
+    font-size: 32px;
+    color: #FFFFFF;
+    font-family: Gilroy-Bold !important;
+    max-width: 337px;
+}
+
+.listloevetypo button {
+    align-items: end;
+
+}
+
+.listloevetypo button:hover {
+    background-color: transparent !important;
+
+}
+
+.listloevetypo button svg {
+    color: #FFFFFF !important;
+    font-size: 32px;
+}
+
+.listbtnuudesr {
+    font-size: 24px !important;
+}
+
+.texttayoanfdafa p {
+    font-size: 18px !important;
+    color: #FFFFFF;
+    font-family: Quicksand-400 !important;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .lispotfusl {
+        height: 70vh !important;
+    }
+
+    .listtexttypoanf {
+        padding: 0px 0px 0px 30px;
+    }
+
+    .avtaruplo {
+        width: 310px;
+        height: 309px;
+    }
+
+    .iconbtnop {
+        position: relative;
+        left: 240px;
+        bottom: 69px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .avtaruplo {
+        width: 310px;
+        height: 309px;
+    }
+
+    .iconbtnop {
+        position: relative;
+        left: 240px;
+        bottom: 69px;
+    }
+
+    .listmenuuppohot {
+        padding: 0PX !important;
+    }
+
+    .listloevetypo p {
+        font-size: 31px !important;
+        max-width: 100% !important;
+    }
+    .listtexttypoanf {
+        padding: 0px 0px 0px 0px;
+    }
+
+    .listloevetypo {
+        justify-content: space-between;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .lispotfusl {
+        height: 130vh !important;
+    }
+}

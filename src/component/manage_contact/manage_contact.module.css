@@ -1,0 +1,133 @@
+@font-face {
+    font-family: Gilroy-Bold;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Bold.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Regular;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Regular.ttf);
+}
+
+@font-face {
+    font-family: Poppims-700;
+    src: url(../../styles/font/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: Quicksand-400;
+    src: url(../../styles/font/Quicksand/static/Quicksand-Regular.ttf);
+}
+
+@font-face {
+    font-family: Poppims-400;
+    src: url(../../styles/font/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Medium;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Medium.ttf);
+}
+
+@font-face {
+    font-family: Quicksand-600;
+    src: url(../../styles/font/Quicksand/static/Quicksand-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Light;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Light.ttf);
+}
+
+/* CONTACT BOX STYLES */
+
+
+.Review_box_ {
+    background: #332E59;
+    box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 35px 20px;
+    margin-top: 20px;
+}
+
+.User_Image {
+    border-radius: 50%;
+}
+
+.deleteBtn {
+    padding: 0px !important;
+    width: 30px !important;
+    min-width: 30px !important;
+    height: 30px;
+}
+
+.Rating_star {
+    color: #FFE600 !important;
+}
+
+.User_name_bold {
+    font-family: 'Gilroy-Bold' !important;
+    font-size: 20px !important;
+    line-height: 23px;
+    color: #FFFFFF !important;
+}
+
+.Review_txt {
+    font-size: 16px !important;
+    color: #FFFFFF;
+    font-family: 'Quicksand-400' !important;
+}
+
+.Rating_number {
+    color: white;
+    font-family: 'Gilroy-Regular' !important;
+    font-size: 18px !important;
+}
+
+.Reply_box__ {
+    background: #332E59;
+    box-shadow: 0px 4px 21px 12px rgb(0 0 0 / 5%);
+    border-radius: 10px;
+    padding: 27px;
+    margin-bottom: 30px;
+}
+
+.User_Email {
+    font-family: 'Gilroy-Regular' !important;
+    font-size: 16px !important;
+    color: #FFFFFF;
+    margin: 5px 0px 5px 0px !important;
+}
+
+.Reply_text_area {
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    height: 66px;
+    width: 100%;
+    background: transparent;
+    margin-top: 15px;
+    font-family: 'Gilroy-Light';
+    padding: 15px;
+    color: white;
+}
+
+.Reply_Btn_txt {
+    font-size: 18px !important;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: capitalize;
+    font-family: 'Gilroy-Regular' !important;
+}
+
+.send_reply_btn {
+    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
+    border-radius: 5px !important;
+    padding: 7px 22px !important;
+
+}
+
+.Reply_btn_ p {
+    font-family: 'Gilroy-Bold' !important;
+    font-size: 16px;
+    color: #07A4E7;
+}

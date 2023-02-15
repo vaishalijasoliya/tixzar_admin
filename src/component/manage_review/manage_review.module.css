@@ -1,0 +1,292 @@
+@font-face {
+    font-family: Gilroy-Bold;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Bold.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Regular;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Regular.ttf);
+}
+
+@font-face {
+    font-family: Poppims-700;
+    src: url(../../styles/font/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: Quicksand-400;
+    src: url(../../styles/font/Quicksand/static/Quicksand-Regular.ttf);
+}
+
+@font-face {
+    font-family: Poppims-400;
+    src: url(../../styles/font/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Medium;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Medium.ttf);
+}
+
+@font-face {
+    font-family: Quicksand-600;
+    src: url(../../styles/font/Quicksand/static/Quicksand-SemiBold.ttf);
+}
+
+
+.top_movie_txt {
+    font-size: 24px !important;
+    color: white;
+    font-family: 'Gilroy-Bold' !important;
+}
+
+.Movie_main_box {
+    /* border: 1px solid white; */
+    margin-top: 21px;
+}
+
+.movie_box {
+    max-width: 200px;
+    background: #332E59;
+    padding: 10px;
+    transition: 0.4s;
+}
+
+.movie_box:hover {
+    max-width: 200px;
+    background: #634BBF;
+    padding: 10px;
+}
+
+.Movie_img_ {
+    border-radius: 5px;
+    margin: auto;
+    width: 100%;
+    height: 180px;
+
+}
+.Movie_img_ {
+    border-radius: 5px;
+    margin: auto;
+    width: 100%;
+    height: 180px;
+
+}
+
+.Movie_name_ {
+    font-family: 'Poppims-700' !important;
+    font-size: 16px !important;
+    color: #FFFFFF;
+    /* font-size: 16px; */
+    /* color: #FFFFFF; */
+    margin-top: 3px !important;
+}
+
+.Movie_review_top_div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.Icon_Button {
+    border: 1px solid white !important;
+    border-radius: 50% !important;
+    padding: 10px !important;
+    height: 50px;
+    width: 50px;
+    min-width: 50px !important;
+}
+
+.Movie_details_box {}
+
+.Heading_Des {
+    font-family: 'Gilroy-Bold' !important;
+    color: white;
+    font-size: 24px !important;
+}
+
+.Description_txt {
+    font-family: 'Quicksand-400' !important;
+    font-size: 18px !important;
+    color: white;
+}
+
+.Rating_start_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.Search_div {
+    margin-top: 30px;
+}
+
+/* SEARCH BAR STYLES */
+
+.Search_Bar_input {
+    background: #332E59;
+    border: 1px solid #634BBF;
+    border-radius: 10px;
+    height: 62px;
+    width: 100%;
+
+    justify-content: center;
+}
+
+.Search_Bar_input fieldset {
+    border-color: transparent !important;
+}
+
+.Search_Bar_input label {
+    border-color: transparent !important;
+}
+
+.Search_Bar_input input {
+    font-family: 'Poppims-400';
+    color: #BDBDBD;
+    font-size: 20px;
+}
+.listcontenar{
+    background: #332E59;
+box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
+border-radius: 10px;
+margin-bottom: 15px;
+padding: 10px 20px;
+align-items: center;
+
+}
+/* CONTENT STYLES */
+.Content_div {
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.Tab_Bar_ {
+    width: max-content;
+    border: 1px solid #046DA8;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.Tab_Bar_ .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
+}
+
+.Tabs_ {
+    font-family: 'Gilroy-Regular' !important;
+    color: white !important;
+    border-radius: 6px !important;
+    text-transform: capitalize !important;
+    width: 210px !important;
+}
+
+/* REVIEW BOX STYLES */
+
+.Review_box_ {
+    background: #332E59;
+    box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 35px 20px;
+    margin-top: 20px;
+}
+
+.User_Image {
+    border-radius: 50%;
+    width: 92px;
+    height: 92px;
+}
+
+.deleteBtn {
+    padding: 0px !important;
+    width: 30px !important;
+    min-width: 30px !important;
+    height: 30px;
+}
+
+.Rating_star {
+    color: #FFE600 !important;
+}
+
+.User_name_bold {
+    font-family: 'Gilroy-Bold' !important;
+    font-size: 20px !important;
+    line-height: 23px;
+    color: #FFFFFF !important;
+}
+
+.Review_txt {
+    font-size: 16px !important;
+    color: #FFFFFF;
+    font-family: 'Quicksand-400' !important;
+}
+
+.Rating_number {
+    color: white;
+    font-family: 'Gilroy-Regular' !important;
+    font-size: 18px !important;
+
+}
+
+.Tab_panel_ {
+    padding: 0px !important;
+}
+.Tab_panel_22 {
+    padding: 0px !important;
+    margin-top: 20px;
+}
+/* FLAGGED BUTTON */
+.Flaged_button {
+    background: rgba(255, 0, 0, 0.2);
+    border-radius: 5px !important;
+    height: 30px;
+    margin-top: 5px !important;
+    padding: 6px 16px !important;
+}
+
+.Flaged_button p {
+    font-family: 'Quicksand-600' !important;
+
+}
+
+/* FILTER CONTENT */
+.Menu_Item {
+    background-color: #332E59;
+    padding: 10px;
+}
+
+.Filter_btns {
+    margin-top: 5px !important;
+    border-radius: 20px !important;
+}
+
+.Filter_head {
+    font-family: 'Gilroy-Medium' !important;
+    font-size: 18px !important;
+    color: #FFFFFF;
+    opacity: 0.55;
+    margin-bottom: 5px !important;
+}
+
+.Btn_rows {
+    display: flex;
+    justify-content: 'center';
+    gap: 7px;
+}
+
+@media only screen and (max-width: 600px) {
+    .movie_box {
+        max-width: 100% !important;
+    }
+    .listgroigdesh{
+        padding: 10px 0px 10px 0px !important;
+    }
+.Tabs_{
+    width: 174px !important;
+}
+    .Movie_img_ {
+        width: 100%;
+        height: 100%;
+    }
+
+}

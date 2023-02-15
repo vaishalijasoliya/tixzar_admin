@@ -1,0 +1,245 @@
+@font-face {
+    font-family: Gilroy-bold;
+    src: url(../font/Gilroy-Font/Gilroy-Bold.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-SemiBold;
+    src: url(../font/Gilroy-Font/Gilroy-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Medium;
+    src: url(../font/Gilroy-Font/Gilroy-Medium.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Light;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Light.ttf);
+}
+
+.voxcallsop {
+    /* max-width: 100px; */
+}
+
+.listmenudata {
+    height: 200px;
+    /* overflow: scroll; */
+    /* width: 200px; */
+    /* height: 65px; */
+    /* border: 1px solid black; */
+    overflow: auto;
+}
+
+.listBoxdatamenu p {
+    font-family: Gilroy-bold;
+    padding: 10px 10px;
+    font-size: 16px;
+    color: #000000;
+}
+
+.itemlistmoj {
+    display: flex;
+    align-items: center;
+}
+
+.tobatlistdata {
+    font-family: Gilroy-SemiBold !important;
+    padding: 10px 10px;
+    font-size: 12px;
+    color: #000000;
+}
+
+.listtyponame {
+    font-family: Gilroy-Medium !important;
+    font-size: 10px !important;
+    color: #121212;
+    width: 200px;
+    text-align: left;
+    /* overflow: hidden; */
+    padding: 0px 0px 0px 5px;
+    text-transform: capitalize;
+}
+
+.listbtndivbott {
+    padding: 0px 8px;
+}
+
+.listtyponame22 {
+    font-family: Gilroy-Medium !important;
+    font-size: 10px !important;
+    color: #07A0E2;
+    text-align: left;
+    padding: 0px 0px 0px 5px;
+    text-transform: capitalize;
+
+}
+
+.avtarhomevok {
+    width: 46px !important;
+    height: 46px !important;
+}
+
+.listnonebott {
+    width: 20px !important;
+    height: 20px !important;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.img2 {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.arrrinhedar {
+    color: #FFFFFF !important;
+    min-width: 0px !important;
+}
+
+.text {
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 21px !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    color: #8E8E8E;
+    padding: 0 !important;
+    width: 100%;
+    margin: 9px 0px 0px 0px !important;
+}
+
+.hedingh3 {
+    font-family: Gilroy-bold !important;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important; */
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 32px !important;
+    line-height: 60px !important;
+    color: #FFFFFF;
+    margin: 0 !important;
+    width: 100%;
+}
+.hedingh322 {
+    font-family: Gilroy-bold !important;
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important; */
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 32px !important;
+    line-height: 60px !important;
+    color: #FFFFFF;
+    margin: 0 !important;
+    width: 100%;
+    padding: 12px 0px 0px 30px;
+}
+.clrred2 span {
+    color: white !important;
+    background-color: #FF0000 !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+}
+
+.pohotloho1 {
+
+    border-radius: 13px !important;
+    margin: 0px 0px 0px 30px;
+}
+
+.pohotloho {
+    /* width: 51% !important; */
+    /* height: 61% !important; */
+    width: 50px !important;
+    height: 50px !important;
+    box-sizing: border-box;
+    background: linear-gradient(270deg, rgba(196, 196, 196, 0.7) 0%, rgba(255, 244, 227, 0.7) 0.01%, rgba(242, 215, 255, 0.7) 113.33%);
+    border: 0.5px solid #F0CFDE;
+
+}
+
+.ikonbel {
+    font-size: 30px !important;
+    color: #FFFFFF !important;
+}
+
+.clrred {
+    box-sizing: border-box;
+    width: 48px !important;
+    height: 48px !important;
+    background: #332E59 !important;
+    border: 2px solid #634BBF !important;
+    border-radius: 11px !important;
+    /* padding-bottom: 10px !important; */
+    padding: 0px !important;
+    margin-left: 30px;
+    min-width: 0px !important;
+}
+
+.maencontainer {
+    padding: 15px 40px 30px 55px;
+    width: 100%;
+    /* background: #332E59; */
+}
+.maencontainer2 {
+    padding: 15px 40px 12px 55px;
+    width: 100%;
+    background: #332E59;
+}
+.buttonmypor svg {
+    color: #FFFFFF !important;
+}
+
+.buttonmypor p {
+    color: #FFFFFF;
+    font-size: 18px !important;
+    font-family: Gilroy-Light !important;
+    text-transform: capitalize !important;
+    padding: 0px 0px 0px 15px;
+}
+
+.buttonmypor {
+    width: 90%;
+    justify-content: left !important;
+    margin: 0px 10px 7px 10px !important;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 0px !important;
+}
+.buttonmypor2{
+    width: 90%;
+    justify-content: left !important;
+    margin: 0px 10px 7px 10px !important;
+    /* border-bottom: 0.5px solid rgba(255, 255, 255, 0.25) !important; */
+    border-radius: 0px !important; 
+}
+.buttonmypor2 svg {
+    color: #FFFFFF !important;
+}
+
+.buttonmypor2 p {
+    color: #FFFFFF;
+    font-size: 18px !important;
+    font-family: Gilroy-Light !important;
+    text-transform: capitalize !important;
+    padding: 0px 0px 0px 15px;
+}
+
+@media only screen and (max-width: 500px) {
+    .hedingh3 {
+        text-align: center;
+    }
+.hedarimglogo{
+    display: block !important;
+}
+.hedingh322{
+    padding: 0px;
+}
+    .text {
+        text-align: center;
+    }
+
+    .img2 {
+        padding: 23px 0px 0px 99px;
+        text-align: center;
+        justify-content: center;
+        margin-top: 10px !important;
+    }
+}
