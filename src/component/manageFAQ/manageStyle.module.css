@@ -1,0 +1,125 @@
+@font-face {
+    font-family: Quicksand-400;
+    src: url(../../styles/font/Quicksand/static/Quicksand-Regular.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Bold;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Bold.ttf);
+}
+
+.mainView {
+    /* border: 5px solid red; */
+    background-color: #282042;
+    width: 100%;
+    /* height: 100%; */
+    padding: 45px 40px 40px;
+}
+
+.QandAbox {
+    padding: 20px 30px 20px 30px;
+    background-color: #634BBF;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.A__txt {
+    font-family: 'Gilroy-Bold' !important;
+    font-size: 17px !important;
+    color: #fff !important;
+}
+
+.listpopuy22 {
+    padding: 50px 18px 40px 50px !important;
+    background: #282043;
+    /* width: 1000PX; */
+}
+
+.questiontxt {
+    font-family: 'Gilroy-Bold' !important;
+    font-size: 21px !important;
+    color: #fff !important;
+}
+
+.deleteBtn {
+    padding: 0px !important;
+    width: 30px !important;
+    min-width: 30px !important;
+    height: 30px;
+}
+
+.inputnamelist {
+    width: 96%;
+    margin-top: 20px !important;
+}
+
+.inputnamelist div {
+    height: 46px;
+    background: #332E59;
+    border-radius: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: Gilroy-Medium !important;
+}
+
+.Reply_text_area {
+    border-radius: 5px;
+    height: 100px !important;
+    width: 96%;
+    background: #332E59;
+    margin-top: 20px;
+    font-family: Gilroy-Regular !important;
+    padding: 15px;
+    color: white;
+}
+
+.QuestionDiv {
+    justify-content: space-between;
+    display: flex;
+}
+
+.AnswerDiv {
+    display: flex;
+}
+
+.AnswerTxt {
+    color: white;
+    font-family: Quicksand-400 !important;
+    font-size: 18px;
+}
+
+.Add_question_Btn {
+    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
+    border-radius: 5px !important;
+    width: 100%;
+    margin-top: 30px !important;
+    height: 60px !important;
+}
+
+.Add_question_Btn22 {
+    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
+    border-radius: 5px !important;
+    width: 96%;
+    margin-top: 30px !important;
+    height: 60px !important;
+}
+
+.Add_question_Btn_txt {
+    color: #fff;
+    font-family: 'Gilroy-Bold' !important;
+    text-transform: capitalize;
+}
+
+.btndataandpush {
+    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
+    border-radius: 5px;
+    font-family: Quicksand-400 !important;
+    font-size: 18px;
+    line-height: 26px;
+    width: 100px;
+    text-align: center;
+    text-transform: capitalize !important;
+    color: #FFFFFF !important;
+    margin-top: 10px !important;
+}

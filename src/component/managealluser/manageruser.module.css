@@ -1,0 +1,140 @@
+@font-face {
+    font-family: Gilroy-Bold;
+    src: url(../../styles//font/Gilroy/Gilroy-Bold.woff);
+    /* src: url(../../styles/font/Gilroy-Font// */
+    /* Gilroy-Bold.ttf); */
+}
+
+@font-face {
+    font-family: Quicksand-400;
+    src: url(../../styles/font/Quicksand/static/Quicksand-Regular.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Regular;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Regular.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-Medium;
+    src: url(../../styles/font/Gilroy-Font//Gilroy-Medium.ttf);
+}
+
+.Review_box_ {
+    background: #332E59;
+    box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 35px 20px;
+    margin-top: 20px;
+}
+
+.User_Image {
+    border-radius: 50%;
+}
+
+.User_name_bold {
+    font-family: 'Gilroy-Bold' !important;
+    font-size: 20px !important;
+    line-height: 23px;
+    color: #FFFFFF !important;
+}
+
+.Review_txt {
+    font-size: 16px !important;
+    color: #FFFFFF;
+    font-family: 'Quicksand-400' !important;
+}
+
+.Rating_start_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.listdatatebal {
+    display: flex;
+    align-items: center;
+}
+
+.tabalrodata {
+    background: #332E59;
+    box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 10px !important;
+}
+
+.tebaldata {
+    border-collapse: separate !important;
+    border-spacing: 0px 20px !important;
+    background: #282042;
+}
+
+.tebaldata td {
+    border: 0px solid !important;
+}
+
+.listtypoandtext {
+    color: #079BDD !important;
+    font-family: Gilroy-Regular !important;
+    font-size: 14px !important;
+}
+
+.typotdanfr {
+    padding: 0px 0px 0px 25px;
+}
+
+.Tab_Bar_ {
+    width: max-content;
+    border: 1px solid #046DA8;
+    /* margin: auto; */
+    border-radius: 10px;
+}
+
+.Tab_Bar_ .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
+}
+
+.Tabs_ {
+    font-family: 'Gilroy-Regular' !important;
+    color: white !important;
+    border-radius: 6px !important;
+    text-transform: capitalize !important;
+    width: 210px !important;
+}
+
+.listmeneuet {
+    padding: 0px !important;
+}
+
+.Tab_panel_ {
+    padding: 0px !important;
+}
+
+.listtypoangyo {
+    font-size: 36px !important;
+    font-family: Gilroy-Bold !important;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.reviewdata {
+    font-size: 20px !important;
+    color: #FFFFFF;
+    font-family: Gilroy-Medium !important;
+    text-align: center;
+}
+@media only screen and (max-width: 900px) {
+
+    .Tabs_ {
+        width: 226px !important;
+
+    }
+}
+@media only screen and (max-width: 500px) {
+
+    .Tabs_ {
+        width: 168px !important;
+
+    }
+}
+
