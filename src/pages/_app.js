@@ -47,7 +47,7 @@ const MyApp = (props) => {
       <Provider store={store}>
         <Head>
           <title>Impression</title>
-          <meta name="description" np content="Impression admin" />
+          <meta name="description" content="Impression admin" />
           <link rel="icon" href="./image/impress logo.png"/>
         </Head>
 
