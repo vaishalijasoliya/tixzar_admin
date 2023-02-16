@@ -1,8 +1,6 @@
 import { Box, Button, Typography, Dialog, TextField, TextareaAutosize, Grid } from "@mui/material";
 import React from "react";
-// import styles from './manageStyle.css'
 import styles from './manageStyle.module.css'
-// import { QandAbox } from "./QandAboxes";
 import QandAbox from './QandAboxes'
 import ApiServices from '../../config/ApiServices'
 import ApiEndpoint from '../../config/ApiEndpoint';
@@ -40,8 +38,6 @@ const ManageFaq = (props) => {
                     'Add Title is required'),
         }),
         onSubmit: () => {
-            // onLoginPress()
-
         },
     });
     console.log(props, 'propsprops')

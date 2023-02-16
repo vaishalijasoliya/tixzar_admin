@@ -46,9 +46,9 @@ const MyApp = (props) => {
     <>
       <Provider store={store}>
         <Head>
-          <title>Impression</title>
-          <meta name="description" np content="Impression admin" />
-          <link rel="icon" href="./image/impress logo.png"/>
+          <title>Tixzr</title>
+          <meta name="description" content="Impression admin" />
+          <link rel="icon" href="./image/Purple Logo png-01 1.svg"/>
         </Head>
 
         {isProgress && <Box sx={{ display: 'flex', position: 'absolute', top: 0, bottom: 0, right: 0, left: 0, justifyContent: 'center', alignItems: 'center', zIndex: 10 }}>

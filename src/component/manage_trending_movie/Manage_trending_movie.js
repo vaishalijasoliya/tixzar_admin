@@ -9,6 +9,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import ApiServices from '../../config/ApiServices'
 import ApiEndpoint from '../../config/ApiEndpoint';
+import { toast } from 'react-toastify';
+import DatePickerll from "react-datepicker";
+import moment from 'moment';
+
 const theme = createTheme({
     palette: {
         primary: {
@@ -25,54 +29,7 @@ const Manage_trending_movie = (props) => {
 
     console.log(props, 'props');
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [resetData, setResetData] = React.useState(
-        [
-            {
-                name: 'Simon Alex11',
-                Description_txt: '1', User_Photo: './image/Movie_3.png',
-                Rating_start: 1,
-                Status: 'flaged'
-            },
-            {
-                name: 'Albot Sevrus',
-                Description_txt: '2', User_Photo: './image/Movie_3.png',
-                Rating_start: 1000,
-                Status: null
-            }, {
-                name: 'Simon Alex',
-                Description_txt: '3', User_Photo: './image/Movie_3.png',
-                Rating_start: 10000,
-                Status: null
-            }, {
-                name: 'Albot Sevrus',
-                Description_txt: '4', User_Photo: './image/Movie_3.png',
-                Rating_start: 2,
-                Status: 'flaged'
 
-            }, {
-                name: 'Simon Alex2',
-                Description_txt: '5', User_Photo: './image/Movie_3.png',
-                Rating_start: 100000,
-                Status: 'flaged'
-            },
-            {
-                name: 'Albot Sevrus2',
-                Description_txt: '6', User_Photo: './image/Movie_3.png',
-                Rating_start: 100000,
-                Status: null
-            }, {
-                name: 'Simon Alex2',
-                Description_txt: '7', User_Photo: './image/Movie_3.png',
-                Rating_start: 10000000,
-                Status: null
-            }, {
-                name: 'Albot Sevrus2',
-                Description_txt: '8', User_Photo: './image/Movie_3.png',
-                Rating_start: 18,
-                Status: 'flaged'
-
-            }
-        ])
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
@@ -85,7 +42,16 @@ const Manage_trending_movie = (props) => {
     const [fullWidth, setFullWidth] = React.useState(true);
     const [maxWidth, setMaxWidth] = React.useState('sm');
     const [datalistlogin, setDatalistlogin] = React.useState([])
-    console.log(datalistlogin, 'datalistlogin')
+    const [filterScripList, setFilterScripList] = React.useState([])
+    const [userdata, setUserdata] = React.useState([])
+    const [resetdata, setResetdata] = React.useState([])
+    const [startDate, setStartDate] = React.useState('');
+    const [endDate, setEndDate] = React.useState('');
+const[iddata,setDataid] =React.useState('')
+const[tesxtdata,setTextdata] =React.useState('')
+console.log(iddata.id,'iddata');
+    const [script, setScript] = React.useState('')
+    console.log(filterScripList, 'filterScripList')
     const handleClickOpen = () => {
         setOpenlist(true);
     };
@@ -131,8 +97,6 @@ const Manage_trending_movie = (props) => {
                         logoUrl: element.image_url,
 
                     }
-                    // console.log(object, 'object');
-
                     accoyty.push(JSON.parse(JSON.stringify(object)))
 
                 }
@@ -140,9 +104,96 @@ const Manage_trending_movie = (props) => {
             }
         }
     }
+    const filterScrip = async (text) => {
+        var body = {
+            "name": text
+        }
+        var headers = {
+            "Content-Type": "application/json",
+            "x-access-token": props.props.profile.token
+        }
+        props.props.loaderRef(true)
+      
+      var accountList = await ApiServices.PostApiCall(ApiEndpoint.ADMIN_MOVIE_LIST, JSON.stringify(body), headers)
+      props.props.loaderRef(false)
+
+      console.log('getScirp', accountList)
+
+        const lebal = []
+        if (!!accountList) {
+            if (accountList.status == true) {
+                var accountLableList = []
+                for (let index = 0; index < accountList.data.length; index++) {
+                    const element = accountList.data[index];
+                    var obj = {
+                        id: element.id,
+                        image: element.image,
+                        title: element.title,
+                        crew: element.crew
+                    }
+                    accountLableList.push(JSON.parse(JSON.stringify(obj)))
+                    console.log(element, 'element');
+                    lebal.push(JSON.parse(JSON.stringify(obj)))
+                }
+            }
+        } else {
+
+        }
+        console.log(accountLableList, 'accountLableList');
+        setFilterScripList(accountLableList)
+        setUserdata(accountLableList)
+        setResetdata(accountLableList)
+
+    }
+
+
+    const Search_bar_ = (e) => {
+        const value = e.target.value
+        console.log(value, 'is_value_______')
+        if (typeof value !== 'object') {
+            if (!value || value == '') {
+                setFilterScripList(userdata);
+            } else {
+                filterScrip(value)
+            }
+        } else {
+            setFilterScripList(resetdata);
+        }
+    }
+    const EDITPATT = async () => {
+        var body = {
+          'id_imdb_movie': iddata.id,
+          'position': tesxtdata,
+          'image_url': iddata.image,
+          'title': iddata.title,
+          'start_date': startDate,
+          'end_date':endDate
+        }
+        var headers = {
+          "Content-Type": "application/json",
+          "x-access-token": props.props.profile.token
+        }
+        props.props.loaderRef(true)
+        var data = await ApiServices.PostApiCall(ApiEndpoint.ADMIN_TRENDINGMOVIE_EDIT, JSON.stringify(body), headers);
+        props.props.loaderRef(false)
+        if (!!data) {
+          if (data.status == true) {
+            toast.success(data.message)
+            chartloginuser()
+          } else {
+            toast.error(data.message)
+    
+          }
+        } else {
+          toast.error('Something went wrong.')
+        }
+    
+        console.log(data, 'datadata')
+      }
     React.useEffect(() => {
         if (!!props.props.profile && !!props.props.profile.token) {
             chartloginuser()
+            filterScrip()
         }
     }, [])
     return (
@@ -162,18 +213,15 @@ const Manage_trending_movie = (props) => {
                         maxWidth={'md'}
                         open={openlist}
                         onClose={handleCloselist}
-                    // style={{maxWidth:'300px'}}
-
                     >
                         <Box className={Styles.listpopuy22}>
                             <Box className={Styles.Search_div}>
-                                {/* <TextField
+                                <TextField
                                     placeholder="Search"
                                     className={Styles.Search_Bar_input}
                                     id="input-with-icon-textfield"
                                     onChange={(e) => {
-                                        console.log(e.target.value, 'is_value____')
-                                        Search_bar_(e)
+                                        filterScrip(e.target.value)
                                     }}
                                     InputProps={{
                                         startAdornment: (
@@ -190,97 +238,60 @@ const Manage_trending_movie = (props) => {
                                         )
                                     }}
                                     variant="outlined"
-                                /> */}
-                                <></>
-                                <Autocomplete
-                                    sx={{ flex: 1, }}
-                                    fullWidth
-                                    disablePortal={false}
-                                    options={filterScripList}
-                                    name="script"
-                                    value={script}
-                                    onChange={(event, value, reason, details) => {
-                                        // filterScriplist()
-                                        if (!!value) {
-                                            if (!!stockInterval) {
-                                                clearInterval(stockInterval)
-                                            }
-                                            getScripPrice(value)
-                                            setLotSize(parseFloat(value.lotSize))
-                                            stockInterval = setInterval(() => {
-                                                getScripPrice(value)
-                                            }, 3000);
-                                        } else {
-                                            if (!!stockInterval) {
-                                                clearInterval(stockInterval)
-                                            }
+                                />
+                            </Box>
+                            {!!filterScripList ?<Box className={Styles.listboxpoputdata}>
+                                {filterScripList.map((item, idx) => (
+                                    <Button onClick={()=>{
+                                        var obj={
+                                            id:item.id,
+                                            title:item.title,
+                                            image:item.image
                                         }
-                                        setScriptError(false)
-                                        setScript(value)
-                                    }}
-                                    onClose={(event, reason) => {
-                                        setFilterScripList(defaultScripList)
-                                    }}
-                                    renderInput={(params) => <TextField  {...params}
-                                        name='script'
-                                        // error={Boolean(formik.touched.script && formik.errors.script)}
-                                        fullWidth
-                                        // helperText={formik.touched.script && formik.errors.script}
-                                        onBlur={formik.handleBlur}
-                                        // onChange={formik.handleChange}
-                                        onChange={(text) => {
-                                            console.log(text.target.value, 'jjahhahha')
-                                            setFilatlist(text.target.value)
-                                            filterScrip(text.target.value)
-                                            filterScriplist(text.target.value)
-                                            // formik.handleChange()
-                                        }}
-                                        className={styles.listtextfils22}
-                                    // error={scriptError}
-                                    // helperText={scriptError ? 'Scrip is required' : undefined}
-                                    // label={scripLable} 
+                                        setDataid(obj)}} className={item.id ==iddata.id ?Styles.listbtoommovi22:Styles.listbtoommovi}>
+                                        <Avatar className={Styles.avtarmovigo} src={item.image}></Avatar>
+                                        <div className={Styles.listdevanfpopup}>
+                                            <Typography className={Styles.loreamdatago}>{item.title}</Typography>
+                                            <Typography className={Styles.loreamdatago22}>{item.crew}</Typography>
+                                        </div>
+                                    </Button>
+                                ))}
 
-                                    />
-                            </Box>
-                            <Box className={Styles.listboxpoputdata}>
-                                <Button className={Styles.listbtoommovi}>
-                                    <Avatar className={Styles.avtarmovigo} src="./image/Movie_3.png"></Avatar>
-                                    <div className={Styles.listdevanfpopup}>
-                                        <Typography className={Styles.loreamdatago}>Lorem Ispum</Typography>
-                                        <Typography className={Styles.loreamdatago22}>Sed euismod leo augue</Typography>
-                                    </div>
-                                </Button>
-                                <Button className={Styles.listbtoommovi}>
-                                    <Avatar className={Styles.avtarmovigo} src="./image/Movie_3.png"></Avatar>
-                                    <div className={Styles.listdevanfpopup}>
-                                        <Typography className={Styles.loreamdatago}>Lorem Ispum</Typography>
-                                        <Typography className={Styles.loreamdatago22}>Sed euismod leo augue</Typography>
-                                    </div>
-                                </Button> <Button className={Styles.listbtoommovi}>
-                                    <Avatar className={Styles.avtarmovigo} src="./image/Movie_3.png"></Avatar>
-                                    <div className={Styles.listdevanfpopup}>
-                                        <Typography className={Styles.loreamdatago}>Lorem Ispum</Typography>
-                                        <Typography className={Styles.loreamdatago22}>Sed euismod leo augue</Typography>
-                                    </div>
-                                </Button>
-                                <Button className={Styles.listbtoommovi}>
-                                    <Avatar className={Styles.avtarmovigo} src="./image/Movie_3.png"></Avatar>
-                                    <div className={Styles.listdevanfpopup}>
-                                        <Typography className={Styles.loreamdatago}>Lorem Ispum</Typography>
-                                        <Typography className={Styles.loreamdatago22}>Sed euismod leo augue</Typography>
-                                    </div>
-                                </Button>
-                            </Box>
+                            </Box> : <Box className={Styles.listboxpoputdata}>
+
+</Box>}
+                            
+                           <Box className={Styles.boxandlistdata}>
                             <Box className={Styles.lisysetandnot}>
+                       
                                 <Typography>Set Position:</Typography>
                                 <TextField
                                     className={Styles.INPUTDATAPUSH}
                                     fullWidth
                                     type="number"
+                                    onChange={(e)=>{setTextdata(e.target.value)} }
                                 />
+                                
+                            </Box>
+                            <Box className={Styles.lisysetandnot}>
+                          <input type='datetime-local'
+                          className={Styles.listdatepikar}
+                           onChange={(e) => {
+                            console.log(e.target.value,'e.target.value')
+                                        setStartDate(e.target.value)
+                                    }}
+                            />
+                          <input type='datetime-local'
+                          className={Styles.listdatepikar}
+                            onChange={(e) => {
+                                        console.log(e.target.value, 'akkajaja')
+                                        setEndDate(e.target.value)
+                                    }} />                            
+                            </Box>
                             </Box>
                             <Box>
-                                <Button className={Styles.updeatbtoon}>Update</Button>
+                            {iddata.id == ''||tesxtdata == ''||startDate == ''||endDate=='' ?   <Button className={Styles.updeatbtoon} >Update</Button>:
+                                <Button className={Styles.updeatbtoon} onClick={()=>{EDITPATT(),handleCloselist}}>Update</Button>}
                             </Box>
                         </Box>
                     </Dialog>

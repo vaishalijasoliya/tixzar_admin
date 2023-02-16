@@ -19,10 +19,6 @@ import Typography from '@mui/material/Typography';
 import styles from '../../styles/user/newbar.module.css';
 import Navbardata from './nawbar'
 import Grid from '@mui/material/Grid';
-// import SideNavBar from "../side-navbar/SideNavBar"
-// import TopNavBar from '../top-navbar/TopNavBar';
-
-// const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
   const { window } = props;
@@ -44,15 +40,6 @@ function ResponsiveDrawer(props) {
     <Grid container  >
       <Grid item xs={12} md={12} className={styles.newbar} >
         <Box sx={{ display: 'flex' }}>
-
-          {/* <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-        }}
-      > */}
-          {/* <Toolbar> */}
           <IconButton
             style={{ width: '70px' }}
             className={styles.buttondrawer}
@@ -64,15 +51,10 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon className={styles.iconmenu} />
           </IconButton>
-          {/* <TopNavBar > */}
-          {/* </Toolbar> */}
-          {/* </AppBar> */}
           <Box
             component="nav"
-            // sx={{  flexShrink: { sm: 0 } }}
             aria-label="mailbox folders"
           >
-            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
             <Drawer
               container={container}
               variant="temporary"
@@ -80,7 +62,7 @@ function ResponsiveDrawer(props) {
               onClose={handleDrawerToggle}
               className={styles.listnewbar}
               ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
+                keepMounted: true, 
               }}
               sx={{
                 display: { xs: 'block', sm: 'none' },
@@ -92,13 +74,10 @@ function ResponsiveDrawer(props) {
             <Drawer
               variant="permanent"
               sx={{
-                // display: { xs: 'none', sm: 'block' },
-
                 '& .MuiDrawer-paper':
                 {
                   boxSizing: 'border-box',
                   display: { xs: 'none', sm: 'block' },
-                  // width: 320, 
                   backgroundColor: '#fff'
                 },
               }}

@@ -16,70 +16,7 @@ import { useRouter, withRouter } from 'next/router';
 
 const Movie_review_Pages = (props) => {
     const router = useRouter();
-
-    console.log(props.ID, 'propspropGGs2');
     const [value, setValue] = React.useState('All Reviews');
-    const [Review_details, setReview_detials] = React.useState(
-        [
-            {
-                name: 'Simon Alex',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 3,
-                Status: 'flaged'
-            },
-            {
-                name: 'Albot Sevrus',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 4,
-                Status: null
-            }, {
-                name: 'Simon Alex',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 5,
-                Status: null
-            }, {
-                name: 'Albot Sevrus',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 2,
-                Status: 'flaged'
-
-            }
-        ])
-    const [userSearch, setUserSearch] = React.useState([])
-    const [resetData, setResetData] = React.useState(
-        [
-            {
-                name: 'Simon Alex',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 3,
-                Status: 'flaged'
-            },
-            {
-                name: 'Albot Sevrus',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 4,
-                Status: null
-            }, {
-                name: 'Simon Alex',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 5,
-                Status: null
-            }, {
-                name: 'Albot Sevrus',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 2,
-                Status: 'flaged'
-
-            }
-        ])
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [datatital, setDatatital] = React.useState('')
     const [description, setDeshcaripsan] = React.useState('')
@@ -89,7 +26,6 @@ const Movie_review_Pages = (props) => {
     const[datatab,setDatatab] =React.useState('active')
     const[stardata,setStardata]=React.useState(0)
     console.log(datamenu, 'stardata')
-    // console.log(((parseFloat(reatiang) / 2)).toFixed(2), 'datatital');
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -119,7 +55,6 @@ const Movie_review_Pages = (props) => {
             setDeshcaripsan(data.data.description)
             setImgurldata(data.data.image_url)
             setRtiangstar(data.data.tixzarRating)
-            // parseFloat(reatiang.toFixed(2))
             const accoyty = [];
             const csvall = [];
             for (let index = 0; index < data.data.reviewList.length; index++) {
@@ -202,11 +137,6 @@ const Movie_review_Pages = (props) => {
                         <Grid item sm={12} xl={2} lg={2} md={2} >
                             <Typography className={Styles.Heading_Des}>Tixzar Rating</Typography>
                             <Box className={Styles.Rating_start_box}>
-                                {/* <Rating className={Styles.Rating_star}
-                                    value={((parseFloat(reatiang) /2))}
-                                    onChange={(event, newValue) => {
-                                        setValue(newValue);
-                                    }} readOnly /> */}
                                 <StarRoundedIcon fontSize="35px" color="#FFE600" style={{ fontSize: '33px', color: '#FFE600' }} />
                                 <Typography textAlign={'center'} className={Styles.Heading_Des}>{reatiang == null?'':(reatiang.toFixed(2))}/10</Typography>
                             </Box>
@@ -278,8 +208,6 @@ const Movie_review_Pages = (props) => {
                     id="account-menu"
                     open={open}
                     onClose={handleClose}
-                    // onClick={handleClose}
-                    // style={{ backgroundColor: '#332E59' }}
                     PaperProps={{
                         elevation: 0,
                         style: { background: '#332E59', border: "1px solid white" },

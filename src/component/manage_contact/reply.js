@@ -1,5 +1,4 @@
 import { Box, Button, createTheme, Grid, TextareaAutosize, ThemeProvider, Typography } from "@mui/material";
-// import { Box } from "@mui/system";
 import React from "react";
 import Styles from './manage_contact.module.css'
 import ApiServices from '../../config/ApiServices'
@@ -7,8 +6,6 @@ import ApiEndpoint from '../../config/ApiEndpoint';
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-{/* #332E59 */ }
-
 const theme = createTheme({
     palette: {
         primary: {
@@ -69,7 +66,6 @@ const Reply_box = (props) => {
 
         },
     });
-    // console.log(, 'is______item')
     return (
         <>
             <Box className={Styles.Reply_box__}>

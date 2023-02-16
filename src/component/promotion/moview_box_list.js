@@ -1,7 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
-import Styles from './manage_review.module.css'
+import Styles from '../manage_review/manage_review.module.css'
+
+
 export const Movie_Box = ({data}) => {
     const router = useRouter();
     const [tabaldata, setTeballist] = React.useState([])
@@ -11,7 +13,7 @@ export const Movie_Box = ({data}) => {
                 <Box className={Styles.movie_box}
                     onClick={() => {
                         router.push({
-                            pathname: './movie_review',
+                            pathname: './managar_deteail',
                             query: { emailID: data.id }
                         });
                     }}

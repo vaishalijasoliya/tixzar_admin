@@ -10,7 +10,6 @@ import ApiEndpoint from '../../config/ApiEndpoint';
 function createData(name, calories, fat) {
   return { name, calories, fat };
 }
-let PageSize = 10;
 
 const Movie_review_Pages = (props) => {
   console.log(props, 'sdgghbddd');
@@ -18,85 +17,7 @@ const Movie_review_Pages = (props) => {
   const [page, setPage] = React.useState(0);
   const [datalist, setData] = React.useState()
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [Review_details, setReview_detials] = React.useState(
-    [
-      {
-        name: 'Simon Alex',
-        Description_txt: 'UI Designer',
-        User_Photo: './image/User.png',
-        Rating_start: 3,
-        Status: 'flaged'
-      },
-      {
-        name: 'Albot Sevrus',
-        Description_txt: 'UI Designer',
-        User_Photo: './image/User.png',
-        Rating_start: 4,
-        Status: null
-      }, {
-        name: 'Simon Alex',
-        Description_txt: 'UI Designer', User_Photo: './image/User.png',
-        Rating_start: 5,
-        Status: null
-      }, {
-        name: 'Albot Sevrus',
-        Description_txt: 'UI Designer', User_Photo: './image/User.png',
-        Rating_start: 2,
-        Status: 'flaged'
-
-      }
-    ])
-  const [userSearch, setUserSearch] = React.useState('')
   const [userSearchmenu, setDatalistlogin] = React.useState([])
-
-  const [resetData, setResetData] = React.useState(
-    [
-      {
-        name: 'Simon Alex11',
-        Description_txt: 'UI Designer', User_Photo: './image/User.png',
-        Rating_start: 1,
-        Status: 'flaged'
-      },
-      {
-        name: 'Albot Sevrus',
-        Description_txt: 'UI Designer', User_Photo: './image/User.png',
-        Rating_start: 1000,
-        Status: null
-      }, {
-        name: 'Simon Alex',
-        Description_txt: 'UI Designer', User_Photo: './image/User.png',
-        Rating_start:10000,
-        Status: null
-      }, {
-        name: 'Albot Sevrus',
-        Description_txt: 'UI Designer', User_Photo: './image/User.png',
-        Rating_start: 2,
-        Status: 'flaged'
-
-      }, {
-        name: 'Simon Alex2',
-        Description_txt: 'UI Designer', User_Photo: './image/User.png',
-        Rating_start: 100000,
-        Status: 'flaged'
-      },
-      {
-        name: 'Albot Sevrus2',
-        Description_txt: 'UI Designer', User_Photo: './image/User.png',
-        Rating_start:1000000,
-        Status: null
-      }, {
-        name: 'Simon Alex2',
-        Description_txt: 'UI Designer', User_Photo: './image/User.png',
-        Rating_start:10000000,
-        Status: null
-      }, {
-        name: 'Albot Sevrus2',
-        Description_txt: 'UI Designer', User_Photo: './image/User.png',
-        Rating_start: 2,
-        Status: 'flaged'
-
-      }
-    ])
   const [anchorEl, setAnchorEl] = React.useState(null);
   const accounttype = async (value) => {
     var body = {
@@ -188,9 +109,6 @@ React.useEffect(() => {
               <Tab label="Flaged Reviews" className={Styles.Tabs_} onClick={()=>{accounttype('flaged')}} value="Flaged Reviews" />
             </Tabs>
             <TabPanel className={Styles.Tab_panel_} value={'All Reviews'}>
-              {/* {Review_details.map((data) => {
-                                console.log(data, 'is_review_array___')
-                                return ( */}
               <TableContainer component={Paper} className={Styles.listmeneuet}>
                 <Table sx={{ minWidth: 500 }} className={Styles.tebaldata} aria-label="custom pagination table">
                   <TableBody>

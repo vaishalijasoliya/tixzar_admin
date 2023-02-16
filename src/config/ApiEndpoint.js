@@ -19,4 +19,11 @@ export default {
     ADMIN_USER_LIST:Constants.BASE_API_URL+'admin/user/list',
     ADMIN_SUPPORT_LIST:Constants.BASE_API_URL+'admin/support/user/list',
     ADMIN_SUPPORT_SEND:Constants.BASE_API_URL+'admin/support/send',
+    ADMIN_MOVIE_LIST:Constants.BASE_API_URL+'admin/movie/list',
+    ADMIN_TRENDINGMOVIE_EDIT:Constants.BASE_API_URL+'admin/trendingmovie/edit',
+    USER_PROFILE_VIEW:Constants.BASE_API_URL+'user/profile/view',
+    USER_PROFILE_EDIT:Constants.BASE_API_URL+'user/profile/edit',
+    USER_FORGOT_PASSWORD:Constants.BASE_API_URL+'user/forgotpassword',
+    MOVIE_DETAIL:Constants.BASE_API_URL+'movie/detail/movie',
+    ADMIN_MOVIE_EDIT:Constants.BASE_API_URL+'admin/movie/edit',
 }

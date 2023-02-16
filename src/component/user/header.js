@@ -8,8 +8,6 @@ import { connect } from "react-redux";
 import { Types } from "../../../src/constants/actionTypes";
 import { useRouter } from "next/router";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-// import ApiServices from "../../config/ApiServices";
-// import ApiEndpoint from "../../config/ApiEndpoint";
 import { Button, Box, ListItemIcon } from "@mui/material";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -117,7 +115,6 @@ const Nevbar = (props) => {
           </Button>
           <Badge
             onClick={handleClick}
-            // onClick={onHandleclick}
             badgeContent={userCount}
             color="secondary"
             className={styles.clrred2}
@@ -140,8 +137,6 @@ const Nevbar = (props) => {
             id="account-menu"
             open={open}
             onClose={handleClose}
-            // onClick={handleClose}
-
             PaperProps={{
               elevation: 0,
 
@@ -338,16 +333,9 @@ const Nevbar = (props) => {
               </Button>
             </div>
           </Menu>
-          {/* <Avatar variant="rounded" className={styles.pohotloho1}> */}
           <div className={styles.pohotloho1}>
             <Avatar
-              // alt="Profile Picture"
               src="./image/Ellipse 3.svg"
-              // src={
-              //   !!props.profile.profile_photo
-              //     ? props.profile.profile_photo
-              //     : "./image/image 3.png"
-              // }
               className={styles.pohotloho}
             />
           </div>
@@ -355,7 +343,6 @@ const Nevbar = (props) => {
             <Button className={styles.arrrinhedar} onClick={handleClick_2} ><KeyboardArrowDownIcon /></Button>
 
           </Box>
-          {/* </Avatar> */}
         </Grid>
       </Grid>
     </>

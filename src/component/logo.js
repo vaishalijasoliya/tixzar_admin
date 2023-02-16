@@ -78,14 +78,12 @@ const Newpass = (props) => {
         validationSchema: Yup.object({
             newPassword: Yup
                 .string()
-                .max(12)
                 .min(8)
                 .required(
                     'Email is required'),
             reTypePassword: Yup
                 .string()
-                .max(12)
-                .min(8)
+                .min(6)
                 .required(
                     'Password is required'),
         }),
@@ -98,7 +96,7 @@ const Newpass = (props) => {
         <>
             <Grid container className={styles.listcontenatlogin}>
                 <Grid item md={5} sm={8} className={styles.listgrifanfbox}>
-                    <Box className={styles.listboxmailtext22}><Typography>Signin</Typography></Box>
+                    <Box className={styles.listboxmailtext2223}><Typography>Signin</Typography></Box>
                     <Box className={styles.patretextlog}><Typography>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</Typography></Box>
                     <Box className={styles.listinputbox}>
@@ -153,6 +151,7 @@ const Newpass = (props) => {
                                 />
 
                             </Box>
+                            <a href='/phoneno' className={styles.forgotadatext}>forgot password</a>
                         </form>
                     </Box>
                     <Box className={styles.listbuttomopen22}><Button onClick={onLoginPress}>Continue</Button></Box>

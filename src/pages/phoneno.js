@@ -11,14 +11,6 @@ const Phone = (props) => {
 
         <>
                         <Mobile props = {props} />
-           
-            {/* <div className={style.main}> */}
-            {/* <img src='./image/upline.svg' className={style.uplineimg} /> */}
-            {/* <div className={style.layout}>
-                    <Mobile />
-                </div> */}
-            {/* <img src='./image/btmline.svg' className={style.btmline} /> */}
-            {/* </div> */}
         </>
     )
 }
@@ -31,8 +23,4 @@ const mapDispatchToProps = (dispatch) => ({
     save_user_data: (data) =>
         dispatch({ type: Types.LOGIN, payload: data }),
 });
-
-
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(Phone);

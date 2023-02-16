@@ -17,10 +17,12 @@
     font-family: Quicksand-400;
     src: url(../../styles/font/Quicksand/static/Quicksand-Regular.ttf);
 }
+
 @font-face {
     font-family: Gilroy-Light;
     src: url(../../styles/font/Gilroy-Font//Gilroy-Light.ttf);
 }
+
 .Top_box {
     display: flex;
     justify-content: end;
@@ -190,58 +192,100 @@
     width: 100%;
     justify-content: left !important;
     display: flex;
-    border-bottom: 1px solid #7A62D5!important;
+    border-bottom: 1px solid #7A62D5 !important;
+}
+
+.listbtoommovi22 p {
+    /* font-family: Quicksand-400 !important; */
+    /* font-size: 18px !important; */
+    text-transform: capitalize;
+}
+
+.listbtoommovi22 {
+    width: 100%;
+    justify-content: left !important;
+    display: flex;
+    border-bottom: 1px solid #7A62D5 !important;
+    background-color: #282043 !important;
+}
+
+.boxandlistdata {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .avtarmovigo {
     width: 60px !important;
     height: 60px !important;
 }
-.loreamdatago{
+
+.loreamdatago {
     font-size: 18px !important;
     font-family: Quicksand-400 !important;
 }
-.loreamdatago22{
+
+.loreamdatago22 {
     font-size: 14px !important;
     font-family: Gilroy-Light !important;
 }
-.listdevanfpopup{
+
+.listdevanfpopup {
     text-align: left;
     padding: 0px 0px 0px 12px;
 }
-.listboxpoputdata{
+
+.listboxpoputdata {
     margin-top: 15px;
     padding: 10px 20px;
     background: #634BBF;
-border-radius: 10px;
-height: 250px;
-overflow: auto;
+    border-radius: 10px;
+    height: 250px;
+    overflow: auto;
 
 }
-.lisysetandnot{
+
+.listdatepikar {
+    height: 37px;
+    background-color: #282043;
+    border: 1px solid #634BBF;
+    color: #FFFFFF;
+    font-family: Gilroy-Light !important;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.listdatepikar svg {
+    color: #FFFFFF;
+}
+
+.lisysetandnot {
     display: flex;
     align-items: center;
     padding-top: 30px;
 }
-.lisysetandnot p{
+
+.lisysetandnot p {
     font-size: 20px !important;
     font-family: Quicksand-400 !important;
     color: #FFFFFF !important;
     padding-right: 30px;
 }
-.updeatbtoon{
+
+.updeatbtoon {
     width: 100%;
-margin-top: 35px !important;
+    margin-top: 35px !important;
     background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
-border-radius: 10px !important;
-font-size: 20px !important;
-font-family: Gilroy-Bold !important;
-text-transform: capitalize !important;
+    border-radius: 10px !important;
+    font-size: 20px !important;
+    font-family: Gilroy-Bold !important;
+    text-transform: capitalize !important;
 }
 
 @media only screen and (max-width: 500px) {
 
-.listpopuy22{
-padding: 20px !important;
-}
+    .listpopuy22 {
+        padding: 20px !important;
+    }
 }

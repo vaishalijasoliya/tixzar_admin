@@ -1,10 +1,8 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import { connect } from "react-redux";
 import Manage_review from "../component/manage_blogs/manage_blogs";
-// import Movie_review_Pages from "../component/manage_review/movie_review_pages/movie_review_pages";
 import Header from "../component/user/header";
-// import Header from '../component/user/header';
 import Nevbar from '../component/user/newbarlist';
 
 
@@ -25,8 +23,6 @@ const Movie_Review = (props) => {
                 <div style={{background:'#332E59'}}>
                     <Header data={data} props={props} />
                     </div>
-                    {/* <Home props={props} /> */}
-                    {/* <Manage_review /> */}
                     <Manage_review props={props} />
                 </Grid>
             </Grid>
@@ -34,10 +30,6 @@ const Movie_Review = (props) => {
         </>
     )
 }
-
-
-
-// export default 
 
 
 const mapStateToProps = (state) => ({

@@ -1,6 +1,5 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
-// import styles from  './'
 import styles from './manageStyle.module.css'
 import TextareaAutosize from "@mui/material";
 import { toast } from 'react-toastify';
@@ -37,11 +36,7 @@ const QandAbox = (props) => {
 
         console.log(data, 'datadata')
     }
-    React.useEffect(() => {
-        if (!!props.props.props.profile && !!props.props.props.profile.token) {
-            // setDatalist(props.data)
-        }
-    }, [])
+
     return (
         <>
             <Box className={styles.QandAbox} >
