@@ -632,7 +632,11 @@ a {
   background-color: #f9f9f9 !important;
   border: none !important;
 }
-
+.MuiList-root{
+  background-color: #332E59 !important;
+  border: 1px solid #FFFFFF;
+border-radius: 5px;
+}
 .rs-picker-toggle-wrapper,
 .rs-picker-default .rs-picker-toggle.rs-btn {
   background-color: #634BBF !important;

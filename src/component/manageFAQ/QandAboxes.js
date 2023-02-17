@@ -44,13 +44,14 @@ const QandAbox = (props) => {
                     <Typography className={styles.questiontxt}>
                         {props.data.name}
                     </Typography>
+                    {props.data.status =='cancelled' ?'':
                     <Button className={styles.deleteBtn} onClick={() => {
                         var obj = { id: props.data.id, status: 'cancelled' }
                             EDIT_DATA(obj),
                                 setDatalist('cancelled')
                     }} >
                         <img src="./image/dustbin.svg" />
-                    </Button>
+                    </Button>}
                 </Box>
                 <Box className={styles.AnswerDiv}>
                     <Typography className={styles.AnswerTxt}>

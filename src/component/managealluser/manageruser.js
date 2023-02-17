@@ -17,6 +17,7 @@ const Movie_review_Pages = (props) => {
   const [page, setPage] = React.useState(0);
   const [datalist, setData] = React.useState()
   const [userSearchmenu, setDatalistlogin] = React.useState([])
+  console.log(userSearchmenu,'userSearchmenu');
   const accounttype = async (value) => {
     var body = {
       status: value
