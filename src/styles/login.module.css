@@ -241,7 +241,7 @@
     border-radius: 10px;
     height: 62px;
     width: 100%;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .Search_Bar_input fieldset {

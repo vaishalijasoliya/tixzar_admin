@@ -31,7 +31,7 @@ const MyApp = (props) => {
     var persistedState = localStorage.getItem('reduxState') ? JSON.parse(localStorage.getItem('reduxState')) : {};
     if (!!persistedState && !!persistedState.user && !!persistedState.user.profile.token) {
       if(router.pathname == '/'){
-        // props.router.push(router.push('./dashboard'));
+        props.router.push(router.push('./dashboard'));
       }
       setIsLoaded(true)
     } else {

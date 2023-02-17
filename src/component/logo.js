@@ -102,9 +102,9 @@ const Newpass = (props) => {
                     <Box className={styles.listinputbox}>
 
 
-                        <form>
+                        <form onSubmit={formik.handleSubmit}>
                             <Typography className={styles.listemailtext}>Email</Typography>
-                            <Box style={{ display: 'flex' }}>
+                            <Box style={{ display: 'flex',paddingBottom:'20px' }}>
 
                                 <TextField
                                     error={Boolean(
@@ -121,12 +121,6 @@ const Newpass = (props) => {
                                     className={styles.Search_Bar_input}
                                   
                                 />
-                                {/* <Button className={styles.menolistlogo}
-                                    onClick={() => setShowPassword(!showPassword)}>
-                                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-
-
-                                </Button> */}
                             </Box>
                             <Typography className={styles.listemailtext}>Password</Typography>
                             <Box style={{ display: 'flex' }}>
@@ -152,9 +146,10 @@ const Newpass = (props) => {
 
                             </Box>
                             <a href='/phoneno' className={styles.forgotadatext}>forgot password</a>
+                            <Box className={styles.listbuttomopen2223}><Button type='submit'>Continue</Button></Box>
                         </form>
                     </Box>
-                    <Box className={styles.listbuttomopen2223}><Button onClick={onLoginPress}>Continue</Button></Box>
+                   
 
                 </Grid>
             </Grid>
