@@ -4,7 +4,7 @@ import Constants from "./Constants";
 export default {
     LOGIN_USER: Constants.BASE_API_URL + 'user/login',
     DASHBOARD_LIST: Constants.BASE_API_URL + 'admin/dashboard',
-    DASHBOARD_CHART:Constants.BASE_API_URL+'dashboard/review',
+    DASHBOARD_CHART:Constants.BASE_API_URL+'admin/dashboard/review',
     ADMIN_MOVIE_REVIEW:Constants.BASE_API_URL+'admin/review/movie/list',
     ADMIN_REWIEW_LIST:Constants.BASE_API_URL+'admin/review/list',
     ADMIN_TOPBOX_ADD:Constants.BASE_API_URL+'admin/topbox/add',
@@ -26,4 +26,5 @@ export default {
     USER_FORGOT_PASSWORD:Constants.BASE_API_URL+'user/forgotpassword',
     MOVIE_DETAIL:Constants.BASE_API_URL+'movie/detail/movie',
     ADMIN_MOVIE_EDIT:Constants.BASE_API_URL+'admin/movie/edit',
+    ADMIN_USER_DELETE:Constants.BASE_API_URL+'admin/user/delete',
 }

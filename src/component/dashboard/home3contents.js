@@ -18,29 +18,26 @@ export const data = [
   [4, 18],
   [5, 9],
   [6, 15],
-  [7, 27],
-];
-export const data2 = [
-  ['x', 'dogs'],
   [0, 0],
-  [1, 10],
-  [2, 23],
-  [3, 17],
-  [4, 18],
-  [5, 9],
-  [6, 15],
-  [7, 27],
 ];
+export 
 const Usercount = (props) => {
 
   console.log(props, "props11")
   const [signupCount, setSignupCount] = React.useState(0);
   const [activeCount, setActiveCount] = React.useState(0);
   const [inactiveCount, setInactiveCount] = React.useState(0);
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = React.useState('year');
   const [startDate, setDateStart] = React.useState('');
   const [dateEnd, setDateEnd] = React.useState('');
-
+  const [CharacterData, setDatachart] = React.useState(['Year','x'])
+  console.log(CharacterData, 'CharacterData');
+  const data2 = [
+    ['Year','x']
+  
+  ];
+  const children = data2.concat(CharacterData);
+console.log(data,'children');
   const options2 = {
     hAxis: {
     },
@@ -55,18 +52,18 @@ const Usercount = (props) => {
     borderRadius: 50
   };
   const options = {
-  hAxis: {
-  },
-  vAxis: {
-  },
-  series: {
-    1: { curveType: "function" },
-  },
-  'height': 315,
-  backgroundColor: '#634BBF',
-  color: '#FFFFFF',
-  borderRadius: 50
-}
+    hAxis: {
+    },
+    vAxis: {
+    },
+    series: {
+      1: { curveType: "function" },
+    },
+    'height': 315,
+    backgroundColor: '#634BBF',
+    color: '#FFFFFF',
+    borderRadius: 50
+  }
   console.log(moment(dateEnd).format('yyyy-MM-DD'), 'activeCount');
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -77,7 +74,7 @@ const Usercount = (props) => {
       setDateEnd('')
       chartloginuser(event.target.value);
     }
-  
+
   };
   React.useEffect(() => {
     if (!!props.props.profile && !!props.props.profile.token) {
@@ -120,7 +117,7 @@ const Usercount = (props) => {
   }
   const DASHBOARD_CHART = async (value) => {
     var body = {
-
+      "title_movie": "Black adam"
     }
     console.log(body, 'bodybody');
     var headers = {
@@ -133,7 +130,17 @@ const Usercount = (props) => {
     console.log(data, 'mydata');
 
     console.log(data, 'virang33');
+    if (data.status == true) {
+      const csvall = [];
+      for (let index = 0; index < data.data.length; index++) {
+        const element = data.data[index];
+        console.log(element, 'password514');
+        csvall.push([element._id,element.count])
+        // csvall.push(JSON.parse(JSON.stringify(object)))
 
+      }
+      setDatachart(csvall)
+    }
     // if (data.status == true) {
     //     const arr = []
     //     const date = []
@@ -279,7 +286,7 @@ const Usercount = (props) => {
 
               <Chartbh
                 chartType="LineChart"
-                data={data2}
+                data={children}
                 className={style.listchartnme}
                 options={options2}
                 style={{ borderRadius: '15px' }}

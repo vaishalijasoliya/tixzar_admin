@@ -238,8 +238,10 @@ const index = (props) => {
               </Box>
               <Grid item md={12} sm={12} xs={12}>
                 <Box className={styles.listboxbtn}>
+                {formik.values.username == ''|| formik.values.name=='' ?
+                  <Button className={styles.listupdetbtn} onClick={() => {  handleCloselist() }}>Update2</Button>:
+                  <Button className={styles.listupdetbtn} onClick={() => { EDITPATT(), handleCloselist() }}>Update</Button>}
 
-                  <Button className={styles.listupdetbtn} onClick={() => { EDITPATT(), handleCloselist() }}>Update</Button>
                   <Button className={styles.listupdetbtn3} onClick={() => { handleCloselist() }}>Cancel</Button>
                 </Box>
 

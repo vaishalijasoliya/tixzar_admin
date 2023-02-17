@@ -265,6 +265,8 @@ const Movie_review_Pages = (props) => {
                     onClose={handleCloselist}
                   >
                     <Box className={Styles.listpopuy22}>
+                    <form onSubmit={formik.handleSubmit}>
+
                       <div className={Styles.listmenuuppohot}>
                         <img src={createObjectURL} className={Styles.avtaruplo} />
                         <div>
@@ -304,20 +306,58 @@ const Movie_review_Pages = (props) => {
                         <Box className={Styles.listboxbtn}>
                           {dataeditbtn == 'ADD' ?
                             <>
-                              <Button className={Styles.listupdetbtn} onClick={() => { accounttype('active'), handleCloselist() }}>Publish</Button>
-                              <Button className={Styles.listupdetbtn3} onClick={() => { accounttype('pending'), handleCloselist() }}>Draft</Button>
-                              <Button className={Styles.listupdetbtn2} onClick={() => { accounttype('delete'), handleCloselist() }}>Unpublish</Button>
+                            {formik.values.username == ''|| formik.values.name=='' ?
+                            <>
+                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { 
+                                //  handleNext()
+                                // accounttype('active'),
+                               handleCloselist() }}>Publish</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { 
+                                // accounttype('pending'),
+                               handleCloselist() }}>Draft</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { 
+                                // accounttype('delete'),
+                               handleCloselist() }}>Unpublish</Button>
+</>
+                            : 
+                            <>
+                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { 
+                                //  handleNext()
+                                // accounttype('active'),
+                               handleCloselist() }}>Publish</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { accounttype('pending'), handleCloselist() }}>Draft</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { accounttype('delete'), handleCloselist() }}>Unpublish</Button>
+</>
+                            }
                             </> :
                             <>
-                              <Button className={Styles.listupdetbtn} onClick={() => { EDITPATT('active'), handleCloselist() }}>Publish</Button>
-                              <Button className={Styles.listupdetbtn3} onClick={() => { EDITPATT('pending'), handleCloselist() }}>Draft</Button>
-                              <Button className={Styles.listupdetbtn2} onClick={() => { EDITPATT('delete'), handleCloselist() }}>Unpublish</Button>
+                            {formik.values.username == ''|| formik.values.name=='' ?
+                            <>
+                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { 
+                                //  handleNext()
+                                // accounttype('active'),
+                               handleCloselist() }}>Publish</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { 
+                                // accounttype('pending'),
+                               handleCloselist() }}>Draft</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { 
+                                // accounttype('delete'),
+                               handleCloselist() }}>Unpublish</Button>
+</>
+                            : 
+                            <>
+                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { EDITPATT('active'), handleCloselist() }}>Publish</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { EDITPATT('pending'), handleCloselist() }}>Draft</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { EDITPATT('delete'), handleCloselist() }}>Unpublish</Button>
+                            </>
+                            }
                             </>
                           }
                         </Box>
 
 
                       </Grid>
+                      </form>
                     </Box>
 
                   </Dialog>

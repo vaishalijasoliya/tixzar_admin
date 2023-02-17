@@ -79,7 +79,7 @@ const Reply_box = (props) => {
                             <Typography className={Styles.User_Email}>{props.data.email}</Typography>
                             <Typography className={Styles.Review_txt}>{props.data.description}</Typography>
                             {isShow_reply == true ?
-                                <>
+                                <form onSubmit={formik.handleSubmit}>
                                     <TextareaAutosize
                                         onBlur={formik.handleBlur}
                                         error={Boolean(formik.touched.name && formik.errors.name)}
@@ -89,14 +89,20 @@ const Reply_box = (props) => {
                                         className={Styles.Reply_text_area}
                                         placeholder="Write reply"
                                     />
-                                    <Button className={Styles.send_reply_btn} color="primary" onClick={() => {
+                                    {formik.values.name == ''?
+                                    <Button className={Styles.send_reply_btn} type='submit' color="primary" onClick={() => {
+                                        // setIsShow_reply(false)
+                                            // EDITPATT(props.data.id)
+                                    }}>
+                                        <Typography className={Styles.Reply_Btn_txt}>Send</Typography>
+                                    </Button>:<Button className={Styles.send_reply_btn} color="primary" onClick={() => {
                                         setIsShow_reply(false),
                                             EDITPATT(props.data.id)
                                     }}>
                                         <Typography className={Styles.Reply_Btn_txt}>Send</Typography>
-                                    </Button>
+                                    </Button>}
 
-                                </>
+                                </form>
                                 : null}
                             {
                                 isShow_reply == false ? <Button variant='text' color="secondary" className={Styles.Reply_btn_} onClick={() => {

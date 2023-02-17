@@ -154,7 +154,7 @@ const Newpass = (props) => {
                             <a href='/phoneno' className={styles.forgotadatext}>forgot password</a>
                         </form>
                     </Box>
-                    <Box className={styles.listbuttomopen22}><Button onClick={onLoginPress}>Continue</Button></Box>
+                    <Box className={styles.listbuttomopen2223}><Button onClick={onLoginPress}>Continue</Button></Box>
 
                 </Grid>
             </Grid>

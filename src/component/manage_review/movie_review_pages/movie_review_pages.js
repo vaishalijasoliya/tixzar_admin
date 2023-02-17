@@ -10,6 +10,7 @@ import FlagCircleRoundedIcon from '@mui/icons-material/FlagCircleRounded';
 import ApiServices from '../../../config/ApiServices'
 import ApiEndpoint from '../../../config/ApiEndpoint';
 import { useRouter, withRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 
 
@@ -22,10 +23,13 @@ const Movie_review_Pages = (props) => {
     const [description, setDeshcaripsan] = React.useState('')
     const [imgurldata, setImgurldata] = React.useState()
     const [datamenu, setDatamenu] = React.useState([])
+    const [setdata, setSetadata] = React.useState([])
+    const [reset, setRrset] = React.useState([])
+
     const [reatiang, setRtiangstar] = React.useState()
     const[datatab,setDatatab] =React.useState('active')
     const[stardata,setStardata]=React.useState(0)
-    console.log(datamenu, 'stardata')
+    console.log(reatiang, 'reatiang')
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -61,7 +65,7 @@ const Movie_review_Pages = (props) => {
                 const element = data.data.reviewList[index];
                 console.log(element, 'password514');
                 const object = {
-                    id: element.id,
+                    id: element.userDetails.id,
                     title: element.userDetails.name,
                     description: element.description,
                     logoUrl: element.userDetails.profile_photo,
@@ -71,11 +75,35 @@ const Movie_review_Pages = (props) => {
                 accoyty.push(JSON.parse(JSON.stringify(object)))
             }
             setDatamenu(accoyty)
+            setSetadata(accoyty)
         } else {
 
         }
     }
-
+    const EDITPATT = async (value) => {
+        var body = {
+'id_user':value
+        }
+        var headers = {
+          "Content-Type": "application/json",
+          "x-access-token": props.props.profile.token
+        }
+        props.props.loaderRef(true)
+        var data = await ApiServices.PostApiCall(ApiEndpoint.ADMIN_USER_DELETE, JSON.stringify(body), headers);
+        props.props.loaderRef(false)
+        if (!!data) {
+          if (data.status == true) {
+            toast.success(data.message)
+          } else {
+            toast.error(data.message)
+    
+          }
+        } else {
+          toast.error('Something went wrong.')
+        }
+    
+        console.log(data, 'datadata')
+      }
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -89,17 +117,17 @@ const Movie_review_Pages = (props) => {
         console.log(value, 'is_value_______')
         if (typeof value !== 'object') {
             if (!value || value == '') {
-                setReview_detials(resetData);
+                setDatamenu(setdata);
             } else {
-                var filteredData = Review_details.filter((item) => {
+                var filteredData = datamenu.filter((item) => {
                     console.log(item.name, 'filtrer')
-                    let searchValue = item.name.toLowerCase()
+                    let searchValue = item.title.toLowerCase()
                     return searchValue.includes(value.toString().toLowerCase())
                 })
-                setReview_detials(filteredData)
+                setDatamenu(filteredData)
             }
         } else {
-            setReview_detials(resetData);
+            setDatamenu(setdata);
         }
     }
     const theme = createTheme({
@@ -120,7 +148,7 @@ const Movie_review_Pages = (props) => {
                 <Typography className={[Styles.top_movie_txt]} sx={{ fontSize: '42px !important' }}>
                     {datatital}
                 </Typography>
-                <Button className={Styles.Icon_Button} size="small" >
+                <Button className={Styles.Icon_Button} size="small" href="/support" >
                     <img src="./image/Back_icon.svg" />
                 </Button>
             </Box>
@@ -198,7 +226,7 @@ const Movie_review_Pages = (props) => {
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={1} lg={1.5} xl={1.5} sx={{ justifyContent: "flex-end", display: 'flex' }}>
                                             <Box style={{ justifyContent: 'flex-end', display: 'flex' }}>
-                                                <Button className={Styles.deleteBtn}>
+                                                <Button className={Styles.deleteBtn} onClick={()=>{EDITPATT(data.id)}}>
                                                     <img src="./image/dustbin.svg" />
                                                 </Button>
                                             </Box>
@@ -343,7 +371,7 @@ const Movie_review_Pages = (props) => {
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={1} lg={1.5} xl={1.5} sx={{ justifyContent: "flex-end", display: 'flex' }}>
                                             <Box style={{ justifyContent: 'flex-end', display: 'flex' }}>
-                                                <Button className={Styles.deleteBtn}>
+                                                <Button className={Styles.deleteBtn} onClick={()=>{EDITPATT(data.id)}}>
                                                     <img src="./image/dustbin.svg" />
                                                 </Button>
                                             </Box>
