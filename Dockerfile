@@ -1,29 +1,46 @@
-FROM node:16.15.1 as build
-WORKDIR /tixzar-admin
+FROM node:16
+WORKDIR /opt/app
 
-COPY package*.json .
+RUN chown -R node:node /opt/app
+USER node
+
+COPY --chown=node:node package*.json ./
 RUN npm install --legacy-peer-deps
-COPY . .
 
-RUN npm run build
-# FROM nginx:1.19
-# COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-# COPY --from=build /tixzar-admin/.next /usr/share/nginx/html
+COPY --chown=node:node . /opt/app
+RUN npm run lint
 
-# COPY --from=build /tixzar-admin/public ./public
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=build --chown=nextjs:nodejs /tixzar-admin/.next/standalone ./
-COPY --from=build --chown=nextjs:nodejs /tixzar-admin/.next/static ./.next/static
-
-USER nextjs
+RUN npm run build:fair
+CMD [ "npm", "run", "start" ]
 
 EXPOSE 3000
 
-ENV PORT 3000
+# FROM node:16.15.1 as build
+# WORKDIR /tixzar-admin
 
-CMD ["node", "server.js"]
+# COPY package*.json .
+# RUN npm install --legacy-peer-deps
+# COPY . .
+
+# RUN npm run build
+# # FROM nginx:1.19
+# # COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+# # COPY --from=build /tixzar-admin/.next /usr/share/nginx/html
+
+# # COPY --from=build /tixzar-admin/public ./public
+
+# # Automatically leverage output traces to reduce image size
+# # https://nextjs.org/docs/advanced-features/output-file-tracing
+# COPY --from=build --chown=nextjs:nodejs /tixzar-admin/.next/standalone ./
+# COPY --from=build --chown=nextjs:nodejs /tixzar-admin/.next/static ./.next/static
+
+# USER nextjs
+
+# EXPOSE 3000
+
+# ENV PORT 3000
+
+# CMD ["node", "server.js"]
 
 # CMD ["node", "server.js"]
 
