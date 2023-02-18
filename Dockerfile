@@ -8,7 +8,7 @@ COPY . .
 RUN npm run build
 FROM nginx:1.19
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /tixzar-admin/build /usr/share/nginx/html
+COPY --from=build /tixzar-admin/.next /usr/share/nginx/html
 # FROM node:14.17.3 AS base
 
 # # Install dependencies only when needed
