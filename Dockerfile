@@ -11,10 +11,9 @@ COPY --chown=node:node . /opt/app
 RUN npm run lint
 
 RUN npm run build
-CMD [ "npm", "run", "start" ]
-
 EXPOSE 3000
-
+ENV PORT 3000
+CMD [ "npm", "run", "start" ]
 # FROM node:16.15.1 as build
 # WORKDIR /tixzar-admin
 
