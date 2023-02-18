@@ -10,86 +10,26 @@ import FlagCircleRoundedIcon from '@mui/icons-material/FlagCircleRounded';
 import ApiServices from '../../../config/ApiServices'
 import ApiEndpoint from '../../../config/ApiEndpoint';
 import { useRouter, withRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 
 
 
 const Movie_review_Pages = (props) => {
     const router = useRouter();
-
-    console.log(props.ID, 'propspropGGs2');
     const [value, setValue] = React.useState('All Reviews');
-    const [Review_details, setReview_detials] = React.useState(
-        [
-            {
-                name: 'Simon Alex',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 3,
-                Status: 'flaged'
-            },
-            {
-                name: 'Albot Sevrus',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 4,
-                Status: null
-            }, {
-                name: 'Simon Alex',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 5,
-                Status: null
-            }, {
-                name: 'Albot Sevrus',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 2,
-                Status: 'flaged'
-
-            }
-        ])
-    const [userSearch, setUserSearch] = React.useState([])
-    const [resetData, setResetData] = React.useState(
-        [
-            {
-                name: 'Simon Alex',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 3,
-                Status: 'flaged'
-            },
-            {
-                name: 'Albot Sevrus',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 4,
-                Status: null
-            }, {
-                name: 'Simon Alex',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 5,
-                Status: null
-            }, {
-                name: 'Albot Sevrus',
-                Description_txt: 'Quisque vel interdum lorem, et facilisis eros. Donec eu justo a ex mattis rhoncus ut in arcu.',
-                User_Photo: './image/User.png',
-                Rating_start: 2,
-                Status: 'flaged'
-
-            }
-        ])
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [datatital, setDatatital] = React.useState('')
     const [description, setDeshcaripsan] = React.useState('')
     const [imgurldata, setImgurldata] = React.useState()
     const [datamenu, setDatamenu] = React.useState([])
+    const [setdata, setSetadata] = React.useState([])
+    const [reset, setRrset] = React.useState([])
+
     const [reatiang, setRtiangstar] = React.useState()
     const[datatab,setDatatab] =React.useState('active')
     const[stardata,setStardata]=React.useState(0)
-    console.log(datamenu, 'stardata')
-    // console.log(((parseFloat(reatiang) / 2)).toFixed(2), 'datatital');
+    console.log(reatiang, 'reatiang')
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -119,14 +59,13 @@ const Movie_review_Pages = (props) => {
             setDeshcaripsan(data.data.description)
             setImgurldata(data.data.image_url)
             setRtiangstar(data.data.tixzarRating)
-            // parseFloat(reatiang.toFixed(2))
             const accoyty = [];
             const csvall = [];
             for (let index = 0; index < data.data.reviewList.length; index++) {
                 const element = data.data.reviewList[index];
                 console.log(element, 'password514');
                 const object = {
-                    id: element.id,
+                    id: element.userDetails.id,
                     title: element.userDetails.name,
                     description: element.description,
                     logoUrl: element.userDetails.profile_photo,
@@ -136,11 +75,35 @@ const Movie_review_Pages = (props) => {
                 accoyty.push(JSON.parse(JSON.stringify(object)))
             }
             setDatamenu(accoyty)
+            setSetadata(accoyty)
         } else {
 
         }
     }
-
+    const EDITPATT = async (value) => {
+        var body = {
+'id_user':value
+        }
+        var headers = {
+          "Content-Type": "application/json",
+          "x-access-token": props.props.profile.token
+        }
+        props.props.loaderRef(true)
+        var data = await ApiServices.PostApiCall(ApiEndpoint.ADMIN_USER_DELETE, JSON.stringify(body), headers);
+        props.props.loaderRef(false)
+        if (!!data) {
+          if (data.status == true) {
+            toast.success(data.message)
+          } else {
+            toast.error(data.message)
+    
+          }
+        } else {
+          toast.error('Something went wrong.')
+        }
+    
+        console.log(data, 'datadata')
+      }
 
     const handleClose = () => {
         setAnchorEl(null);
@@ -154,17 +117,17 @@ const Movie_review_Pages = (props) => {
         console.log(value, 'is_value_______')
         if (typeof value !== 'object') {
             if (!value || value == '') {
-                setReview_detials(resetData);
+                setDatamenu(setdata);
             } else {
-                var filteredData = Review_details.filter((item) => {
+                var filteredData = datamenu.filter((item) => {
                     console.log(item.name, 'filtrer')
-                    let searchValue = item.name.toLowerCase()
+                    let searchValue = item.title.toLowerCase()
                     return searchValue.includes(value.toString().toLowerCase())
                 })
-                setReview_detials(filteredData)
+                setDatamenu(filteredData)
             }
         } else {
-            setReview_detials(resetData);
+            setDatamenu(setdata);
         }
     }
     const theme = createTheme({
@@ -185,7 +148,7 @@ const Movie_review_Pages = (props) => {
                 <Typography className={[Styles.top_movie_txt]} sx={{ fontSize: '42px !important' }}>
                     {datatital}
                 </Typography>
-                <Button className={Styles.Icon_Button} size="small" >
+                <Button className={Styles.Icon_Button} size="small" href="/support" >
                     <img src="./image/Back_icon.svg" />
                 </Button>
             </Box>
@@ -202,11 +165,6 @@ const Movie_review_Pages = (props) => {
                         <Grid item sm={12} xl={2} lg={2} md={2} >
                             <Typography className={Styles.Heading_Des}>Tixzar Rating</Typography>
                             <Box className={Styles.Rating_start_box}>
-                                {/* <Rating className={Styles.Rating_star}
-                                    value={((parseFloat(reatiang) /2))}
-                                    onChange={(event, newValue) => {
-                                        setValue(newValue);
-                                    }} readOnly /> */}
                                 <StarRoundedIcon fontSize="35px" color="#FFE600" style={{ fontSize: '33px', color: '#FFE600' }} />
                                 <Typography textAlign={'center'} className={Styles.Heading_Des}>{reatiang == null?'':(reatiang.toFixed(2))}/10</Typography>
                             </Box>
@@ -268,7 +226,7 @@ const Movie_review_Pages = (props) => {
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={1} lg={1.5} xl={1.5} sx={{ justifyContent: "flex-end", display: 'flex' }}>
                                             <Box style={{ justifyContent: 'flex-end', display: 'flex' }}>
-                                                <Button className={Styles.deleteBtn}>
+                                                <Button className={Styles.deleteBtn} onClick={()=>{EDITPATT(data.id)}}>
                                                     <img src="./image/dustbin.svg" />
                                                 </Button>
                                             </Box>
@@ -278,8 +236,6 @@ const Movie_review_Pages = (props) => {
                     id="account-menu"
                     open={open}
                     onClose={handleClose}
-                    // onClick={handleClose}
-                    // style={{ backgroundColor: '#332E59' }}
                     PaperProps={{
                         elevation: 0,
                         style: { background: '#332E59', border: "1px solid white" },
@@ -415,7 +371,7 @@ const Movie_review_Pages = (props) => {
                                         </Grid>
                                         <Grid item xs={12} sm={12} md={1} lg={1.5} xl={1.5} sx={{ justifyContent: "flex-end", display: 'flex' }}>
                                             <Box style={{ justifyContent: 'flex-end', display: 'flex' }}>
-                                                <Button className={Styles.deleteBtn}>
+                                                <Button className={Styles.deleteBtn} onClick={()=>{EDITPATT(data.id)}}>
                                                     <img src="./image/dustbin.svg" />
                                                 </Button>
                                             </Box>

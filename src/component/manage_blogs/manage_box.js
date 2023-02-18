@@ -3,79 +3,13 @@ import React from "react";
 import Styles from './manage_blogs.module.scss'
 import { Movie_Box } from "./img_data";
 import ApiServices from '../../config/ApiServices'
-// import ApiServices from '../../config/ApiServices';
 import ApiEndpoint from '../../config/ApiEndpoint';
 
 const Manage_review = (props) => {
 console.log(props.data,'propsccprops');
 const [tabaldata, setTeballist] = React.useState([])
 console.log(tabaldata,'tabaldatatabaldata');
-    const Movies_details = [
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_1'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_2'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_3'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_4'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_5'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_6'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_7'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_8'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_1'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_2'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_3'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_4'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_5'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_6'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_7'
-        },
-        {
-            Name: 'Lorem Ipsum',
-            Img_Path: 'Movie_8'
-        }
-    ]
+
     const[datelistdes,setDatalistlogin] =React.useState([])
 
     React.useEffect(() => {

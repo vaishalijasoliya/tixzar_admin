@@ -87,7 +87,22 @@
     height: 58px;
 
 }
+.listbuttomopen2223 {
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
 
+.listbuttomopen2223 button {
+    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
+    border-radius: 10px;
+    font-size: 20px;
+    color: #FFFFFF;
+    text-transform: capitalize;
+    font-family: "Gilroy-regular";
+    width: 100%;
+    height: 58px;
+
+}
 .ategandperegaf {
     display: flex;
     align-items: center;
@@ -193,14 +208,40 @@
     font-size: 43px;
     color: #FFFFFF;
 }
+.listboxmailtext2223 {
+    padding-top: 20px;
+    padding-bottom: 25px;
+}
 
+.listboxmailtext2223 p {
+    font-family: "Gilroy-bolt";
+    font-size: 43px;
+    color: #FFFFFF;
+}
+.forgotadatext{
+    color: white;
+    font-family: Poppins-400 !important;
+    font-size: 14px;
+    text-decoration: none !important;
+    text-align: end;
+    display: flex;
+    justify-content: end;
+    padding-top: 10px;
+    cursor: pointer;
+}
+.forgotadatext:hover{
+    color: white;
+    font-family: Poppins-400 !important;
+    font-size: 14px;
+    text-decoration: none !important;
+}
 .Search_Bar_input {
     background: #282042;
     border: 1px solid #634BBF !important;
     border-radius: 10px;
     height: 62px;
     width: 100%;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .Search_Bar_input fieldset {

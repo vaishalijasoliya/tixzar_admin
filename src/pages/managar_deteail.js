@@ -1,15 +1,15 @@
 import Nevbar from '../component/user/newbarlist';
 import Header from '../component/user/header';
 import Grid from '@mui/material/Grid';
-import Promotionlist from '../component/promotion/manage_review_list';
+import Promotionlist from '../component/promotion/promotionlist';
 import { connect } from 'react-redux';
 import { Types } from '/src/constants/actionTypes';
+import { useRouter, withRouter } from 'next/router';
 
-const index = (props) => {
-  console.log(props, "virang");
+const Manager_deteail = (props) => {
+  const router = useRouter();
   const data = {
     title: "Manage Details",
-    // desc: "Morning James, Welcome to Clever Gifts Dashboard ",
   }
   return (
     <>
@@ -21,7 +21,7 @@ const index = (props) => {
         <div style={{background:'#332E59'}}>
           <Header data={data} props={props} />
           </div>
-          <Promotionlist props={props} />
+          <Promotionlist props={props} id={router.query.emailID} />
         </Grid>
       </Grid>
 
@@ -39,4 +39,4 @@ const mapDispatchToProps = (dispatch) => ({
   save_user_data: (data) =>
     dispatch({ type: Types.LOGIN, payload: data }),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(index);
+export default connect(mapStateToProps, mapDispatchToProps)(Manager_deteail);

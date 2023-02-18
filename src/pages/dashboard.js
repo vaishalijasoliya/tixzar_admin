@@ -1,7 +1,6 @@
 import Usercount from "../component/dashboard/home3contents"
 import Nevbar from '../component/user/newbarlist';
 import Header from '../component/user/header';
-import styles from '../styles/user/index.module.css';
 import Grid from '@mui/material/Grid';
 import { connect } from 'react-redux';
 import { Types } from '/src/constants/actionTypes';
@@ -10,7 +9,6 @@ const Dashdata = (props) => {
     console.log(props, "Home")
     const data = {
         title: "Dashboard",
-        // desc: "Morning James, Welcome to Clever Gifts Dashboard ",
     }
 
     return (

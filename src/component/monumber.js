@@ -2,15 +2,15 @@ import styles from '../styles/login.module.css'
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { Grid, Typography, Button, TextField } from '@mui/material';
-import { Container, height, width } from '@mui/system';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
-import Logo from './logo';
 import 'react-phone-input-2/lib/style.css'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import Phone from './phone';
 import { useRouter } from 'next/router';
+import ApiEndpoint from '../config/ApiEndpoint';
+import ApiServices from '../config/ApiServices';
+import { toast } from 'react-toastify';
 
 
 
@@ -22,34 +22,48 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const Mobile = (props) => {
 
-    console.log(props, 'propsPhonse');
     const router = useRouter();
-
     const onLoginPress = async () => {
         var body = {
-            'phone': formik.values.phone,
-            // 'password': formik.values.password
+            "email": formik.values.email
         }
+        console.log(body, 'body');
+
         var headers = {
             "Content-Type": "application/json",
         }
 
-        var data = (JSON.stringify(body), headers)
+        props.props.loaderRef(true)
+        var data = await ApiServices.PostApiCall(ApiEndpoint.USER_FORGOT_PASSWORD, JSON.stringify(body), headers);
+        props.props.loaderRef(false)
+        console.log(data,'datadata')
+        if (!!data) {
+            if (data.status == true) {
+                toast.success(data.message)
+                console.log(formik.values.email, 'emaillist');
 
-        console.log(data)
-
+                router.push({
+                    pathname: './codevrfy',
+                    query: { email:data.data.id }
+                });
+          
+            } else {
+                toast.error(data.message)
+            }
+        } else {
+            toast.error('please enter your correct email.')
+        }
     }
     const formik = useFormik({
         initialValues: {
-            phone: '',
+            email: '',
         },
         validationSchema: Yup.object({
-            phone: Yup
-                .number()
-                .max(10)
+            email: Yup
+                .string()
                 .min(10)
                 .required(
-                    'Enter your 10 digit Number'),
+                    'Email digit Number'),
         }),
         onSubmit: () => {
             onLoginPress()
@@ -66,14 +80,11 @@ const Mobile = (props) => {
                     <Box className={styles.patretextlog}><Typography>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</Typography></Box>
                     <Box className={styles.listinputbox}>
-                        {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
                         <Typography className={styles.listemailtext}>Email</Typography>
                         <TextField
                             error={Boolean(formik.touched.email && formik.errors.email)}
-                            type="email"
+                            type="text"
                             helperText={formik.touched.email && formik.errors.email}
-                            // id="outlined-basic"
-                            // label="Your Email"
                             className={styles.Search_Bar_input}
                             onBlur={formik.handleBlur}
                             placeholder='Enter Your Email'
@@ -81,15 +92,10 @@ const Mobile = (props) => {
                             name="email"
                             value={formik.values.email}
                             variant="outlined"
-                        // focused={false}
-
                         />
                     </Box>
-                    <Box className={styles.listbuttomopen22}><Button>Continue</Button></Box>
-                    {/* <Box className={styles.ategandperegaf}>
-          <a href="#" className={styles.listskipanda}>Skip</a>
-          <Typography>, I will confirm later</Typography>
-        </Box> */}
+                    <Box className={styles.listbuttomopen22}><Button onClick={onLoginPress}>Continue</Button></Box>
+            
                 </Grid>
             </Grid>
 

@@ -1,8 +1,5 @@
-import Link from "next/link";
 import { connect } from 'react-redux';
 import { Types } from '/src/constants/actionTypes';
-//import DashboardLayout from "../components/dashboard/layout";
-import Home from "./support/Support";
 import Nevbar from '../component/user/newbarlist';
 import Header from '../component/user/header';
 import styles from '../styles/user/index.module.css';

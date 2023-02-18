@@ -1,4 +1,4 @@
-import { Box, Button, Menu, TableRow, TableCell, Dialog, TextareaAutosize, Paper, Table, TableBody, createTheme, Divider, Grid, IconButton, Typography, MenuItem, Tab, Tabs, TextField, ThemeProvider } from "@mui/material";
+import { Box, Button, Dialog, TextareaAutosize, Grid, IconButton, Typography, TextField } from "@mui/material";
 import React from "react";
 import Styles from './manage_blogs.module.scss'
 import { TabContext, TabPanel } from "@mui/lab";
@@ -11,82 +11,26 @@ import ApiServices from '../../config/ApiServices'
 import ApiEndpoint from '../../config/ApiEndpoint';
 import { toast } from 'react-toastify';
 import Databox from './manage_box'
-function createData(name, calories, fat) {
-  return { name, calories, fat };
-}
-let PageSize = 10;
 
 const Movie_review_Pages = (props) => {
   console.log(props, 'sdhbddd');
   const [value, setValue] = React.useState('All Reviews');
-  const [page, setPage] = React.useState('');
   const [datalist, setData] = React.useState([])
-  const [currentPage, setCurrentPage] = React.useState(1);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [createObjectURL, setCreateObjectURL] = React.useState(null);
   const [image, setImage] = React.useState(null);
   const [itemimg, setIditem] = React.useState()
   const [datelistdes, setDatalistlogin] = React.useState([])
-  console.log(datelistdes, 'datelistdes');
-  console.log(itemimg, 'itemimg');
   const handleClickOpen = () => {
     setOpenlist(true);
   };
-
   const handleCloselist = () => {
     setOpenlist(false);
   };
-
   const [openlist, setOpenlist] = React.useState(false);
   const [dataeditbtn, setDataeditbtn] = React.useState('')
   console.log(dataeditbtn, 'dataeditbtn');
-  const [Review_details, setReview_detials] = React.useState(
-    [
-      {
-        name: 'Simon Alex',
-        Description_txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmoda commodo consequat. Duis aute irure dolor in reprehenderit.',
-        User_Photo: './image/Rectangle 244.svg',
-        Rating_start: 3,
-        Status: 'flaged'
-      },
-      {
-        name: 'Albot Sevrus',
-        Description_txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmoda commodo consequat. Duis aute irure dolor in reprehenderit.',
-        User_Photo: './image/Rectangle 244.svg',
-        Rating_start: 4,
-        Status: null
-      }, {
-        name: 'Simon Alex',
-        Description_txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmoda commodo consequat. Duis aute irure dolor in reprehenderit.UI Designer',
-        User_Photo: './image/Rectangle 244.svg',
-        Rating_start: 5,
-        Status: null
-      }, {
-        name: 'Albot Sevrus',
-        Description_txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmoda commodo consequat. Duis aute irure dolor in reprehenderit.',
-        User_Photo: './image/Rectangle 244.svg', Rating_start: 2,
-        Status: 'flaged'
-
-      }
-    ])
-  const [userSearch, setUserSearch] = React.useState('')
-  const [userSearchmenu, setUserSearchmenu] = React.useState([])
   const [editid, setEditid] = React.useState('')
-  const [resetData, setResetData] = React.useState(
-    [
-      {
-        name: 'Simon Alex11',
-        Description_txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.', User_Photo: './image/Movie_5.png',
-        Rating_start: 1,
-        Status: 'flaged'
-      },
-      {
-        name: 'Albot Sevrus',
-        Description_txt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.', User_Photo: './image/Rectangle 237.svg',
-        Rating_start: 1000,
-        Status: null
-      },
-    ])
   console.log(editid, 'userSearch');
   const formik = useFormik({
     initialValues: {
@@ -115,7 +59,6 @@ const Movie_review_Pages = (props) => {
     const filetypes = e.target.files[0].type;
     const extension = filetypes.substring(0, 5)
     const lissurl = e.target.files[0].name;
-    // setImgupload(extension)
     console.log(extension, "filetypes");
     console.log(lissurl, "myfiletype");
     uploadItem(e.target.files[0], extension)
@@ -127,32 +70,6 @@ const Movie_review_Pages = (props) => {
     }
   }
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl)
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  React.useEffect(() => {
-    setUserSearchmenu(resetData)
-  })
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: 'rgba(99, 75, 191,0.2)',
-      },
-      secondary: {
-        main: 'rgba(255, 0, 0, 0.2)',
-      },
-    },
-
-  });
-
   const uploadItem = async (file, type) => {
 
     var myHeaders = new Headers();
@@ -269,8 +186,6 @@ const Movie_review_Pages = (props) => {
             logoUrl: element.image_url,
 
           }
-          // console.log(object, 'object');
-
           accoyty.push(JSON.parse(JSON.stringify(object)))
 
         }
@@ -284,8 +199,6 @@ const Movie_review_Pages = (props) => {
             logoUrl: element.image_url,
 
           }
-          // console.log(object, 'object');
-
           csvall.push(JSON.parse(JSON.stringify(object)))
 
         }
@@ -331,10 +244,6 @@ const Movie_review_Pages = (props) => {
           <TabContext value={value}>
             <div className={Styles.listmenumen}>
               <Grid item xs={12} sm={12} md={8} className={Styles.lisrdatanaftevb}>
-                {/* <Tabs value={value} onChange={handleChange} className={Styles.Tab_Bar_} aria-label="disabled tabs example" centered>
-                  <Tab label="All Reviews" className={Styles.Tabs_} value={'All Reviews'} />
-                  <Tab label="Flaged Reviews" className={Styles.Tabs_} value="Flaged Reviews" />
-                </Tabs> */}
               </Grid>
               <Grid item xs={12} sm={12} md={4} display={'flex'} justifyContent={'end'}>
                 <div className={Styles.listbtmnanadf}>
@@ -356,6 +265,8 @@ const Movie_review_Pages = (props) => {
                     onClose={handleCloselist}
                   >
                     <Box className={Styles.listpopuy22}>
+                    <form onSubmit={formik.handleSubmit}>
+
                       <div className={Styles.listmenuuppohot}>
                         <img src={createObjectURL} className={Styles.avtaruplo} />
                         <div>
@@ -395,20 +306,58 @@ const Movie_review_Pages = (props) => {
                         <Box className={Styles.listboxbtn}>
                           {dataeditbtn == 'ADD' ?
                             <>
-                              <Button className={Styles.listupdetbtn} onClick={() => { accounttype('active'), handleCloselist() }}>Publish</Button>
-                              <Button className={Styles.listupdetbtn3} onClick={() => { accounttype('pending'), handleCloselist() }}>Draft</Button>
-                              <Button className={Styles.listupdetbtn2} onClick={() => { accounttype('delete'), handleCloselist() }}>Unpublish</Button>
+                            {formik.values.username == ''|| formik.values.name=='' ?
+                            <>
+                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { 
+                                //  handleNext()
+                                // accounttype('active'),
+                               handleCloselist() }}>Publish</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { 
+                                // accounttype('pending'),
+                               handleCloselist() }}>Draft</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { 
+                                // accounttype('delete'),
+                               handleCloselist() }}>Unpublish</Button>
+</>
+                            : 
+                            <>
+                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { 
+                                //  handleNext()
+                                // accounttype('active'),
+                               handleCloselist() }}>Publish</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { accounttype('pending'), handleCloselist() }}>Draft</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { accounttype('delete'), handleCloselist() }}>Unpublish</Button>
+</>
+                            }
                             </> :
                             <>
-                              <Button className={Styles.listupdetbtn} onClick={() => { EDITPATT('active'), handleCloselist() }}>Publish</Button>
-                              <Button className={Styles.listupdetbtn3} onClick={() => { EDITPATT('pending'), handleCloselist() }}>Draft</Button>
-                              <Button className={Styles.listupdetbtn2} onClick={() => { EDITPATT('delete'), handleCloselist() }}>Unpublish</Button>
+                            {formik.values.username == ''|| formik.values.name=='' ?
+                            <>
+                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { 
+                                //  handleNext()
+                                // accounttype('active'),
+                               handleCloselist() }}>Publish</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { 
+                                // accounttype('pending'),
+                               handleCloselist() }}>Draft</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { 
+                                // accounttype('delete'),
+                               handleCloselist() }}>Unpublish</Button>
+</>
+                            : 
+                            <>
+                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { EDITPATT('active'), handleCloselist() }}>Publish</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { EDITPATT('pending'), handleCloselist() }}>Draft</Button>
+                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { EDITPATT('delete'), handleCloselist() }}>Unpublish</Button>
+                            </>
+                            }
                             </>
                           }
                         </Box>
 
 
                       </Grid>
+                      </form>
                     </Box>
 
                   </Dialog>
@@ -441,10 +390,7 @@ const Movie_review_Pages = (props) => {
 
           </TabContext>
         </Box>
-        {/* <Box className={Styles.Listdatacom}>
-          <Box className={Styles.livetapoand}><Typography>Live Blogs</Typography></Box> */}
         <Databox props={props} data={datelistdes} />
-        {/* </Box> */}
       </Box>
     </Box>
   )

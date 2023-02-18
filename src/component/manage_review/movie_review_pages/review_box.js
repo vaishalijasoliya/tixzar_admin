@@ -6,6 +6,7 @@ import FlagCircleRoundedIcon from '@mui/icons-material/FlagCircleRounded';
 
 
 const Review_box = (props) => {
+    console.log(props,'prorrfff');
     const [value, setValue] = React.useState(2)
     const theme = createTheme({
         palette: {
@@ -18,7 +19,7 @@ const Review_box = (props) => {
         },
 
     });
-  
+
     return (
         <Box className={Styles.Review_box_}>
             <Grid container>
@@ -40,14 +41,14 @@ const Review_box = (props) => {
                 </Grid>
                 <Grid item xs={12} sm={12} md={1} lg={1.5} xl={1.5} sx={{ justifyContent: "flex-end", display: 'flex' }}>
                     <Box style={{ justifyContent: 'flex-end', display: 'flex' }}>
-                        <Button className={Styles.deleteBtn}>
+                        <Button className={Styles.deleteBtn} onClick={()=>{}}>
                             <img src="./image/dustbin.svg" />
                         </Button>
                     </Box>
                 </Grid>
 
             </Grid>
-            {data.Status ? data.Status == 'flaged' ?
+            {data.status ? data.status == 'flaged' ?
                 <Grid container>
                     <Grid item xs={12} sm={12} md={1.5} lg={1.5} xl={1.5} />
                     <Grid item xs={12} sm={12} md={10.5} lg={10.5} xl={10.5} sx={{ justifyContent: "space-between", display: 'flex', alignItems: 'center' }}>

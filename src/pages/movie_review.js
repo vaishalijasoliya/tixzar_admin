@@ -1,10 +1,8 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import { connect } from "react-redux";
-import Manage_review from "../component/manage_review/manage_review";
 import Movie_review_Pages from "../component/manage_review/movie_review_pages/movie_review_pages";
 import Header from "../component/user/header";
-// import Header from '../component/user/header';
 import Nevbar from '../component/user/newbarlist';
 import { useRouter, withRouter } from 'next/router';
 
@@ -12,9 +10,6 @@ import { useRouter, withRouter } from 'next/router';
 
 const Movie_Review = (props) => {
     const router = useRouter();
-
-    console.log(router.query.emailID, 'scripToken');
-
     const data = {
         title: "Manage Reviews",
         desc: "",
@@ -30,8 +25,6 @@ const Movie_Review = (props) => {
 
                     <Header data={data} props={props} />
                     </div>
-                    {/* <Home props={props} /> */}
-                    {/* <Manage_review /> */}
                     <Movie_review_Pages props={props} ID={router.query.emailID} />
                 </Grid>
             </Grid>

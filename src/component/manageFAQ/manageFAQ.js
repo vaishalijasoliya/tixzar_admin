@@ -1,8 +1,6 @@
 import { Box, Button, Typography, Dialog, TextField, TextareaAutosize, Grid } from "@mui/material";
 import React from "react";
-// import styles from './manageStyle.css'
 import styles from './manageStyle.module.css'
-// import { QandAbox } from "./QandAboxes";
 import QandAbox from './QandAboxes'
 import ApiServices from '../../config/ApiServices'
 import ApiEndpoint from '../../config/ApiEndpoint';
@@ -40,8 +38,7 @@ const ManageFaq = (props) => {
                     'Add Title is required'),
         }),
         onSubmit: () => {
-            // onLoginPress()
-
+            accounttype()
         },
     });
     console.log(props, 'propsprops')
@@ -129,7 +126,7 @@ const ManageFaq = (props) => {
                     onClose={handleCloselist}
                 >
                     <Box className={styles.listpopuy22}>
-
+                    <form onSubmit={formik.handleSubmit}>
                         <Box>
                             <TextField
                                 error={Boolean(formik.touched.username && formik.errors.username)}
@@ -151,15 +148,27 @@ const ManageFaq = (props) => {
                                 className={styles.Reply_text_area} />
                         </Box>
                         <Grid item md={12} sm={12} xs={12}>
-                            <Button className={styles.Add_question_Btn22} onClick={() => {
-                                   accounttype()
+                        {formik.values.name =='' ||formik.values.username =='' ?
+                            <Button type='submit' className={styles.Add_question_Btn22} onClick={() => {
+                                //    accounttype()handleCloselist()
+                                // handleCloselist()
+                            }}>
+                                <Typography className={styles.Add_question_Btn_txt}>
+                                    Add Question
+                                </Typography>
+                            </Button>:
+                            <Button type='submit' className={styles.Add_question_Btn22} onClick={() => {
+                                 
+                               handleCloselist()
                             }}>
                                 <Typography className={styles.Add_question_Btn_txt}>
                                     Add Question
                                 </Typography>
                             </Button>
+                            }
 
                         </Grid>
+                        </form>
                     </Box>
 
                 </Dialog>

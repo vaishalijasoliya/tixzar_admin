@@ -40,30 +40,6 @@ const Review_box = ({ data }) => {
                 </Grid>
 
             </Grid>
-            {/* {data.Status ? data.Status == 'flaged' ?
-                <Grid container>
-                    <Grid item xs={12} sm={12} md={1.5} lg={1.5} xl={1.5} />
-                    <Grid item xs={12} sm={12} md={10.5} lg={10.5} xl={10.5} sx={{ justifyContent: "space-between", display: 'flex', alignItems: 'center' }}>
-                        <ThemeProvider theme={theme} >
-                            <Box >
-                                <Button className={Styles.Flaged_button} variant='contained' color="secondary" >
-                                    <Typography color={'#FF0000'} textTransform="capitalize" fontSize={'16px'}>
-                                        Click Here
-                                    </Typography>
-                                </Button>
-                                <Button className={Styles.Flaged_button} style={{ marginLeft: '5px' }} variant='contained' color="secondary" >
-                                    <Typography color={'#FF0000'} textTransform="capitalize" fontSize={'16px'} >
-                                        Click Here
-                                    </Typography>
-                                </Button>
-                            </Box>
-                            <FlagCircleRoundedIcon color="primary" />
-                        </ThemeProvider>
-                    </Grid>
-                </Grid>
-                : "" : ""} */}
-
-
         </Box>
     )
 }

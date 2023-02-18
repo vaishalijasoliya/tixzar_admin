@@ -49,7 +49,30 @@
     padding: 30px 45px 30px 35px;
     width: 100%;
 }
-
+.datepikarname span{
+    color: #ffffff !important;
+}
+.boxdate {
+    background: #634BBF !important;
+    border-radius: 16px;
+    height: 56px !important;
+    display: flex;
+    align-items: center;
+    font-family: Gilroy-SemiBold;
+margin: 0px 20px 0px 0px;
+}
+.datepikarname input{
+    background-color: #634BBF !important;
+    border-radius: 0px;
+    opacity: unset;
+    color: #ffffff !important; 
+}
+.menuitemdata{
+    background-color: red !important;
+}
+.datepikarname svg{
+    display: none;
+}
 .topgrid {
     padding: 0px 0px 20px 0px;
 }
@@ -61,6 +84,11 @@
     font-family: Gilroy-midayam !important;
     font-size: 14px !important;
 
+}
+.listboxselectdat{
+    display: flex;
+    align-items: baseline;
+    padding-bottom: 20px;
 }
 
 /* .listboxselectdat div ul{

@@ -31,7 +31,7 @@ const MyApp = (props) => {
     var persistedState = localStorage.getItem('reduxState') ? JSON.parse(localStorage.getItem('reduxState')) : {};
     if (!!persistedState && !!persistedState.user && !!persistedState.user.profile.token) {
       if(router.pathname == '/'){
-        // props.router.push(router.push('./dashboard'));
+        props.router.push(router.push('./dashboard'));
       }
       setIsLoaded(true)
     } else {
@@ -46,9 +46,9 @@ const MyApp = (props) => {
     <>
       <Provider store={store}>
         <Head>
-          <title>Impression</title>
+          <title>Tixzr</title>
           <meta name="description" content="Impression admin" />
-          <link rel="icon" href="./image/impress logo.png"/>
+          <link rel="icon" href="./image/Purple Logo png-01 1.svg"/>
         </Head>
 
         {isProgress && <Box sx={{ display: 'flex', position: 'absolute', top: 0, bottom: 0, right: 0, left: 0, justifyContent: 'center', alignItems: 'center', zIndex: 10 }}>

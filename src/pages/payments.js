@@ -1,7 +1,5 @@
 import Nevbar from '../component/user/newbarlist';
 import Header from '../component/user/header';
- import Paymenttable from '../component/Payments/paymentslist';
-import styles from '../styles/user/index.module.css';
 import Grid from '@mui/material/Grid';
 import { Types } from '../constants/actionTypes';
 import { connect } from 'react-redux';

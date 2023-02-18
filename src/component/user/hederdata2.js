@@ -269,9 +269,7 @@ const Nevbar = (props) => {
                       </Badge>
                       <div>
                         <div className={styles.listtyponame}>
-                          {/* <Typography className={styles.listtyponame}> */}
                           John Smith reviewed on a movie Spiderman
-                          {/* </Typography> */}
                         </div>
                         <div className={styles.listtyponame22}>1h ago</div>
                       </div>
