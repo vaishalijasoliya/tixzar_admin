@@ -10,7 +10,7 @@ RUN npm run build
 # COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 # COPY --from=build /tixzar-admin/.next /usr/share/nginx/html
 
-COPY --from=build /tixzar-admin/public ./public
+# COPY --from=build /tixzar-admin/public ./public
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
