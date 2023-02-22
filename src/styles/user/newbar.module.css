@@ -1,7 +1,8 @@
 @font-face {
-    font-family: Gilroy-400;
-    src: url(../font/Gilroy-Font/Gilroy-Medium.ttf);
+  font-family: Gilroy-400;
+  src: url(../font/Gilroy-Font/Gilroy-Medium.ttf);
 }
+
 .cantenar2 .lianpohot {
   width: 158px;
   height: 100px;
@@ -23,7 +24,7 @@
 
 /* .newbar {
   /* background-color: white !important; */
-/* } */ 
+/* } */
 
 .newbtn {
   margin: 0px 0px 0px 10px !important;
@@ -96,9 +97,9 @@ span.btndtl6 {
   height: 56px;
   font-family: Gilroy-400 !important;
   font-size: 16px;
-text-transform: capitalize;
-padding: 0px 10px 0px 25px;
-justify-content: flex-start;
+  text-transform: capitalize;
+  padding: 0px 10px 0px 25px;
+  justify-content: flex-start;
   /* border-radius: 16px; */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -123,57 +124,65 @@ justify-content: flex-start;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-.yesbtnlisggs{
-    font-family: Gilroy-400 !important;
-    background-color: #57B0AF !important;
-    color: white !important;
-    text-transform: capitalize !important;
-    padding: 7px 30px 7px 30px !important;
-    
+
+.yesbtnlisggs {
+  font-family: Gilroy-400 !important;
+  background-color: #57B0AF !important;
+  color: white !important;
+  text-transform: capitalize !important;
+  padding: 7px 30px 7px 30px !important;
+
 }
-.btn2yesno{
-    text-align: end;
+
+.btn2yesno {
+  text-align: end;
 }
-.yesbtnlisggs2{
-    font-family: Gilroy-400 !important;
-    background-color: #FF6A6A !important;
-    color: white !important;
-    text-transform: capitalize !important;
-    padding: 7px 30px 7px 30px !important;
-    margin: 0px 15px 0px 0px !important;
+
+.yesbtnlisggs2 {
+  font-family: Gilroy-400 !important;
+  background-color: #FF6A6A !important;
+  color: white !important;
+  text-transform: capitalize !important;
+  padding: 7px 30px 7px 30px !important;
+  margin: 0px 15px 0px 0px !important;
 }
-.areypulisfg p{
-    font-family: Gilroy-400 !important;
-    font-size: 18px !important;
-    color: #090909 !important;
-    /* font-weight: bold; */
-    padding: 0px 0px 20px 0px;
+
+.areypulisfg p {
+  font-family: Gilroy-400 !important;
+  font-size: 18px !important;
+  color: #090909 !important;
+  /* font-weight: bold; */
+  padding: 0px 0px 20px 0px;
 }
-.lgtextout p{
-    font-family: Gilroy-400 !important;
-    font-size: 22px !important;
-    color: #090909 !important;
-    font-weight: bold;
-    padding: 10px 0px 10px 0px;
+
+.lgtextout p {
+  font-family: Gilroy-400 !important;
+  font-size: 22px !important;
+  color: #090909 !important;
+  font-weight: bold;
+  padding: 10px 0px 10px 0px;
 }
+
 .newbtnrow {
   width: 100%;
   text-align: center;
   padding: 0px 40px 0px 0px;
+  background-color: #634bbf !important;
+  border: 0px solid !important;
 }
 
 .active {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
-    background: #FFFFFF !important;
-    border: none;
-    color: #282043 !important;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+  background: #FFFFFF !important;
+  border: none;
+  color: #282043 !important;
 
-    border-bottom-right-radius: 11px !important;
-    /* border-bottom-left-radius: 11px !important; */
-    /* border-top-left-radius: 16px !important; */
-    border-top-right-radius: 11px !important;   
-    color: #282043;
-  }
+  border-bottom-right-radius: 11px !important;
+  /* border-bottom-left-radius: 11px !important; */
+  /* border-top-left-radius: 16px !important; */
+  border-top-right-radius: 11px !important;
+  color: #282043;
+}
 
 .btnhoime {
   /* margin: 26px 0px 0px 68px; */
@@ -195,10 +204,12 @@ justify-content: flex-start;
   width: 100% !important;
   /* background-color: #57B0AF; */
 }
-.cantenar2{
+
+.cantenar2 {
   background: #634BBF;
 
 }
+
 .buttondrawer {
   width: 70px;
   padding: 6px !important;
@@ -206,9 +217,10 @@ justify-content: flex-start;
   position: relative;
   top: 40px;
   height: 0px;
-color: #FFFFFF;
+  color: #FFFFFF;
   border-radius: 0px !important;
 }
+
 /* @media only screen and (max-width: 2000px) {
   .cantenar2{
     width: 390px !important;
@@ -226,13 +238,13 @@ color: #FFFFFF;
   }
 } */
 @media only screen and (min-width: 500px) {
-  
+
   .logopedii {
     padding: 20px 0px 0px 0px;
   }
 }
-@media only screen and (max-width:600px) 
-{
+
+@media only screen and (max-width:600px) {
   .cantenar2 {
     width: 91vw !important;
   }

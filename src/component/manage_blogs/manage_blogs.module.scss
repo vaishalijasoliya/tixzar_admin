@@ -88,10 +88,10 @@
     border: 1px solid #046DA8;
     border-radius: 10px;
 }
-
-.Tab_Bar_ .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
+.Tab_Bar_ span{
+    height: 0px;
 }
+
 
 .Tab_panel_ {
     padding: 27px 27px 0px 27px !important;

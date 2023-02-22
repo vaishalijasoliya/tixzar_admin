@@ -10,7 +10,7 @@ import Nevbar from '../component/user/newbarlist';
 const Movie_Review = (props) => {
 
     const data = {
-        title: "Manage All Users",
+        title: " Manage Blogs",
         desc: "",
     }
     return (

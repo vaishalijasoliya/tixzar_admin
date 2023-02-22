@@ -122,7 +122,9 @@
 .Tab_panel_ {
     padding: 0px !important;
 }
-
+.Tab_Bar_ span{
+    height: 0px;
+}
 .listtypoangyo {
     font-size: 36px !important;
     font-family: Gilroy-Bold !important;
