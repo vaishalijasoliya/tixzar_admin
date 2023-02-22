@@ -311,6 +311,7 @@ const Manage_trending_movie = (props) => {
                                 <TableCell className={[Styles.Table_head_cell, Styles.Menu_cell]} style={{ borderTopRightRadius: '12px' }}></TableCell>
                             </TableRow>
                         </TableHead>
+                        
                         <TableBody>
                             {/* {stableSort(payment, getComparator(order, orderBy))
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
