@@ -148,7 +148,7 @@ const Movie_review_Pages = (props) => {
                 <Typography className={[Styles.top_movie_txt]} sx={{ fontSize: '42px !important' }}>
                     {datatital}
                 </Typography>
-                <Button className={Styles.Icon_Button} size="small" href="/support" >
+                <Button className={Styles.Icon_Button} size="small" href="/Manage_Reviews" >
                     <img src="./image/Back_icon.svg" />
                 </Button>
             </Box>
@@ -201,8 +201,8 @@ const Movie_review_Pages = (props) => {
                 <Box className={Styles.Content_div}>
                     <TabContext value={value}>
                         <Tabs value={value} onChange={handleChange} className={Styles.Tab_Bar_} aria-label="disabled tabs example" centered>
-                            <Tab label="All Reviews" className={Styles.Tabs_}  onClick={()=>{setDatatab('active')}} value={'All Reviews'} />
-                            <Tab label="Flaged Reviews" className={Styles.Tabs_} onClick={()=>{setDatatab('flaged')}} value="flaged" />
+                            <Tab label="All Reviews" className={datatab =='active'? Styles.Tabs_321:Styles.Tabs_}  onClick={()=>{setDatatab('active')}} value={'All Reviews'} />
+                            <Tab label="Flaged Reviews" className={datatab =='flaged'? Styles.Tabs_321:Styles.Tabs_} onClick={()=>{setDatatab('flaged')}} value="flaged" />
                         </Tabs>
                         <TabPanel className={Styles.Tab_panel_22} value={'All Reviews'}>
                             {datamenu.map((data) => {

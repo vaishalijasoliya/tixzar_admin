@@ -47,9 +47,9 @@ const Manage_trending_movie = (props) => {
     const [resetdata, setResetdata] = React.useState([])
     const [startDate, setStartDate] = React.useState('');
     const [endDate, setEndDate] = React.useState('');
-const[iddata,setDataid] =React.useState('')
-const[tesxtdata,setTextdata] =React.useState('')
-console.log(iddata.id,'iddata');
+    const [iddata, setDataid] = React.useState('')
+    const [tesxtdata, setTextdata] = React.useState('')
+    console.log(iddata.id, 'iddata');
     const [script, setScript] = React.useState('')
     console.log(filterScripList, 'filterScripList')
     const handleClickOpen = () => {
@@ -113,11 +113,11 @@ console.log(iddata.id,'iddata');
             "x-access-token": props.props.profile.token
         }
         props.props.loaderRef(true)
-      
-      var accountList = await ApiServices.PostApiCall(ApiEndpoint.ADMIN_MOVIE_LIST, JSON.stringify(body), headers)
-      props.props.loaderRef(false)
 
-      console.log('getScirp', accountList)
+        var accountList = await ApiServices.PostApiCall(ApiEndpoint.ADMIN_MOVIE_LIST, JSON.stringify(body), headers)
+        props.props.loaderRef(false)
+
+        console.log('getScirp', accountList)
 
         const lebal = []
         if (!!accountList) {
@@ -162,34 +162,34 @@ console.log(iddata.id,'iddata');
     }
     const EDITPATT = async () => {
         var body = {
-          'id_imdb_movie': iddata.id,
-          'position': tesxtdata,
-          'image_url': iddata.image,
-          'title': iddata.title,
-          'start_date': startDate,
-          'end_date':endDate
+            'id_imdb_movie': iddata.id,
+            'position': tesxtdata,
+            'image_url': iddata.image,
+            'title': iddata.title,
+            'start_date': startDate,
+            'end_date': endDate
         }
         var headers = {
-          "Content-Type": "application/json",
-          "x-access-token": props.props.profile.token
+            "Content-Type": "application/json",
+            "x-access-token": props.props.profile.token
         }
         props.props.loaderRef(true)
         var data = await ApiServices.PostApiCall(ApiEndpoint.ADMIN_TRENDINGMOVIE_EDIT, JSON.stringify(body), headers);
         props.props.loaderRef(false)
         if (!!data) {
-          if (data.status == true) {
-            toast.success(data.message)
-            chartloginuser()
-          } else {
-            toast.error(data.message)
-    
-          }
+            if (data.status == true) {
+                toast.success(data.message)
+                chartloginuser()
+            } else {
+                toast.error(data.message)
+
+            }
         } else {
-          toast.error('Something went wrong.')
+            toast.error('Something went wrong.')
         }
-    
+
         console.log(data, 'datadata')
-      }
+    }
     React.useEffect(() => {
         if (!!props.props.profile && !!props.props.profile.token) {
             chartloginuser()
@@ -232,7 +232,9 @@ console.log(iddata.id,'iddata');
                                         endAdornment: (
                                             <Button size="small" style={{
                                                 minWidth: '35px'
-                                            }} onClick={handleClick}>
+                                            }} 
+                                            // onClick={handleClick}
+                                            >
                                                 <img src="./image/Faders.svg" />
                                             </Button>
                                         )
@@ -240,15 +242,16 @@ console.log(iddata.id,'iddata');
                                     variant="outlined"
                                 />
                             </Box>
-                            {!!filterScripList ?<Box className={Styles.listboxpoputdata}>
+                            {!!filterScripList ? <Box className={Styles.listboxpoputdata}>
                                 {filterScripList.map((item, idx) => (
-                                    <Button onClick={()=>{
-                                        var obj={
-                                            id:item.id,
-                                            title:item.title,
-                                            image:item.image
+                                    <Button onClick={() => {
+                                        var obj = {
+                                            id: item.id,
+                                            title: item.title,
+                                            image: item.image
                                         }
-                                        setDataid(obj)}} className={item.id ==iddata.id ?Styles.listbtoommovi22:Styles.listbtoommovi}>
+                                        setDataid(obj)
+                                    }} className={item.id == iddata.id ? Styles.listbtoommovi22 : Styles.listbtoommovi}>
                                         <Avatar className={Styles.avtarmovigo} src={item.image}></Avatar>
                                         <div className={Styles.listdevanfpopup}>
                                             <Typography className={Styles.loreamdatago}>{item.title}</Typography>
@@ -259,39 +262,39 @@ console.log(iddata.id,'iddata');
 
                             </Box> : <Box className={Styles.listboxpoputdata}>
 
-</Box>}
-                            
-                           <Box className={Styles.boxandlistdata}>
-                            <Box className={Styles.lisysetandnot}>
-                       
-                                <Typography>Set Position:</Typography>
-                                <TextField
-                                    className={Styles.INPUTDATAPUSH}
-                                    fullWidth
-                                    type="number"
-                                    onChange={(e)=>{setTextdata(e.target.value)} }
-                                />
-                                
-                            </Box>
-                            <Box className={Styles.lisysetandnot}>
-                          <input type='datetime-local'
-                          className={Styles.listdatepikar}
-                           onChange={(e) => {
-                            console.log(e.target.value,'e.target.value')
-                                        setStartDate(e.target.value)
-                                    }}
-                            />
-                          <input type='datetime-local'
-                          className={Styles.listdatepikar}
-                            onChange={(e) => {
-                                        console.log(e.target.value, 'akkajaja')
-                                        setEndDate(e.target.value)
-                                    }} />                            
-                            </Box>
+                            </Box>}
+
+                            <Box className={Styles.boxandlistdata}>
+                                <Box className={Styles.lisysetandnot}>
+
+                                    <Typography>Set Position:</Typography>
+                                    <TextField
+                                        className={Styles.INPUTDATAPUSH}
+                                        fullWidth
+                                        type="number"
+                                        onChange={(e) => { setTextdata(e.target.value) }}
+                                    />
+
+                                </Box>
+                                <Box className={Styles.lisysetandnot}>
+                                    <input type='datetime-local'
+                                        className={Styles.listdatepikar}
+                                        onChange={(e) => {
+                                            console.log(e.target.value, 'e.target.value')
+                                            setStartDate(e.target.value)
+                                        }}
+                                    />
+                                    <input type='datetime-local'
+                                        className={Styles.listdatepikar}
+                                        onChange={(e) => {
+                                            console.log(e.target.value, 'akkajaja')
+                                            setEndDate(e.target.value)
+                                        }} />
+                                </Box>
                             </Box>
                             <Box>
-                            {iddata.id == ''||tesxtdata == ''||startDate == ''||endDate=='' ?   <Button className={Styles.updeatbtoon} >Update</Button>:
-                                <Button className={Styles.updeatbtoon} onClick={()=>{EDITPATT(),handleCloselist}}>Update</Button>}
+                                {iddata.id == '' || tesxtdata == '' || startDate == '' || endDate == '' ? <Button className={Styles.updeatbtoon} >Update</Button> :
+                                    <Button className={Styles.updeatbtoon} onClick={() => { EDITPATT(), handleCloselist() }}>Update</Button>}
                             </Box>
                         </Box>
                     </Dialog>
@@ -326,7 +329,9 @@ console.log(iddata.id,'iddata');
                                     <TableCell className={[Styles.Table_Body_cell, Styles.Tixzr_rating_cell, Styles.Tixzr_rating_cell_body]} ><Typography>{item.tixzarRating == null ? '0' : item.tixzarRating}%</Typography></TableCell>
                                     <TableCell className={[Styles.Table_Body_cell, Styles.Menu_cell]} >
 
-                                        <Button className={Styles.menuicon} onClick={handleClick}><MoreVertIcon /></Button>
+                                        <Button className={Styles.menuicon}
+                                        //  onClick={handleClick}
+                                         ><MoreVertIcon /></Button>
                                         <Menu
                                             anchorEl={anchorEl}
                                             id="account-menu"

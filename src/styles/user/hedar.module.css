@@ -30,7 +30,16 @@
     /* border: 1px solid black; */
     overflow: auto;
 }
+.listprofiledata{
+    padding-top: 10px;
+}
+.listBoxdatamenu{
+    background-color: #FFFFFF !important;
+}
+.btnnotiboxlist{
+    background-color: #FFFFFF !important;
 
+}
 .listBoxdatamenu p {
     font-family: Gilroy-bold;
     padding: 10px 10px;

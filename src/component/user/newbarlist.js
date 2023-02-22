@@ -66,7 +66,7 @@ function ResponsiveDrawer(props) {
               }}
               sx={{
                 display: { xs: 'block', sm: 'none' },
-                '& .MuiDrawer-paper': { boxSizing: 'border-box', background: '#fff' },
+                '& .MuiDrawer-paper': { boxSizing: 'border-box', background: '#634BBF' },
               }}
             >
               {drawer}

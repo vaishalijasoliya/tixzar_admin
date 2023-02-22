@@ -9,7 +9,7 @@ import { Types } from "../../../src/constants/actionTypes";
 import { useRouter } from "next/router";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 // import ApiServices from "../../config/ApiServices";
-// import ApiEndpoint from "../../config/ApiEndpoint";
+import { toast } from 'react-toastify';
 import { Button, Box, ListItemIcon } from "@mui/material";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -95,11 +95,11 @@ const Nevbar = (props) => {
         className={styles.maencontainer2}
       >
         <Grid className={styles.textheging} item xs={8} md={6}>
-          <div className={styles.hedarimglogo} style={{ display: 'flex', alignItems: "center" }}>
+          <div className={styles.hedarimglogo}  style={{ display: 'flex', alignItems: "center" }}>
 
 
-            <div><img alt="Remy Sharp" src="./image/Purple Logo png-01 1.svg" className={styles.lianpohot} />
-            </div>
+            <a href='./dashboard'><img  alt="Remy Sharp" src="./image/Purple Logo png-01 1.svg" className={styles.lianpohot} />
+            </a>
             <div>
               <Typography
                 variant="h3"
@@ -118,9 +118,9 @@ const Nevbar = (props) => {
           </div>
         </Grid>
         <Grid item xs={4} className={styles.img2} md={6}>
-          <Button className={styles.clrred}>
+          {/* <Button className={styles.clrred}>
             <SearchIcon className={styles.ikonbel} />
-          </Button>
+          </Button> */}
           <Badge
             onClick={handleClick}
             // onClick={onHandleclick}
@@ -331,7 +331,12 @@ const Nevbar = (props) => {
               </Button>
             </div>
             <div>
-              <Button className={styles.buttonmypor2}>
+              <Button className={styles.buttonmypor2} onClick={() => {
+                        var profile = ""
+                        props.save_user_data({ user: "" })
+                        router.push('/');
+                        toast.success('Logout Successfully!')
+                      }}>
                 <LogoutIcon />
                 <Typography>Logout</Typography>
               </Button>

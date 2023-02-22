@@ -7,8 +7,8 @@ import ApiServices from '../../config/ApiServices'
 import ApiEndpoint from '../../config/ApiEndpoint';
 
 const QandAbox = (props) => {
-    const [datalist, setDatalist] = React.useState('')
-    console.log(props.data, 'propsphhrops');
+    const [datalist, setDatalist] = React.useState({})
+    console.log(datalist.name, 'propsphhrops');
 
     const EDIT_DATA = async (value) => {
         console.log(value.id,'valuevalue')
@@ -26,6 +26,7 @@ const QandAbox = (props) => {
         if (!!data) {
             if (data.status == true) {
                 toast.success(data.message)
+                setDatalist(props.data)
             } else {
                 toast.error(data.message)
 
@@ -33,40 +34,15 @@ const QandAbox = (props) => {
         } else {
             toast.error('Something went wrong.')
         }
-
-        console.log(data, 'datadata')
     }
-
+    React.useEffect(() => {
+        if (!!props.props.props.profile && !!props.props.props.profile.token) {
+            setDatalist(props.data)
+        }
+    }, [])
     return (
         <>
-            <Box className={styles.QandAbox} >
-                <Box className={styles.QuestionDiv}>
-                    <Typography className={styles.questiontxt}>
-                        {props.data.name}
-                    </Typography>
-                    {props.data.status =='cancelled' ?'':
-                    <Button className={styles.deleteBtn} onClick={() => {
-                        var obj = { id: props.data.id, status: 'cancelled' }
-                            EDIT_DATA(obj),
-                                setDatalist('cancelled')
-                    }} >
-                        <img src="./image/dustbin.svg" />
-                    </Button>}
-                </Box>
-                <Box className={styles.AnswerDiv}>
-                    <Typography className={styles.AnswerTxt}>
-                        {props.data.description}
-                    </Typography>
-                </Box>
-                {props.data.status == 'active' ? '' :
-                    <Button onClick={() => {
-                          var obj = { id: props.data.id, status: 'active' }
-                         EDIT_DATA(obj),
-                          setDatalist('active') }} 
-                          className={styles.btndataandpush}>
-                        Publish
-                    </Button>}
-            </Box>
+           
         </>
     )
 }

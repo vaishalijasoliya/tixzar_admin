@@ -10,7 +10,7 @@ import Chartbh from "react-google-charts";
 import { DateRangePicker } from 'rsuite';
 import moment from 'moment';
 export const data = [
-  ['x', 'dogs'],
+  ['x', 'tickets'],
   [0, 0],
   [1, 10],
   [2, 23],

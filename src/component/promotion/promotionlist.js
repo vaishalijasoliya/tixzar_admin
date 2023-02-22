@@ -111,6 +111,7 @@ const index = (props) => {
     if (!!data) {
       if (data.status == true) {
         toast.success(data.message)
+        setDataview()
       } else {
         toast.error(data.message)
 
@@ -129,7 +130,7 @@ const index = (props) => {
     // setImgupload(extension)
     console.log(extension, "filetypes");
     console.log(e.target.files[0], "myfiletype");
-    // uploadItem(e.target.files[0], extension)
+    uploadItem(e.target.files[0], extension)
     if (e.target.files && e.target.files[0]) {
       const i = e.target.files[0];
 
@@ -167,9 +168,12 @@ const index = (props) => {
           <div className={styles.listmenuuppohot1}>
             <img src={createObjectURL} className={styles.avtaruplo} />
             <div>
-              <IconButton className={styles.iconbtnop1} color="primary" aria-label="upload picture" component="label">
+              <IconButton className={styles.iconbtnop1} onClick={handleClickOpen} color="primary" aria-label="upload picture" component="label">
 
-                <input type="file" name="myImage" hidden onChange={handleChangeImage} />
+                {/* <input type="file" name="myImage" hidden 
+                onChange={handleChangeImage} 
+
+                /> */}
                 <Box className={styles.myimmmglist} >
                   <CameraAltIcon style={{ color: '#ffffff' }} className={styles.cemeraicon} />
                 </Box>
