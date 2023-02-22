@@ -68,6 +68,9 @@
 .listdivimgr{
     height: 172px;
 }
+.Tab_Bar_ span{
+    height: 0px;
+}
 .Movie_img_ {
     border-radius: 5px;
     margin: auto;
