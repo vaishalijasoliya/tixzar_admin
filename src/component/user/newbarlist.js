@@ -54,12 +54,14 @@ function ResponsiveDrawer(props) {
           <Box
             component="nav"
             aria-label="mailbox folders"
+         
           >
             <Drawer
               container={container}
               variant="temporary"
               open={mobileOpen}
               onClose={handleDrawerToggle}
+             
               className={styles.listnewbar}
               ModalProps={{
                 keepMounted: true, 
@@ -73,12 +75,13 @@ function ResponsiveDrawer(props) {
             </Drawer>
             <Drawer
               variant="permanent"
+              className={styles.newgropdaa}
               sx={{
                 '& .MuiDrawer-paper':
                 {
                   boxSizing: 'border-box',
                   display: { xs: 'none', sm: 'block' },
-                  backgroundColor: '#fff'
+                  // backgroundColor: '#fff'
                 },
               }}
               open
