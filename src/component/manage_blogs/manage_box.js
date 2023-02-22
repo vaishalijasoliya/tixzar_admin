@@ -57,7 +57,7 @@ console.log(tabaldata,'tabaldatatabaldata');
     return (
         <Box className="mainView_of_all_pages11">
             <Typography className={Styles.top_movie_txt}>
-                Movies
+            Live Blogs
             </Typography>
             <Box className={Styles.Movie_main_box}>
                 <Grid container columnSpacing={2} rowSpacing={3}>

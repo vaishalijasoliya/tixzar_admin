@@ -47,9 +47,9 @@ const Manage_trending_movie = (props) => {
     const [resetdata, setResetdata] = React.useState([])
     const [startDate, setStartDate] = React.useState('');
     const [endDate, setEndDate] = React.useState('');
-const[iddata,setDataid] =React.useState('')
-const[tesxtdata,setTextdata] =React.useState('')
-console.log(iddata.id,'iddata');
+    const [iddata, setDataid] = React.useState('')
+    const [tesxtdata, setTextdata] = React.useState('')
+    console.log(iddata.id, 'iddata');
     const [script, setScript] = React.useState('')
     console.log(filterScripList, 'filterScripList')
     const handleClickOpen = () => {
@@ -113,11 +113,11 @@ console.log(iddata.id,'iddata');
             "x-access-token": props.props.profile.token
         }
         props.props.loaderRef(true)
-      
-      var accountList = await ApiServices.PostApiCall(ApiEndpoint.ADMIN_MOVIE_LIST, JSON.stringify(body), headers)
-      props.props.loaderRef(false)
 
-      console.log('getScirp', accountList)
+        var accountList = await ApiServices.PostApiCall(ApiEndpoint.ADMIN_MOVIE_LIST, JSON.stringify(body), headers)
+        props.props.loaderRef(false)
+
+        console.log('getScirp', accountList)
 
         const lebal = []
         if (!!accountList) {
@@ -162,34 +162,34 @@ console.log(iddata.id,'iddata');
     }
     const EDITPATT = async () => {
         var body = {
-          'id_imdb_movie': iddata.id,
-          'position': tesxtdata,
-          'image_url': iddata.image,
-          'title': iddata.title,
-          'start_date': startDate,
-          'end_date':endDate
+            'id_imdb_movie': iddata.id,
+            'position': tesxtdata,
+            'image_url': iddata.image,
+            'title': iddata.title,
+            'start_date': startDate,
+            'end_date': endDate
         }
         var headers = {
-          "Content-Type": "application/json",
-          "x-access-token": props.props.profile.token
+            "Content-Type": "application/json",
+            "x-access-token": props.props.profile.token
         }
         props.props.loaderRef(true)
         var data = await ApiServices.PostApiCall(ApiEndpoint.ADMIN_TRENDINGMOVIE_EDIT, JSON.stringify(body), headers);
         props.props.loaderRef(false)
         if (!!data) {
-          if (data.status == true) {
-            toast.success(data.message)
-            chartloginuser()
-          } else {
-            toast.error(data.message)
-    
-          }
+            if (data.status == true) {
+                toast.success(data.message)
+                chartloginuser()
+            } else {
+                toast.error(data.message)
+
+            }
         } else {
-          toast.error('Something went wrong.')
+            toast.error('Something went wrong.')
         }
-    
+
         console.log(data, 'datadata')
-      }
+    }
     React.useEffect(() => {
         if (!!props.props.profile && !!props.props.profile.token) {
             chartloginuser()
@@ -232,7 +232,9 @@ console.log(iddata.id,'iddata');
                                         endAdornment: (
                                             <Button size="small" style={{
                                                 minWidth: '35px'
-                                            }} onClick={handleClick}>
+                                            }} 
+                                            // onClick={handleClick}
+                                            >
                                                 <img src="./image/Faders.svg" />
                                             </Button>
                                         )
@@ -240,15 +242,16 @@ console.log(iddata.id,'iddata');
                                     variant="outlined"
                                 />
                             </Box>
-                            {!!filterScripList ?<Box className={Styles.listboxpoputdata}>
+                            {!!filterScripList ? <Box className={Styles.listboxpoputdata}>
                                 {filterScripList.map((item, idx) => (
-                                    <Button onClick={()=>{
-                                        var obj={
-                                            id:item.id,
-                                            title:item.title,
-                                            image:item.image
+                                    <Button onClick={() => {
+                                        var obj = {
+                                            id: item.id,
+                                            title: item.title,
+                                            image: item.image
                                         }
-                                        setDataid(obj)}} className={item.id ==iddata.id ?Styles.listbtoommovi22:Styles.listbtoommovi}>
+                                        setDataid(obj)
+                                    }} className={item.id == iddata.id ? Styles.listbtoommovi22 : Styles.listbtoommovi}>
                                         <Avatar className={Styles.avtarmovigo} src={item.image}></Avatar>
                                         <div className={Styles.listdevanfpopup}>
                                             <Typography className={Styles.loreamdatago}>{item.title}</Typography>
@@ -259,46 +262,135 @@ console.log(iddata.id,'iddata');
 
                             </Box> : <Box className={Styles.listboxpoputdata}>
 
-</Box>}
-                            
-                           <Box className={Styles.boxandlistdata}>
-                            <Box className={Styles.lisysetandnot}>
-                       
-                                <Typography>Set Position:</Typography>
-                                <TextField
-                                    className={Styles.INPUTDATAPUSH}
-                                    fullWidth
-                                    type="number"
-                                    onChange={(e)=>{setTextdata(e.target.value)} }
-                                />
-                                
-                            </Box>
-                            <Box className={Styles.lisysetandnot}>
-                          <input type='datetime-local'
-                          className={Styles.listdatepikar}
-                           onChange={(e) => {
-                            console.log(e.target.value,'e.target.value')
-                                        setStartDate(e.target.value)
-                                    }}
-                            />
-                          <input type='datetime-local'
-                          className={Styles.listdatepikar}
-                            onChange={(e) => {
-                                        console.log(e.target.value, 'akkajaja')
-                                        setEndDate(e.target.value)
-                                    }} />                            
-                            </Box>
+                            </Box>}
+
+                            <Box className={Styles.boxandlistdata}>
+                                <Box className={Styles.lisysetandnot}>
+
+                                    <Typography>Set Position:</Typography>
+                                    <TextField
+                                        className={Styles.INPUTDATAPUSH}
+                                        fullWidth
+                                        type="number"
+                                        onChange={(e) => { setTextdata(e.target.value) }}
+                                    />
+
+                                </Box>
+                                <Box className={Styles.lisysetandnot}>
+                                    <input type='datetime-local'
+                                        className={Styles.listdatepikar}
+                                        onChange={(e) => {
+                                            console.log(e.target.value, 'e.target.value')
+                                            setStartDate(e.target.value)
+                                        }}
+                                    />
+                                    <input type='datetime-local'
+                                        className={Styles.listdatepikar}
+                                        onChange={(e) => {
+                                            console.log(e.target.value, 'akkajaja')
+                                            setEndDate(e.target.value)
+                                        }} />
+                                </Box>
                             </Box>
                             <Box>
-                            {iddata.id == ''||tesxtdata == ''||startDate == ''||endDate=='' ?   <Button className={Styles.updeatbtoon} >Update</Button>:
-                                <Button className={Styles.updeatbtoon} onClick={()=>{EDITPATT(),handleCloselist}}>Update</Button>}
+                                {iddata.id == '' || tesxtdata == '' || startDate == '' || endDate == '' ? <Button className={Styles.updeatbtoon} >Update</Button> :
+                                    <Button className={Styles.updeatbtoon} onClick={() => { EDITPATT(), handleCloselist() }}>Update</Button>}
                             </Box>
                         </Box>
                     </Dialog>
                 </ThemeProvider>
             </Box>
-           
-            
+            <Box>
+                <TableContainer sx={{ marginTop: ' 30px' }}>
+                    <Table >
+                        <TableHead>
+                            <TableRow className={Styles.Table_head_row}>
+                                <TableCell className={[Styles.Table_head_cell, Styles.Tredding_cell]} style={{ borderTopLeftRadius: '12px' }} >Trending</TableCell>
+                                <TableCell className={[Styles.Table_head_cell, Styles.Movie_details_cell]} >Movie</TableCell>
+                                <TableCell className={[Styles.Table_head_cell, Styles.Tixzr_rating_cell]} >Tixzr Rating</TableCell>
+                                <TableCell className={[Styles.Table_head_cell, Styles.Menu_cell]} style={{ borderTopRightRadius: '12px' }}></TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {/* {stableSort(payment, getComparator(order, orderBy))
+                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        .map((row, index) => {
+                          const isItemSelected = isSelected(row.name);
+                          const labelId = `enhanced-table-checkbox-${index}`;
+
+                          return ( */}
+                            {datalistlogin.map((item, index) => (
+                                <TableRow style={{ background: index % 2 == 0 ? '#291E3Dred' : '#332E59' }} className={Styles.Table_row}>
+                                    <TableCell className={[Styles.Table_Body_cell, Styles.Tredding_cell, Styles.Tredding_cell_body]}  >#{index + 1}</TableCell>
+                                    <TableCell className={[Styles.Table_Body_cell, Styles.Movie_details_cell, Styles.Movie_details_body]} >
+                                        <img src={item.logoUrl} />
+                                        <Typography>{item.title}</Typography>
+                                    </TableCell>
+                                    <TableCell className={[Styles.Table_Body_cell, Styles.Tixzr_rating_cell, Styles.Tixzr_rating_cell_body]} ><Typography>{item.tixzarRating == null ? '0' : item.tixzarRating}%</Typography></TableCell>
+                                    <TableCell className={[Styles.Table_Body_cell, Styles.Menu_cell]} >
+
+                                        <Button className={Styles.menuicon}
+                                        //  onClick={handleClick}
+                                         ><MoreVertIcon /></Button>
+                                        <Menu
+                                            anchorEl={anchorEl}
+                                            id="account-menu"
+                                            className={Styles.menudatacss}
+                                            open={open}
+                                            onClose={handleClose}
+                                            // onClick={handleClose}
+                                            // style={{ backgroundColor: '#332E59' }}
+                                            PaperProps={{
+                                                elevation: 0,
+                                                style: { background: '#282042', padding: '0px' },
+                                                sx: {
+                                                    overflow: 'visible',
+                                                    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                                    mt: 1.5,
+                                                    '& .MuiAvatar-root': {
+                                                        width: 32,
+                                                        height: 32,
+                                                        ml: -0.5,
+                                                        mr: 1,
+                                                    },
+                                                    '&:before': {
+                                                        content: '""',
+                                                        display: 'block',
+                                                        position: 'absolute',
+                                                        top: 0,
+                                                        right: 14,
+                                                        width: 10,
+                                                        height: 10,
+                                                        // bgcolor: 'background.paper',
+                                                        transform: 'translateY(-50%) rotate(45deg)',
+                                                        zIndex: 0,
+                                                        // background: '#332E59',
+                                                        // bgcolor: '#332E59'
+                                                    },
+                                                },
+                                            }}
+                                            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                                            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                                        >
+                                            <Box style={{ display: 'flex', alignItems: "center" }}>
+                                                <img width='50px' height='50px' style={{ borderRadius: '5PX', margin: '0px 12px 0px 6px' }} src="./image/Movie_3.png" />
+                                                <Typography className={Styles.typomenu}>Alita</Typography>
+                                                <TextField
+                                                    className={Styles.INPUTDATAPUSH}
+                                                    fullWidth
+                                                    type="number"
+                                                />
+                                            </Box>
+                                        </Menu>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                            {/* );
+                        })} */}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Box>
         </Box>
     )
 }

@@ -18,6 +18,8 @@ const Movie_review_Pages = (props) => {
   const [datalist, setData] = React.useState()
   const [userSearchmenu, setDatalistlogin] = React.useState([])
   console.log(userSearchmenu,'userSearchmenu');
+  const[datatab,setDatatab] =React.useState('active')
+
   const accounttype = async (value) => {
     var body = {
       status: value
@@ -102,8 +104,8 @@ const Movie_review_Pages = (props) => {
         <Box className={Styles.Content_div}>
           <TabContext value={value}>
             <Tabs value={value} onChange={handleChange} className={Styles.Tab_Bar_} aria-label="disabled tabs example" centered>
-              <Tab label="All Reviews" className={Styles.Tabs_} onClick={() => { accounttype('active') }} value={'All Reviews'} />
-              <Tab label="Flaged Reviews" className={Styles.Tabs_} onClick={() => { accounttype('flaged') }} value="Flaged Reviews" />
+              <Tab label="All Reviews" className={datatab =='active'? Styles.Tabs_321:Styles.Tabs_} onClick={() => { setDatatab('active'),accounttype('active') }} value={'All Reviews'} />
+              <Tab label="Flaged Reviews" className={datatab =='flaged'? Styles.Tabs_321:Styles.Tabs_} onClick={() => { setDatatab('flaged'),accounttype('flaged') }} value="Flaged Reviews" />
             </Tabs>
             <TabPanel className={Styles.Tab_panel_} value={'All Reviews'}>
               <TableContainer component={Paper} className={Styles.listmeneuet}>
@@ -114,7 +116,9 @@ const Movie_review_Pages = (props) => {
                       <TableRow key={item.name} className={Styles.tabalrodata}>
                         <TableCell >
                           <Box className={Styles.listdatatebal}>
+                          <div className={Styles.listdatatbala}>
                             <img src={item.profile_photo} className={Styles.User_Image} />
+                            </div>
                             <div className={Styles.typotdanfr}>
                               <Typography className={Styles.User_name_bold} >{item.name}</Typography>
                               <Typography className={Styles.listtypoandtext}>{item.Description_txt}</Typography>

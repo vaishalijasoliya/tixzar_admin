@@ -26,6 +26,7 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
   border: `2px solid ${theme.palette.background.paper}`,
 }));
 const Nevbar = (props) => {
+  console.log(props.props.profile.profile_photo,'listprjjjops');
   const [userCount, setUserCount] = React.useState(0);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorE2, setAnchorE2] = React.useState(null)
@@ -110,9 +111,9 @@ const Nevbar = (props) => {
           )}
         </Grid>
         <Grid item xs={12} className={styles.img2} md={6}>
-          <Button className={styles.clrred}>
+          {/* <Button className={styles.clrred}>
             <SearchIcon className={styles.ikonbel} />
-          </Button>
+          </Button> */}
           <Badge
             onClick={handleClick}
             badgeContent={userCount}
@@ -172,7 +173,7 @@ const Nevbar = (props) => {
               <Divider />
               <Typography className={styles.tobatlistdata}>Today</Typography>
             </Box>
-            <Box>
+            <Box className={styles.btnnotiboxlist}>
               {/* <MenuItem> */}
               <div className={styles.listmenudata}>
                 <div className={styles.listbtndivbott}>
@@ -309,7 +310,7 @@ const Nevbar = (props) => {
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
-            <div>
+            <div className={styles.listprofiledata}>
               <Button href="./My_Profile"  className={styles.buttonmypor}>
                 <PersonIcon />
                 <Typography>My Profile</Typography>
@@ -334,8 +335,9 @@ const Nevbar = (props) => {
             </div>
           </Menu>
           <div className={styles.pohotloho1}>
+          {/* <img src={props.props.profile.profile_photo} /> */}
             <Avatar
-              src="./image/Ellipse 3.svg"
+              src={props.props.profile.profile_photo}
               className={styles.pohotloho}
             />
           </div>

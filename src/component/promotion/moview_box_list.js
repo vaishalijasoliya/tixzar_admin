@@ -11,6 +11,7 @@ export const Movie_Box = ({data}) => {
       return (
         <>
                 <Box className={Styles.movie_box}
+               
                     onClick={() => {
                         router.push({
                             pathname: './managar_deteail',
@@ -20,9 +21,15 @@ export const Movie_Box = ({data}) => {
                 >
 
                     <>
+                    <div  className={Styles.Llistsffsffs}>
+                    {/* </div> */}
                         <img
+                        // width={174}
+                        // height={172}
+
                             src={data.logoUrl}
-                            className={Styles.Movie_img_} />
+                            className={Styles.Movie_img_22} />
+                            </div>
                         <Typography className={Styles.Movie_name_}>
                             {data.title_name}
                         </Typography>

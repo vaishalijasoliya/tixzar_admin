@@ -7,7 +7,7 @@ import Header from "../component/user/hederdata2";
 const Movie_Review = (props) => {
 
     const data = {
-        title: "Manage Reviews",
+        title: "My Profile",
         desc: "",
     }
     return (

@@ -50,6 +50,7 @@
     background: #332E59;
     padding: 10px;
     transition: 0.4s;
+    /* height: 300px; */
 }
 
 .movie_box:hover {
@@ -57,22 +58,35 @@
     background: #634BBF;
     padding: 10px;
 }
-
+.Llistsffsffs img{
+    width: 100%; height: 100%;
+}
+.Llistsffsffs{
+    width: 100%;
+    height: 174px;
+}
+.listdivimgr{
+    height: 172px;
+}
 .Movie_img_ {
     border-radius: 5px;
     margin: auto;
     width: 100%;
-    height: 180px;
+    object-fit: cover;
+    /* height: 180px; */
 
 }
 .Movie_img_ {
     border-radius: 5px;
     margin: auto;
     width: 100%;
-    height: 180px;
+    /* height: 180px; */
 
 }
-
+.Movie_img_22{
+    border-radius: 5px;
+width: 100%;
+}
 .Movie_name_ {
     font-family: 'Poppims-700' !important;
     font-size: 16px !important;
@@ -180,7 +194,16 @@ align-items: center;
     text-transform: capitalize !important;
     width: 210px !important;
 }
-
+.Tabs_321 {
+    font-family: 'Gilroy-Regular' !important;
+    color: white !important;
+    border-radius: 6px !important;
+    text-transform: capitalize !important;
+    width: 210px !important;
+    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%) !important;
+    /* border-radius: 10px; */
+    color: white !important;
+    transition: 0.5s !important;}
 /* REVIEW BOX STYLES */
 
 .Review_box_ {

@@ -73,6 +73,7 @@ margin: 0px 20px 0px 0px;
 .datepikarname svg{
     display: none;
 }
+
 .topgrid {
     padding: 0px 0px 20px 0px;
 }
@@ -1164,7 +1165,7 @@ border-radius: 5px;
     background: #634BBF;
     box-shadow: -11px 15px 39px rgba(0, 0, 0, 0.12);
     border-radius: 15px;
-    padding: 10px 0px;
+    padding: 20px 0px 10px 0px;
     margin-left: 15px;
 
 }

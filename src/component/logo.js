@@ -14,7 +14,8 @@ import * as React from "react";
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { Types } from '../constants/actionTypes';
-
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -23,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const Newpass = (props) => {
-    console.log(props.props,'propsprops');
+    console.log(props.props, 'propsprops');
     const [showPasswordlistdata, setShowPasswordlistdata] = useState(false)
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -41,32 +42,32 @@ const Newpass = (props) => {
     };
     const router = useRouter();
 
-        const onLoginPress = async () => {
-            var body = {
-                'email': formik.values.newPassword,
-                'password': formik.values.reTypePassword
-            }
-            var headers = {
-                "Content-Type": "application/json",
-            }
-            props.props.loaderRef(true)
-            var data = await ApiServices.PostApiCall(ApiEndpoint.LOGIN_USER, JSON.stringify(body), headers);
-            props.props.loaderRef(false)
-            console.log(data)
-            if (!!data) {
-                if (data.status == true) {
-                    data.data.token = data.token
-                    props.save_user_data({ user: data.data });
-                    toast.success("Logged In Succesfully")
-                    router.push('./dashboard')
-                } else {
-                    // setErrorShow(true)
-                    toast.error(data.message)
-                }
-            } else {
-                toast.error('Something went wrong.')
-            }
+    const onLoginPress = async () => {
+        var body = {
+            'email': formik.values.newPassword,
+            'password': formik.values.reTypePassword
         }
+        var headers = {
+            "Content-Type": "application/json",
+        }
+        props.props.loaderRef(true)
+        var data = await ApiServices.PostApiCall(ApiEndpoint.LOGIN_USER, JSON.stringify(body), headers);
+        props.props.loaderRef(false)
+        console.log(data)
+        if (!!data) {
+            if (data.status == true) {
+                data.data.token = data.token
+                props.save_user_data({ user: data.data });
+                toast.success("Logged In Succesfully")
+                router.push('./dashboard')
+            } else {
+                // setErrorShow(true)
+                toast.error(data.message)
+            }
+        } else {
+            toast.error('Something went wrong.')
+        }
+    }
 
 
     const formik = useFormik({
@@ -83,7 +84,6 @@ const Newpass = (props) => {
                     'Email is required'),
             reTypePassword: Yup
                 .string()
-                .min(6)
                 .required(
                     'Password is required'),
         }),
@@ -104,7 +104,7 @@ const Newpass = (props) => {
 
                         <form onSubmit={formik.handleSubmit}>
                             <Typography className={styles.listemailtext}>Email</Typography>
-                            <Box style={{ display: 'flex',paddingBottom:'20px' }}>
+                            <Box style={{ display: 'flex', paddingBottom: '20px' }}>
 
                                 <TextField
                                     error={Boolean(
@@ -119,7 +119,7 @@ const Newpass = (props) => {
                                     name="newPassword"
                                     value={formik.values.newPassword}
                                     className={styles.Search_Bar_input}
-                                  
+
                                 />
                             </Box>
                             <Typography className={styles.listemailtext}>Password</Typography>
@@ -140,8 +140,21 @@ const Newpass = (props) => {
                                     value={formik.values.reTypePassword}
                                     onBlur={formik.handleBlur}
                                     onChange={formik.handleChange}
-                                    type={'text'}
-                                 
+                                    type={showPassword ? 'text' : 'password'}
+                            InputProps={{
+
+endAdornment: (
+    <Button className={styles.menolistlogo22}
+        onClick={handleClickShowPassword}
+        onMouseDown={handleMouseDownPassword}
+    >
+        {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+
+
+    </Button>
+)
+}}
+
                                 />
 
                             </Box>
@@ -149,7 +162,7 @@ const Newpass = (props) => {
                             <Box className={styles.listbuttomopen2223}><Button type='submit'>Continue</Button></Box>
                         </form>
                     </Box>
-                   
+
 
                 </Grid>
             </Grid>

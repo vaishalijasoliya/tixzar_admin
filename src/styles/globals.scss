@@ -40,6 +40,7 @@ a {
   /* border: 5px solid red; */
   background-color: #282042;
   width: 100%;
+  // height: 100vh;
   /* height: 100%; */
   padding: 45px 40px 40px;
 }
@@ -627,16 +628,17 @@ a {
     margin-top: auto !important;
   }
 }
-
-.rs-picker-default .rs-picker-toggle {
-  background-color: #f9f9f9 !important;
-  border: none !important;
-}
 .MuiList-root{
   background-color: #332E59 !important;
   border: 1px solid #FFFFFF;
 border-radius: 5px;
+padding: 0px !important;
 }
+.rs-picker-default .rs-picker-toggle {
+  background-color: #f9f9f9 !important;
+  border: none !important;
+}
+
 .rs-picker-toggle-wrapper,
 .rs-picker-default .rs-picker-toggle.rs-btn {
   background-color: #634BBF !important;
@@ -754,6 +756,7 @@ border-radius: 5px;
 
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
   border: none !important;
+  background-color: #634BBF !important;
 }
 
 .css-1ex1afd-MuiTableCell-root {
@@ -803,14 +806,6 @@ border-radius: 5px;
   left: 0;
   top: 6px;
 }
-
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-  background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%) !important;
-  /* border-radius: 10px; */
-  color: white !important;
-  transition: 0.5s !important;
-}
-
 .css-1aquho2-MuiTabs-indicator {
   // background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%) !important;
   transition: 0.5s !important;

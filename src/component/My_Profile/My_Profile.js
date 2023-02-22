@@ -15,6 +15,7 @@ import ApiServices from '../../config/ApiServices'
 import ApiEndpoint from '../../config/ApiEndpoint';
 import { toast } from 'react-toastify';
 import AddIcon from '@mui/icons-material/Add';
+import { useRouter } from 'next/router'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,8 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 const ResponsiveAppBar = (props) => {
-    console.log(props.props.profile.id,'listprjjjops');
-
+    const router = useRouter()
     // console.log(, "listmenu");
     const [phonedata, setPhonedata] = useState('')
     const [gender, setGender] = useState('')
@@ -113,6 +113,8 @@ const ResponsiveAppBar = (props) => {
         if (!!data) {
             if (data.status == true) {
                 toast.success(data.message)
+                setData(props.props.profile.id)
+                router.push('./dashboard')
             }
             else {
                 toast.error(data.message)
@@ -321,7 +323,7 @@ const ResponsiveAppBar = (props) => {
                 <Button  type='submit' 
                 // onClick={()=>{onLoginPress()}} 
                 className={styles.listupdetbtn}>Update</Button>
-                    <Button className={styles.listupdetbtn2}>Cancel</Button>
+                    <Button className={styles.listupdetbtn2} onClick={()=>{router.back()}}>Cancel</Button>
                 </Box>
                
 

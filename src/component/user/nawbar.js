@@ -54,11 +54,11 @@ const home = (props) => {
     })}>
       <DashboardIcon className={styles.iconside}  /><span className={styles.btndtl}>Dashboard</span>
     </Button>,
-    <Button onClick={(() => { router.push('./user') })} id={styles.butgri} variant="outlined" className={currentPath == '/user' ? styles.active : ""}  > <HelpCenterIcon className={styles.iconside}  /><span className={styles.btndtl1}>Manage FAQ</span></Button>,
-    <Button onClick={(() => { router.push('./payments') })} className={currentPath == '/payments' ? styles.active : ""} key="one" variant="outlined" id={styles.butgri} ><PermContactCalendarIcon className={styles.iconside} /><span className={styles.btndtl2}>Manage Contact Form</span></Button>,
-    <Button onClick={(() => { router.push('./support') })} className={currentPath == '/support'|| currentPath=='/movie_review' ? styles.active : ""} key="one" variant="outlined" id={styles.butgri} ><RateReviewIcon className={styles.iconside} /><span className={styles.btndtl3}>Manage Reviews</span></Button>,
-    <Button onClick={(() => { router.push('./promotion') })} className={currentPath == '/promotion' ||currentPath =='/managar_deteail' ? styles.active : ""} key="one" variant="outlined" id={styles.butgri} ><MovieIcon className={styles.iconside} /><span className={styles.btndtl4}>Manage Movie Destails</span></Button>,
-    <Button onClick={(() => { router.push('./guidelines') })} className={currentPath == '/guidelines' ? styles.active : ""} variant="outlined" id={styles.butgri} ><ManageSearchIcon className={styles.iconside} /><span className={styles.btndtl5}>Manage Trending Movies</span></Button>,
+    <Button onClick={(() => { router.push('./Manage_FAQ') })} id={styles.butgri} variant="outlined" className={currentPath == '/Manage_FAQ' ? styles.active : ""}  > <HelpCenterIcon className={styles.iconside}  /><span className={styles.btndtl1}>Manage FAQ</span></Button>,
+    <Button onClick={(() => { router.push('./Manage_Contact_Form') })} className={currentPath == '/Manage_Contact_Form' ? styles.active : ""} key="one" variant="outlined" id={styles.butgri} ><PermContactCalendarIcon className={styles.iconside} /><span className={styles.btndtl2}>Manage Contact Form</span></Button>,
+    <Button onClick={(() => { router.push('./Manage_Reviews') })} className={currentPath == '/Manage_Reviews'|| currentPath=='/movie_review' ? styles.active : ""} key="one" variant="outlined" id={styles.butgri} ><RateReviewIcon className={styles.iconside} /><span className={styles.btndtl3}>Manage Reviews</span></Button>,
+    <Button onClick={(() => { router.push('./Manage_Details') })} className={currentPath == '/Manage_Details' ||currentPath =='/managar_deteail' ? styles.active : ""} key="one" variant="outlined" id={styles.butgri} ><MovieIcon className={styles.iconside} /><span className={styles.btndtl4}>Manage Movie Destails</span></Button>,
+    <Button onClick={(() => { router.push('./Manage_Trending_Movies') })} className={currentPath == '/Manage_Trending_Movies' ? styles.active : ""} variant="outlined" id={styles.butgri} ><ManageSearchIcon className={styles.iconside} /><span className={styles.btndtl5}>Manage Trending Movies</span></Button>,
     <Button onClick={(() => { router.push('./manageralluse') })} className={currentPath == '/manageralluse' ? styles.active : ""} variant="outlined" id={styles.butgri} ><ManageAccountsIcon className={styles.iconside} /><span className={styles.btndtl6}>Manage All Users</span></Button>,
     <Button variant="outlined" type="button" id={styles.butgri} 
     className={currentPath == '/manage_blogs' ? styles.active : ""}
@@ -74,7 +74,9 @@ const home = (props) => {
         <Grid item xs={12} className={styles.newbar} >
 
           <div style={{ margin: '0 auto' }} className={styles.logopedii}>
+          <a href='./dashboard'>
             <img alt="Remy Sharp" src="./image/Purple Logo png-01 1.svg" className={styles.lianpohot} />
+            </a>
           </div>
           <Box className={styles.btnhoime}>
             <ButtonGroup

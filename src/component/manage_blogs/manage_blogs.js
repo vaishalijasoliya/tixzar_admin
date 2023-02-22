@@ -255,7 +255,8 @@ const Movie_review_Pages = (props) => {
                     <Typography className="Btn_grad_txt" style={{
                       marginLeft: '10px'
                     }}>
-                      Add New Movie
+                      Add New Blog
+                      {/* Add New Movie */}
                     </Typography>
                   </Button>
                   <Dialog
@@ -265,98 +266,105 @@ const Movie_review_Pages = (props) => {
                     onClose={handleCloselist}
                   >
                     <Box className={Styles.listpopuy22}>
-                    <form onSubmit={formik.handleSubmit}>
+                      <form onSubmit={formik.handleSubmit}>
 
-                      <div className={Styles.listmenuuppohot}>
-                        <img src={createObjectURL} className={Styles.avtaruplo} />
-                        <div>
-                          <IconButton className={Styles.iconbtnop} color="primary" aria-label="upload picture" component="label">
+                        <div className={Styles.listmenuuppohot}>
+                          <img src={createObjectURL} className={Styles.avtaruplo} />
+                          <div>
+                            <IconButton className={Styles.iconbtnop} color="primary" aria-label="upload picture" component="label">
 
-                            <input type="file" name="myImage" hidden onChange={handleChangeImage} />
-                            <Box className={Styles.deleteBtn}>
-                              <Avatar className={Styles.avtaradataedit}>
-                                <EditIcon />
-                              </Avatar>
-                            </Box>
-                          </IconButton>
+                              <input type="file" name="myImage" hidden onChange={handleChangeImage} />
+                              <Box className={Styles.deleteBtn}>
+                                <Avatar className={Styles.avtaradataedit}>
+                                  <EditIcon />
+                                </Avatar>
+                              </Box>
+                            </IconButton>
+                          </div>
+
                         </div>
-
-                      </div>
-                      <Box>
-                        <TextField
-                          error={Boolean(formik.touched.username && formik.errors.username)}
-                          helperText={formik.touched.username && formik.errors.username}
-                          name="username"
-                          className={Styles.inputnamelist}
-                          placeholder='Add Title'
-                          onBlur={formik.handleBlur}
-                          onChange={formik.handleChange}
-                          value={formik.values.username}
-                        ></TextField>
-                      </Box>
-                      <Box>
-                        <TextareaAutosize onBlur={formik.handleBlur}
-                          error={Boolean(formik.touched.name && formik.errors.name)}
-                          helperText={formik.touched.name && formik.errors.name} name="name"
-                          value={formik.values.name} onChange={formik.handleChange}
-                          placeholder="Description" maxRows={10} minRows={3}
-                          className={Styles.Reply_text_area} />
-                      </Box>
-                      <Grid item md={12} sm={12} xs={12}>
-                        <Box className={Styles.listboxbtn}>
-                          {dataeditbtn == 'ADD' ?
-                            <>
-                            {formik.values.username == ''|| formik.values.name=='' ?
-                            <>
-                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { 
-                                //  handleNext()
-                                // accounttype('active'),
-                               handleCloselist() }}>Publish</Button>
-                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { 
-                                // accounttype('pending'),
-                               handleCloselist() }}>Draft</Button>
-                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { 
-                                // accounttype('delete'),
-                               handleCloselist() }}>Unpublish</Button>
-</>
-                            : 
-                            <>
-                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { 
-                                //  handleNext()
-                                // accounttype('active'),
-                               handleCloselist() }}>Publish</Button>
-                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { accounttype('pending'), handleCloselist() }}>Draft</Button>
-                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { accounttype('delete'), handleCloselist() }}>Unpublish</Button>
-</>
-                            }
-                            </> :
-                            <>
-                            {formik.values.username == ''|| formik.values.name=='' ?
-                            <>
-                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { 
-                                //  handleNext()
-                                // accounttype('active'),
-                               handleCloselist() }}>Publish</Button>
-                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { 
-                                // accounttype('pending'),
-                               handleCloselist() }}>Draft</Button>
-                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { 
-                                // accounttype('delete'),
-                               handleCloselist() }}>Unpublish</Button>
-</>
-                            : 
-                            <>
-                              <Button  type='submit' className={Styles.listupdetbtn} onClick={() => { EDITPATT('active'), handleCloselist() }}>Publish</Button>
-                              <Button  type='submit' className={Styles.listupdetbtn3} onClick={() => { EDITPATT('pending'), handleCloselist() }}>Draft</Button>
-                              <Button  type='submit' className={Styles.listupdetbtn2} onClick={() => { EDITPATT('delete'), handleCloselist() }}>Unpublish</Button>
-                            </>
-                            }
-                            </>
-                          }
+                        <Box>
+                          <TextField
+                            error={Boolean(formik.touched.username && formik.errors.username)}
+                            helperText={formik.touched.username && formik.errors.username}
+                            name="username"
+                            className={Styles.inputnamelist}
+                            placeholder='Add Title'
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.username}
+                          ></TextField>
                         </Box>
+                        <Box>
+                          <TextareaAutosize onBlur={formik.handleBlur}
+                            error={Boolean(formik.touched.name && formik.errors.name)}
+                            helperText={formik.touched.name && formik.errors.name} name="name"
+                            value={formik.values.name} onChange={formik.handleChange}
+                            placeholder="Description" maxRows={10} minRows={3}
+                            className={Styles.Reply_text_area} />
+                        </Box>
+                        <Grid item md={12} sm={12} xs={12}>
+                          <Box className={Styles.listboxbtn}>
+                            {dataeditbtn == 'ADD' ?
+                              <>
+                                {formik.values.username == '' || formik.values.name == '' ?
+                                  <>
+                                    <Button type='submit' className={Styles.listupdetbtn} onClick={() => {
+                                      //  handleNext()
+                                      // accounttype('active'),
+                                      handleCloselist()
+                                    }}>Publish</Button>
+                                    <Button type='submit' className={Styles.listupdetbtn3} onClick={() => {
+                                      // accounttype('pending'),
+                                      handleCloselist()
+                                    }}>Draft</Button>
+                                    <Button type='submit' className={Styles.listupdetbtn2} onClick={() => {
+                                      // accounttype('delete'),
+                                      handleCloselist()
+                                    }}>Unpublish</Button>
+                                  </>
+                                  :
+                                  <>
+                                    <Button type='submit' className={Styles.listupdetbtn} onClick={() => {
+                                      //  handleNext()
+                                      // accounttype('active'),
+                                      handleCloselist()
+                                    }}>Publish</Button>
+                                    <Button type='submit' className={Styles.listupdetbtn3} onClick={() => { accounttype('pending'), handleCloselist() }}>Draft</Button>
+                                    <Button type='submit' className={Styles.listupdetbtn2} onClick={() => { accounttype('delete'), handleCloselist() }}>Unpublish</Button>
+                                  </>
+                                }
+                              </> :
+                              <>
+                                {formik.values.username == '' || formik.values.name == '' ?
+                                  <>
+                                    <Button type='submit' className={Styles.listupdetbtn} onClick={() => {
+                                      //  handleNext()
+                                      // accounttype('active'),
+                                      handleCloselist()
+                                    }}>Publish</Button>
+                                    <Button type='submit' className={Styles.listupdetbtn3} onClick={() => {
+                                      // accounttype('pending'),
+                                      handleCloselist()
+                                    }}>Draft</Button>
+                                    <Button type='submit' className={Styles.listupdetbtn2} onClick={() => {
+                                      // accounttype('delete'),
+                                      handleCloselist()
+                                    }}>Unpublish</Button>
+                                  </>
+                                  :
+                                  <>
+                                    <Button type='submit' className={Styles.listupdetbtn} onClick={() => { EDITPATT('active'), handleCloselist() }}>Publish</Button>
+                                    <Button type='submit' className={Styles.listupdetbtn3} onClick={() => { EDITPATT('pending'), handleCloselist() }}>Draft</Button>
+                                    <Button type='submit' className={Styles.listupdetbtn2} onClick={() => { EDITPATT('delete'), handleCloselist() }}>Unpublish</Button>
+                                  </>
+                                }
+                              </>
+                            }
+                          </Box>
 
 
-                      </Grid>
+                        </Grid>
                       </form>
                     </Box>
 
@@ -368,10 +376,12 @@ const Movie_review_Pages = (props) => {
             <TabPanel className={Styles.Tab_panel_22} value={'All Reviews'}>
               {datalist.map((item, idx) => (
                 <div className={Styles.listgridmnew}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <img src={item.logoUrl} className={Styles.User_Image} />
+                  <Grid item xs={12} sm={12} md={4}>
+                    <div className={Styles.Llistsffsffs22}>
+                      <img src={item.logoUrl} className={Styles.User_Image} />
+                    </div>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={8} className={Styles.userdataanfdata}>
+                  <Grid item xs={12} sm={12} md={7} className={Styles.userdataanfdata}>
                     <Typography className={Styles.User_name_bold} >{item.title}</Typography>
                     <Typography className={Styles.Review_txt}>{item.description}</Typography>
                   </Grid>

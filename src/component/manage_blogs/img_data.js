@@ -19,11 +19,13 @@ export const Movie_Box = ({data}) => {
                 >
 
                     <>
+                    <div className={Styles.Llistsffsffs}> 
                         <img
                         width={190}
                         height={115}
                             src={data.logoUrl}
                             className={Styles.Movie_img_} />
+                            </div>
                         <Typography className={Styles.Movie_name_}>
                             {data.title}
                         </Typography>
