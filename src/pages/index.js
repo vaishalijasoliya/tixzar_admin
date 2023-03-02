@@ -1,13 +1,12 @@
-import Signin from '../component/logo.js'
+import Signin from "../component/logo.js";
 
 const main = (props) => {
-  console.log(props)
+  console.log(props);
   return (
     <>
-
-            <Signin props={props} />
+      <Signin props={props} />
     </>
-  )
-}
+  );
+};
 
-export default main
+export default main;

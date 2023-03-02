@@ -17,7 +17,6 @@ const Review_box = (props) => {
                 main: 'rgba(255, 0, 0, 0.2)',
             },
         },
-
     });
 
     return (
