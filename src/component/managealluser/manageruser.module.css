@@ -1,155 +1,183 @@
 @font-face {
-    font-family: Gilroy-Bold;
-    src: url(../../styles//font/Gilroy/Gilroy-Bold.woff);
-    /* src: url(../../styles/font/Gilroy-Font// */
-    /* Gilroy-Bold.ttf); */
+  font-family: Gilroy-Bold;
+  src: url(../../styles//font/Gilroy/Gilroy-Bold.woff);
+  /* src: url(../../styles/font/Gilroy-Font// */
+  /* Gilroy-Bold.ttf); */
 }
 
 @font-face {
-    font-family: Quicksand-400;
-    src: url(../../styles/font/Quicksand/static/Quicksand-Regular.ttf);
+  font-family: Quicksand-400;
+  src: url(../../styles/font/Quicksand/static/Quicksand-Regular.ttf);
 }
 
 @font-face {
-    font-family: Gilroy-Regular;
-    src: url(../../styles/font/Gilroy-Font//Gilroy-Regular.ttf);
+  font-family: Gilroy-Regular;
+  src: url(../../styles/font/Gilroy-Font//Gilroy-Regular.ttf);
 }
 
 @font-face {
-    font-family: Gilroy-Medium;
-    src: url(../../styles/font/Gilroy-Font//Gilroy-Medium.ttf);
+  font-family: Gilroy-Medium;
+  src: url(../../styles/font/Gilroy-Font//Gilroy-Medium.ttf);
 }
 .Tabs_321 {
-    font-family: 'Gilroy-Regular' !important;
-    color: white !important;
-    border-radius: 6px !important;
-    text-transform: capitalize !important;
-    width: 210px !important;
-    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%) !important;
-    /* border-radius: 10px; */
-    color: white !important;
-    transition: 0.5s !important;}
-.listdatatbala{
-    width: 92px;
-    height: 92px;
+  font-family: "Gilroy-Regular" !important;
+  color: white !important;
+  border-radius: 6px !important;
+  text-transform: capitalize !important;
+  width: 210px !important;
+  background: linear-gradient(180deg, #046da8 0%, #07a4e7 100%) !important;
+  /* border-radius: 10px; */
+  color: white !important;
+  transition: 0.5s !important;
 }
+.listdatatbala {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+}
+
 .Review_box_ {
-    background: #332E59;
-    box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    padding: 35px 20px;
-    margin-top: 20px;
+  background: #332e59;
+  box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 35px 20px;
+  margin-top: 20px;
 }
 
 .User_Image {
-    border-radius: 50%;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
 }
 
 .User_name_bold {
-    font-family: 'Gilroy-Bold' !important;
-    font-size: 20px !important;
-    line-height: 23px;
-    color: #FFFFFF !important;
+  font-family: "Gilroy-Bold" !important;
+  font-size: 20px !important;
+  line-height: 23px;
+  color: #ffffff !important;
 }
 
 .Review_txt {
-    font-size: 16px !important;
-    color: #FFFFFF;
-    font-family: 'Quicksand-400' !important;
+  font-size: 16px !important;
+  color: #ffffff;
+  font-family: "Quicksand-400" !important;
 }
 
 .Rating_start_box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .listdatatebal {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  width: 100%;
+  gap: 10px;
 }
 
 .tabalrodata {
-    background: #332E59;
-    box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
-    border-radius: 10px !important;
+  background: #332e59;
+  box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 10px !important;
 }
 
 .tebaldata {
-    border-collapse: separate !important;
-    border-spacing: 0px 20px !important;
-    background: #282042;
+  border-collapse: separate !important;
+  border-spacing: 0px 20px !important;
+  background: #282042;
 }
 
-.tebaldata td {
-    border: 0px solid !important;
-}
+/* .tebaldata td {
+  border-bottom: 0px solid !important;
+} */
 
 .listtypoandtext {
-    color: #079BDD !important;
-    font-family: Gilroy-Regular !important;
-    font-size: 14px !important;
+  color: #079bdd !important;
+  font-family: Gilroy-Regular !important;
+  font-size: 14px !important;
 }
 
 .typotdanfr {
-    padding: 0px 0px 0px 25px;
+  /* padding: 0px 0px 0px 25px; */
+  padding: 0px;
 }
 
 .Tab_Bar_ {
-    width: max-content;
-    border: 1px solid #046DA8;
-    /* margin: auto; */
-    border-radius: 10px;
+  width: max-content;
+  border: 1px solid #046da8;
+  /* margin: auto; */
+  border-radius: 10px;
 }
 
 .Tab_Bar_ .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
+  background: linear-gradient(180deg, #046da8 0%, #07a4e7 100%);
 }
 
 .Tabs_ {
-    font-family: 'Gilroy-Regular' !important;
-    color: white !important;
-    border-radius: 6px !important;
-    text-transform: capitalize !important;
-    width: 210px !important;
+  font-family: "Gilroy-Regular" !important;
+  color: white !important;
+  border-radius: 6px !important;
+  text-transform: capitalize !important;
+  width: 210px !important;
+}
+/* .tabalrodata td{
+
+} */
+.Last_table_cell {
+  border-radius: 0px 10px 10px 0px !important;
+}
+.listmeneuet {
+  padding: 0px !important;
+  background-color: transparent !important ;
+  box-shadow: none !important;
 }
 
-.listmeneuet {
-    padding: 0px !important;
+/* PAGINATION STYLES */
+.pagination_bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #282042;
+  margin: 0px;
+}
+.Flaged_cell_first {
+  border-top: 1px solid red;
+  border-left: 1px solid red;
+  border-bottom: 1px solid red;
 }
 
 .Tab_panel_ {
-    padding: 0px !important;
+  padding: 0px !important;
 }
-.Tab_Bar_ span{
-    height: 0px;
+/* .Tab_panel_ tr {
+  border: 5px solid red;
+} */
+.Tab_Bar_ span {
+  height: 0px;
 }
 .listtypoangyo {
-    font-size: 36px !important;
-    font-family: Gilroy-Bold !important;
-    color: #FFFFFF;
-    text-align: center;
+  font-size: 36px !important;
+  font-family: Gilroy-Bold !important;
+  color: #ffffff;
+  text-align: center;
 }
 
 .reviewdata {
-    font-size: 20px !important;
-    color: #FFFFFF;
-    font-family: Gilroy-Medium !important;
-    text-align: center;
+  font-size: 20px !important;
+  color: #ffffff;
+  font-family: Gilroy-Medium !important;
+  text-align: center;
 }
 @media only screen and (max-width: 900px) {
-
-    .Tabs_ {
-        width: 226px !important;
-
-    }
+  .Tabs_ {
+    width: 226px !important;
+  }
 }
 @media only screen and (max-width: 500px) {
-
-    .Tabs_ {
-        width: 168px !important;
-
-    }
+  .Tabs_ {
+    width: 168px !important;
+  }
 }
-

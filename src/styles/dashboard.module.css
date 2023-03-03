@@ -64,7 +64,7 @@
 .datepikarname input {
   background-color: #634bbf !important;
   border-radius: 0px;
-  opacity: unset;
+  /* opacity: unset; */
   color: #ffffff !important;
 }
 .menuitemdata {
@@ -97,7 +97,7 @@ border: 1px solid #FFFFFF;
 border-radius: 5px;
 } */
 .selectbox {
-  width: 106px;
+  width: 130px;
   height: 40px;
   font-family: Gilroy-midayam !important;
   color: white !important;

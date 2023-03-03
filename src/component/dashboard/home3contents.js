@@ -27,7 +27,7 @@ export const data = [
   [3, 0],
 ];
 export const Usercount = (props) => {
-  console.log(props, "props11");
+  console.log(props, "props11____");
   const [signupCount, setSignupCount] = React.useState(0);
   const [activeCount, setActiveCount] = React.useState(0);
   const [inactiveCount, setInactiveCount] = React.useState(0);
@@ -40,10 +40,7 @@ export const Usercount = (props) => {
   const [dateArray_data, setDateArray_Data] = React.useState([]);
   const [reviewArray_data, setReviewArray_data] = React.useState([]);
 
-  console.log(CharacterData, "CharacterData");
   const data2 = [["Year", "x"]];
-  const children = data2.concat(CharacterData);
-  console.log(data, "children");
   const options2 = {
     series: {
       1: { curveType: "function" },
@@ -71,8 +68,6 @@ export const Usercount = (props) => {
       setDateStart("");
       setDateEnd("");
       setSelectedDate(event.target.value);
-      // chartloginuser(event.target.value);
-      // DASHBOARD_CHART(event.target.value);
     }
   };
   React.useEffect(() => {
@@ -145,6 +140,29 @@ export const Usercount = (props) => {
       }
     }
   };
+
+  const Select_Array = [
+    {
+      value: "year",
+      name: "This year",
+    },
+    {
+      value: "today",
+      name: "Today",
+    },
+    {
+      value: "week",
+      name: "This Week",
+    },
+    {
+      value: "month",
+      name: "This month",
+    },
+    {
+      value: "custome",
+      name: "Custome",
+    },
+  ];
 
   const DASHBOARD_CHART = async (value) => {
     // var body = {};
@@ -219,35 +237,6 @@ export const Usercount = (props) => {
     // }
   };
 
-  const ChartDetails = {
-    series: [
-      {
-        name: "Desktops",
-        data: reviewArray_data,
-      },
-    ],
-
-    options: {
-      chart: {
-        height: 350,
-        type: "line",
-        zoom: {
-          enabled: false,
-        },
-      },
-      dataLabels: {
-        enabled: true,
-      },
-      stroke: {
-        curve: "straight",
-      },
-
-      xaxis: {
-        categories: dateArray_data,
-      },
-    },
-  };
-
   return (
     <>
       <Grid className={style.listcontenarhome} container>
@@ -270,13 +259,15 @@ export const Usercount = (props) => {
                     setDateStart(endDate[0]);
                     setDateEnd(endDate[1]);
                   }}
+                  style={{ left: "50%" }}
                   onClose={() => {
                     chartloginuser();
                   }}
+                  menuStyle={{ left: "50%" }}
                   placeholder="SELECT START RANGE - END RANGE"
                   format="yyyy-MM-dd"
                   className={style.datepikarname}
-                  character="-"
+                  character=" ~ "
                 />
               </Box>
             ) : (
@@ -289,21 +280,13 @@ export const Usercount = (props) => {
               value={age}
               onChange={handleChange}
             >
-              <MenuItem value={"year"} className={style.mebnuitem}>
-                2022
-              </MenuItem>
-              <MenuItem value={"today"} className={style.mebnuitem}>
-                Today
-              </MenuItem>
-              <MenuItem value={"week"} className={style.mebnuitem}>
-                This Week
-              </MenuItem>
-              <MenuItem value={"month"} className={style.mebnuitem}>
-                This Month
-              </MenuItem>
-              <MenuItem value={"custome"} className={style.mebnuitem}>
-                Custom Range
-              </MenuItem>
+              {Select_Array.map((item) => {
+                return (
+                  <MenuItem value={item.value} className={style.mebnuitem}>
+                    {item.name}
+                  </MenuItem>
+                );
+              })}
             </Select>
           </Box>
         </Grid>

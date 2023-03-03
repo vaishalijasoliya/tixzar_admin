@@ -13,7 +13,15 @@ const index = (props) => {
   }
   return (
     <>
-      <Grid container spacing={0} className='mainDiv'>
+      <Grid
+        container
+        spacing={0}
+        xs={12}
+        xl={12}
+        lg={12}
+        sm={12}
+        className="mainDiv"
+      >
         <Grid xs={12} sm={4} md={3} className='Gridcontainergrid' >
           <Nevbar />
         </Grid>

@@ -24,6 +24,7 @@ import ApiServices from "../../../config/ApiServices";
 import ApiEndpoint from "../../../config/ApiEndpoint";
 import { useRouter, withRouter } from "next/router";
 import { toast } from "react-toastify";
+import Review_box from "./review_box";
 
 const Movie_review_Pages = (props) => {
   const router = useRouter();
@@ -51,11 +52,11 @@ const Movie_review_Pages = (props) => {
       !!props.props.profile.token &&
       router.query.emailID
     ) {
-      accounttype(router.query.emailID);
+      adminReviewlist(router.query.emailID);
     }
   }, [props.router, datatab, stardata]);
 
-  const accounttype = async (value) => {
+  const adminReviewlist = async (value) => {
     var body = {
       id_imdb_movie: value,
       // status: datatab,
@@ -73,6 +74,8 @@ const Movie_review_Pages = (props) => {
       headers
     );
     props.props.loaderRef(false);
+
+    console.log(data, "is_____data");
     if (data.status == true) {
       setDatatital(data.data.title);
       setDeshcaripsan(data.data.description);
@@ -98,7 +101,6 @@ const Movie_review_Pages = (props) => {
       }
 
       setFlagedReview(accoyty);
-
       setDatamenu(accoyty);
       setSetadata(accoyty);
     } else {
@@ -255,6 +257,152 @@ const Movie_review_Pages = (props) => {
             }}
             variant="outlined"
           />
+          <Menu
+            anchorEl={anchorEl}
+            id="account-menu"
+            open={open}
+            onClose={handleClose}
+            PaperProps={{
+              elevation: 0,
+              style: {
+                background: "#332E59",
+                border: "1px solid white",
+              },
+              sx: {
+                overflow: "visible",
+                filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                mt: 1.5,
+                "& .MuiAvatar-root": {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+                "&:before": {
+                  content: '""',
+                  display: "block",
+                  position: "absolute",
+                  top: 0,
+                  right: 14,
+                  width: 10,
+                  height: 10,
+                  // bgcolor: 'background.paper',
+                  transform: "translateY(-50%) rotate(45deg)",
+                  zIndex: 0,
+                  background: "#332E59",
+                  bgcolor: "#332E59",
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: "right", vertical: "top" }}
+            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+          >
+            <ThemeProvider theme={theme}>
+              <Box className={Styles.Menu_Item}>
+                <Typography className={Styles.Filter_head}>Category</Typography>
+                <Box className={Styles.Btn_rows}>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    className={Styles.Filter_btns}
+                  >
+                    <Btn_txt data={"Lorem Ipsum"} />
+                  </Button>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    className={Styles.Filter_btns}
+                  >
+                    <Btn_txt data={"Lorem"} />
+                  </Button>
+                </Box>
+                <Box className={Styles.Btn_rows}>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    className={Styles.Filter_btns}
+                  >
+                    <Btn_txt data={"Lorem"} />
+                  </Button>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    className={Styles.Filter_btns}
+                  >
+                    <Btn_txt data={"Lorem Ipsum"} />
+                  </Button>
+                </Box>
+              </Box>
+              <Divider />
+              <Box className={Styles.Menu_Item}>
+                <Typography className={Styles.Filter_head}>Reviews</Typography>
+                <Box className={Styles.Btn_rows}>
+                  <Button
+                    onClick={() => {
+                      // adminReviewlist(router.query.emailID);
+                      setStardata(5);
+                      setAnchorEl(null);
+                    }}
+                    color="primary"
+                    variant="contained"
+                    className={Styles.Filter_btns}
+                  >
+                    <Btn_txt data={"5 Star"} />
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      // adminReviewlist(router.query.emailID);
+                      setStardata(4);
+                      setAnchorEl(null);
+                    }}
+                    color="primary"
+                    variant="contained"
+                    className={Styles.Filter_btns}
+                  >
+                    <Btn_txt data={"4 Star"} />
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      // adminReviewlist(router.query.emailID);
+                      setStardata(3);
+                      setAnchorEl(null);
+                    }}
+                    color="primary"
+                    variant="contained"
+                    className={Styles.Filter_btns}
+                  >
+                    <Btn_txt data={"3 Star"} />
+                  </Button>
+                </Box>
+                <Box className={Styles.Btn_rows}>
+                  <Button
+                    onClick={() => {
+                      // adminReviewlist(router.query.emailID);
+                      setStardata(2);
+                      setAnchorEl(null);
+                    }}
+                    color="primary"
+                    variant="contained"
+                    className={Styles.Filter_btns}
+                  >
+                    <Btn_txt data={"2 Star"} />
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      // adminReviewlist(router.query.emailID);
+                      setStardata(1);
+                      setAnchorEl(null);
+                    }}
+                    color="primary"
+                    variant="contained"
+                    className={Styles.Filter_btns}
+                  >
+                    <Btn_txt data={"1 Star"} />
+                  </Button>
+                </Box>
+              </Box>
+            </ThemeProvider>
+          </Menu>
         </Box>
 
         <Box className={Styles.Content_div}>
@@ -289,260 +437,112 @@ const Movie_review_Pages = (props) => {
               {datamenu.map((data) => {
                 console.log(data, "is_review_array___");
                 return (
-                  <Grid container className={Styles.listcontenar}>
-                    <Grid item xs={12} sm={12} md={2} lg={1.5} xl={1.5}>
-                      <img src={data.logoUrl} className={Styles.User_Image} />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
-                      <Typography className={Styles.User_name_bold}>
-                        {data.title}
-                      </Typography>
-                      <Typography className={Styles.Review_txt}>
-                        {data.description}
-                      </Typography>
-                      <Box
-                        className={Styles.Rating_start_box}
-                        style={{ justifyContent: "flex-start" }}
-                      >
-                        <Rating
-                          className={Styles.Rating_star}
-                          value={(parseFloat(data.avg) / 2).toFixed(2)}
-                          onChange={(event, newValue) => {
-                            setValue(newValue);
-                          }}
-                          readOnly
-                        />
-                        <Typography className={Styles.Rating_number}>
-                          {(parseFloat(data.avg) / 2).toFixed(2)}
-                        </Typography>
-                      </Box>
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                      sm={12}
-                      md={1}
-                      lg={1.5}
-                      xl={1.5}
-                      sx={{ justifyContent: "flex-end", display: "flex" }}
-                    >
-                      <Box
-                        style={{ justifyContent: "flex-end", display: "flex" }}
-                      >
-                        <Button
-                          className={Styles.deleteBtn}
-                          onClick={() => {
-                            EDITPATT(data.id);
-                          }}
-                        >
-                          <img src="./image/dustbin.svg" />
-                        </Button>
-                      </Box>
-                    </Grid>
-                    <Menu
-                      anchorEl={anchorEl}
-                      id="account-menu"
-                      open={open}
-                      onClose={handleClose}
-                      PaperProps={{
-                        elevation: 0,
-                        style: {
-                          background: "#332E59",
-                          border: "1px solid white",
-                        },
-                        sx: {
-                          overflow: "visible",
-                          filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                          mt: 1.5,
-                          "& .MuiAvatar-root": {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
-                          },
-                          "&:before": {
-                            content: '""',
-                            display: "block",
-                            position: "absolute",
-                            top: 0,
-                            right: 14,
-                            width: 10,
-                            height: 10,
-                            // bgcolor: 'background.paper',
-                            transform: "translateY(-50%) rotate(45deg)",
-                            zIndex: 0,
-                            background: "#332E59",
-                            bgcolor: "#332E59",
-                          },
-                        },
-                      }}
-                      transformOrigin={{ horizontal: "right", vertical: "top" }}
-                      anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                    >
-                      <ThemeProvider theme={theme}>
-                        <Box className={Styles.Menu_Item}>
-                          <Typography className={Styles.Filter_head}>
-                            Category
-                          </Typography>
-                          <Box className={Styles.Btn_rows}>
-                            <Button
-                              color="primary"
-                              variant="contained"
-                              className={Styles.Filter_btns}
-                            >
-                              <Btn_txt data={"Lorem Ipsum"} />
-                            </Button>
-                            <Button
-                              color="primary"
-                              variant="contained"
-                              className={Styles.Filter_btns}
-                            >
-                              <Btn_txt data={"Lorem"} />
-                            </Button>
-                          </Box>
-                          <Box className={Styles.Btn_rows}>
-                            <Button
-                              color="primary"
-                              variant="contained"
-                              className={Styles.Filter_btns}
-                            >
-                              <Btn_txt data={"Lorem"} />
-                            </Button>
-                            <Button
-                              color="primary"
-                              variant="contained"
-                              className={Styles.Filter_btns}
-                            >
-                              <Btn_txt data={"Lorem Ipsum"} />
-                            </Button>
-                          </Box>
-                        </Box>
-                        <Divider />
-                        <Box className={Styles.Menu_Item}>
-                          <Typography className={Styles.Filter_head}>
-                            Reviews
-                          </Typography>
-                          <Box className={Styles.Btn_rows}>
-                            <Button
-                              onClick={() => {
-                                // accounttype(router.query.emailID);
-                                setStardata(5);
-                                setAnchorEl(null);
-                              }}
-                              color="primary"
-                              variant="contained"
-                              className={Styles.Filter_btns}
-                            >
-                              <Btn_txt data={"5 Star"} />
-                            </Button>
-                            <Button
-                              onClick={() => {
-                                // accounttype(router.query.emailID);
-                                setStardata(4);
-                                setAnchorEl(null);
-                              }}
-                              color="primary"
-                              variant="contained"
-                              className={Styles.Filter_btns}
-                            >
-                              <Btn_txt data={"4 Star"} />
-                            </Button>
-                            <Button
-                              onClick={() => {
-                                // accounttype(router.query.emailID);
-                                setStardata(3);
-                                setAnchorEl(null);
-                              }}
-                              color="primary"
-                              variant="contained"
-                              className={Styles.Filter_btns}
-                            >
-                              <Btn_txt data={"3 Star"} />
-                            </Button>
-                          </Box>
-                          <Box className={Styles.Btn_rows}>
-                            <Button
-                              onClick={() => {
-                                // accounttype(router.query.emailID);
-                                setStardata(2);
-                                setAnchorEl(null);
-                              }}
-                              color="primary"
-                              variant="contained"
-                              className={Styles.Filter_btns}
-                            >
-                              <Btn_txt data={"2 Star"} />
-                            </Button>
-                            <Button
-                              onClick={() => {
-                                // accounttype(router.query.emailID);
-                                setStardata(1);
-                                setAnchorEl(null);
-                              }}
-                              color="primary"
-                              variant="contained"
-                              className={Styles.Filter_btns}
-                            >
-                              <Btn_txt data={"1 Star"} />
-                            </Button>
-                          </Box>
-                        </Box>
-                      </ThemeProvider>
-                    </Menu>
-                    {data.status == "flaged" ? (
-                      <Grid container>
-                        <Grid item xs={12} sm={12} md={1.5} lg={1.5} xl={1.5} />
-                        <Grid
-                          item
-                          xs={12}
-                          sm={12}
-                          md={10.5}
-                          lg={10.5}
-                          xl={10.5}
-                          sx={{
-                            justifyContent: "space-between",
-                            display: "flex",
-                            alignItems: "center",
-                          }}
-                        >
-                          <ThemeProvider theme={theme}>
-                            <Box>
-                              <Button
-                                className={Styles.Flaged_button}
-                                variant="contained"
-                                color="secondary"
-                              >
-                                <Typography
-                                  color={"#FF0000"}
-                                  textTransform="capitalize"
-                                  fontSize={"16px"}
-                                >
-                                  Click Here
-                                </Typography>
-                              </Button>
-                              <Button
-                                className={Styles.Flaged_button}
-                                style={{ marginLeft: "5px" }}
-                                variant="contained"
-                                color="secondary"
-                              >
-                                <Typography
-                                  color={"#FF0000"}
-                                  textTransform="capitalize"
-                                  fontSize={"16px"}
-                                >
-                                  Click Here
-                                </Typography>
-                              </Button>
-                            </Box>
-                            <FlagCircleRoundedIcon color="primary" />
-                          </ThemeProvider>
-                        </Grid>
-                      </Grid>
-                    ) : (
-                      ""
-                    )}
-                  </Grid>
+                  // <Grid container className={Styles.listcontenar}>
+                  //   <Grid item xs={12} sm={12} md={2} lg={1.5} xl={1.5}>
+                  //     <img src={data.logoUrl} className={Styles.User_Image} />
+                  //   </Grid>
+                  //   <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
+                  //     <Typography className={Styles.User_name_bold}>
+                  //       {data.title}
+                  //     </Typography>
+                  //     <Typography className={Styles.Review_txt}>
+                  //       {data.description}
+                  //     </Typography>
+                  //     <Box
+                  //       className={Styles.Rating_start_box}
+                  //       style={{ justifyContent: "flex-start" }}
+                  //     >
+                  //       <Rating
+                  //         className={Styles.Rating_star}
+                  //         value={(parseFloat(data.avg) / 2).toFixed(2)}
+                  //         onChange={(event, newValue) => {
+                  //           setValue(newValue);
+                  //         }}
+                  //         readOnly
+                  //       />
+                  //       <Typography className={Styles.Rating_number}>
+                  //         {(parseFloat(data.avg) / 2).toFixed(2)}
+                  //       </Typography>
+                  //     </Box>
+                  //   </Grid>
+                  //   <Grid
+                  //     item
+                  //     xs={12}
+                  //     sm={12}
+                  //     md={1}
+                  //     lg={1.5}
+                  //     xl={1.5}
+                  //     sx={{ justifyContent: "flex-end", display: "flex" }}
+                  //   >
+                  //     <Box
+                  //       style={{ justifyContent: "flex-end", display: "flex" }}
+                  //     >
+                  //       <Button
+                  //         className={Styles.deleteBtn}
+                  //         onClick={() => {
+                  //           EDITPATT(data.id);
+                  //         }}
+                  //       >
+                  //         <img src="./image/dustbin.svg" />
+                  //       </Button>
+                  //     </Box>
+                  //   </Grid>
+
+                  //   {data.status == "flaged" ? (
+                  //     <Grid container>
+                  //       <Grid item xs={12} sm={12} md={1.5} lg={1.5} xl={1.5} />
+                  //       <Grid
+                  //         item
+                  //         xs={12}
+                  //         sm={12}
+                  //         md={10.5}
+                  //         lg={10.5}
+                  //         xl={10.5}
+                  //         sx={{
+                  //           justifyContent: "space-between",
+                  //           display: "flex",
+                  //           alignItems: "center",
+                  //         }}
+                  //       >
+                  //         <ThemeProvider theme={theme}>
+                  //           <Box>
+                  //             <Button
+                  //               className={Styles.Flaged_button}
+                  //               variant="contained"
+                  //               color="secondary"
+                  //             >
+                  //               <Typography
+                  //                 color={"#FF0000"}
+                  //                 textTransform="capitalize"
+                  //                 fontSize={"16px"}
+                  //               >
+                  //                 Click Here
+                  //               </Typography>
+                  //             </Button>
+                  //             <Button
+                  //               className={Styles.Flaged_button}
+                  //               style={{ marginLeft: "5px" }}
+                  //               variant="contained"
+                  //               color="secondary"
+                  //             >
+                  //               <Typography
+                  //                 color={"#FF0000"}
+                  //                 textTransform="capitalize"
+                  //                 fontSize={"16px"}
+                  //               >
+                  //                 Click Here
+                  //               </Typography>
+                  //             </Button>
+                  //           </Box>
+                  //           <FlagCircleRoundedIcon color="primary" />
+                  //         </ThemeProvider>
+                  //       </Grid>
+                  //     </Grid>
+                  //   ) : (
+                  //     ""
+                  //   )}
+                  // </Grid>
+                  <Review_box data={data} status={"All"} />
                 );
               })}
             </TabPanel>
@@ -550,110 +550,111 @@ const Movie_review_Pages = (props) => {
               {datamenu.map((data) => {
                 console.log(data, "is_review_array___");
                 return (
-                  <Grid container className={Styles.listcontenar}>
-                    <Grid item xs={12} sm={12} md={2} lg={1.5} xl={1.5}>
-                      <img src={data.logoUrl} className={Styles.User_Image} />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
-                      <Typography className={Styles.User_name_bold}>
-                        {data.title}
-                      </Typography>
-                      <Typography className={Styles.Review_txt}>
-                        {data.description}
-                      </Typography>
-                      <Box
-                        className={Styles.Rating_start_box}
-                        style={{ justifyContent: "flex-start" }}
-                      >
-                        <Rating
-                          className={Styles.Rating_star}
-                          value={(parseFloat(data.avg) / 2).toFixed(2)}
-                          onChange={(event, newValue) => {
-                            setValue(newValue);
-                          }}
-                          readOnly
-                        />
-                        <Typography className={Styles.Rating_number}>
-                          {(parseFloat(data.avg) / 2).toFixed(2)}
-                        </Typography>
-                      </Box>
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                      sm={12}
-                      md={1}
-                      lg={1.5}
-                      xl={1.5}
-                      sx={{ justifyContent: "flex-end", display: "flex" }}
-                    >
-                      <Box
-                        style={{ justifyContent: "flex-end", display: "flex" }}
-                      >
-                        <Button
-                          className={Styles.deleteBtn}
-                          onClick={() => {
-                            EDITPATT(data.id);
-                          }}
-                        >
-                          <img src="./image/dustbin.svg" />
-                        </Button>
-                      </Box>
-                    </Grid>
-                    {data.status == "flaged" ? (
-                      <Grid container>
-                        <Grid item xs={12} sm={12} md={1.5} lg={1.5} xl={1.5} />
-                        <Grid
-                          item
-                          xs={12}
-                          sm={12}
-                          md={10.5}
-                          lg={10.5}
-                          xl={10.5}
-                          sx={{
-                            justifyContent: "space-between",
-                            display: "flex",
-                            alignItems: "center",
-                          }}
-                        >
-                          <ThemeProvider theme={theme}>
-                            <Box>
-                              <Button
-                                className={Styles.Flaged_button}
-                                variant="contained"
-                                color="secondary"
-                              >
-                                <Typography
-                                  color={"#FF0000"}
-                                  textTransform="capitalize"
-                                  fontSize={"16px"}
-                                >
-                                  Click Here
-                                </Typography>
-                              </Button>
-                              <Button
-                                className={Styles.Flaged_button}
-                                style={{ marginLeft: "5px" }}
-                                variant="contained"
-                                color="secondary"
-                              >
-                                <Typography
-                                  color={"#FF0000"}
-                                  textTransform="capitalize"
-                                  fontSize={"16px"}
-                                >
-                                  Click Here
-                                </Typography>
-                              </Button>
-                            </Box>
-                            <FlagCircleRoundedIcon color="primary" />
-                          </ThemeProvider>
-                        </Grid>
-                      </Grid>
-                    ) : (
-                      ""
-                    )}
-                  </Grid>
+                  // <Grid container className={Styles.listcontenar}>
+                  //   <Grid item xs={12} sm={12} md={2} lg={1.5} xl={1.5}>
+                  //     <img src={data.logoUrl} className={Styles.User_Image} />
+                  //   </Grid>
+                  //   <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
+                  //     <Typography className={Styles.User_name_bold}>
+                  //       {data.title}
+                  //     </Typography>
+                  //     <Typography className={Styles.Review_txt}>
+                  //       {data.description}
+                  //     </Typography>
+                  //     <Box
+                  //       className={Styles.Rating_start_box}
+                  //       style={{ justifyContent: "flex-start" }}
+                  //     >
+                  //       <Rating
+                  //         className={Styles.Rating_star}
+                  //         value={(parseFloat(data.avg) / 2).toFixed(2)}
+                  //         onChange={(event, newValue) => {
+                  //           setValue(newValue);
+                  //         }}
+                  //         readOnly
+                  //       />
+                  //       <Typography className={Styles.Rating_number}>
+                  //         {(parseFloat(data.avg) / 2).toFixed(2)}
+                  //       </Typography>
+                  //     </Box>
+                  //   </Grid>
+                  //   <Grid
+                  //     item
+                  //     xs={12}
+                  //     sm={12}
+                  //     md={1}
+                  //     lg={1.5}
+                  //     xl={1.5}
+                  //     sx={{ justifyContent: "flex-end", display: "flex" }}
+                  //   >
+                  //     <Box
+                  //       style={{ justifyContent: "flex-end", display: "flex" }}
+                  //     >
+                  //       <Button
+                  //         className={Styles.deleteBtn}
+                  //         onClick={() => {
+                  //           EDITPATT(data.id);
+                  //         }}
+                  //       >
+                  //         <img src="./image/dustbin.svg" />
+                  //       </Button>
+                  //     </Box>
+                  //   </Grid>
+                  //   {data.status == "flaged" ? (
+                  //     <Grid container>
+                  //       <Grid item xs={12} sm={12} md={1.5} lg={1.5} xl={1.5} />
+                  //       <Grid
+                  //         item
+                  //         xs={12}
+                  //         sm={12}
+                  //         md={10.5}
+                  //         lg={10.5}
+                  //         xl={10.5}
+                  //         sx={{
+                  //           justifyContent: "space-between",
+                  //           display: "flex",
+                  //           alignItems: "center",
+                  //         }}
+                  //       >
+                  //         <ThemeProvider theme={theme}>
+                  //           <Box>
+                  //             <Button
+                  //               className={Styles.Flaged_button}
+                  //               variant="contained"
+                  //               color="secondary"
+                  //             >
+                  //               <Typography
+                  //                 color={"#FF0000"}
+                  //                 textTransform="capitalize"
+                  //                 fontSize={"16px"}
+                  //               >
+                  //                 Click Here
+                  //               </Typography>
+                  //             </Button>
+                  //             <Button
+                  //               className={Styles.Flaged_button}
+                  //               style={{ marginLeft: "5px" }}
+                  //               variant="contained"
+                  //               color="secondary"
+                  //             >
+                  //               <Typography
+                  //                 color={"#FF0000"}
+                  //                 textTransform="capitalize"
+                  //                 fontSize={"16px"}
+                  //               >
+                  //                 Click Here
+                  //               </Typography>
+                  //             </Button>
+                  //           </Box>
+                  //           <FlagCircleRoundedIcon color="primary" />
+                  //         </ThemeProvider>
+                  //       </Grid>
+                  //     </Grid>
+                  //   ) : (
+                  //     ""
+                  //   )}
+                  // </Grid>
+                  <Review_box data={data} status={"flaged"} />
                 );
               })}
             </TabPanel>

@@ -1,457 +1,455 @@
 @font-face {
-    font-family: Gilroy-Bold;
-    src: url(../../styles//font/Gilroy/Gilroy-Bold.woff);
+  font-family: Gilroy-Bold;
+  src: url(../../styles//font/Gilroy/Gilroy-Bold.woff);
 }
 
 @font-face {
-    font-family: Gilroy-Regular;
-    src: url(../../styles/font/Gilroy-Font//Gilroy-Regular.ttf);
+  font-family: Gilroy-Regular;
+  src: url(../../styles/font/Gilroy-Font//Gilroy-Regular.ttf);
 }
 
 @font-face {
-    font-family: Poppims-700;
-    src: url(../../styles/font/Poppins/Poppins-Bold.ttf);
+  font-family: Poppims-700;
+  src: url(../../styles/font/Poppins/Poppins-Bold.ttf);
 }
 
 @font-face {
-    font-family: Gilroy-Medium;
-    src: url(../../styles/font/Gilroy-Font/Gilroy-Medium.ttf);
+  font-family: Gilroy-Medium;
+  src: url(../../styles/font/Gilroy-Font/Gilroy-Medium.ttf);
 }
 
 .Movie_name_ {
-    font-family: 'Poppims-700' !important;
-    font-size: 16px !important;
-    color: #FFFFFF;
-    margin-top: 3px !important;
+  font-family: "Poppims-700" !important;
+  font-size: 16px !important;
+  color: #ffffff;
+  margin-top: 3px !important;
 }
 
 .top_movie_txt {
-    font-size: 24px !important;
-    color: white;
-    font-family: Gilroy-Bold !important;
+  font-size: 24px !important;
+  color: white;
+  font-family: Gilroy-Bold !important;
 }
 
 .Movie_main_box {
-    margin-top: 21px;
+  margin-top: 21px;
 }
 
 .movie_box {
-    max-width: 236px;
-    background: #332E59;
-    padding: 10px 16px 10px 16px;
-    transition: 0.4s;
-    border-radius: 10px;
-
+  max-width: 236px;
+  background: #332e59;
+  padding: 10px 16px 10px 16px;
+  transition: 0.4s;
+  border-radius: 10px;
 }
 
 .movie_box:hover {
-    max-width: 236px;
-    background: #332E59;
-    box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
-    padding: 10px 16px 10px 16px;
+  max-width: 236px;
+  background: #332e59;
+  box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
+  padding: 10px 16px 10px 16px;
 }
 
 .Movie_img_ {
-    border-radius: 10px;
-
+  border-radius: 10px;
+  height: auto !important;
 }
 
 .listgridmnew {
-    display: flex;
-    background: #332E59;
-    box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    margin-bottom: 20px;
-    padding: 10px 0px;
+  display: flex;
+  background: #332e59;
+  box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
 }
 
 .listgridmnew11 {
-    background: #332E59;
-    box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    margin-right: 15px;
-    padding: 10px 11px;
+  background: #332e59;
+  box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin-right: 15px;
+  padding: 10px 11px;
 }
 
 .Content_div {
-    margin-top: 30px;
-    justify-content: center;
+  margin-top: 30px;
+  justify-content: center;
 }
 
 .Content_div {
-    margin-top: 30px;
-    justify-content: center;
+  margin-top: 30px;
+  justify-content: center;
 }
 
 .Tab_Bar_ {
-    width: max-content;
-    border: 1px solid #046DA8;
-    border-radius: 10px;
+  width: max-content;
+  border: 1px solid #046da8;
+  border-radius: 10px;
 }
-.Tab_Bar_ span{
-    height: 0px;
+.Tab_Bar_ span {
+  height: 0px;
 }
-
 
 .Tab_panel_ {
-    padding: 27px 27px 0px 27px !important;
-    max-height: 300px;
+  padding: 27px 27px 0px 27px !important;
+  max-height: 300px;
 }
 
 .Tab_panel_22 {
-    padding: 27px 27px 0px 27px !important;
-    height: 400px;
-    overflow-y: scroll;
-
+  padding: 27px 27px 0px 27px !important;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .Tabs_ {
-    font-family: 'Gilroy-Regular' !important;
-    color: white !important;
-    border-radius: 6px !important;
-    text-transform: capitalize !important;
-    width: 210px !important;
+  font-family: "Gilroy-Regular" !important;
+  color: white !important;
+  border-radius: 6px !important;
+  text-transform: capitalize !important;
+  width: 210px !important;
 }
 
 .User_Image {
-    width: 200px;
-    height: 150px;
-    border-radius: 10px;
-    margin: 0px 0px 0px 20px;
+  width: 200px;
+  //   height: 150px;
+  border-radius: 10px;
+  //   margin: 0px 0px 0px 20px;
 }
 
 .User_Image11 {
-    width: 200px;
-    height: 110px;
-    border-radius: 10px;
+  width: 200px;
+  height: 110px;
+  border-radius: 10px;
 }
 
 .User_name_bold {
-    font-family: 'Gilroy-Bold' !important;
-    font-size: 20px !important;
-    line-height: 23px;
-    color: #FFFFFF !important;
+  font-family: "Gilroy-Bold" !important;
+  font-size: 20px !important;
+  line-height: 23px;
+  color: #ffffff !important;
 }
 
 .User_name_bold11 {
-    font-family: 'Gilroy-Bold' !important;
-    font-size: 20px !important;
-    color: #FFFFFF !important;
-    padding-top: 8px;
+  font-family: "Gilroy-Bold" !important;
+  font-size: 20px !important;
+  color: #ffffff !important;
+  padding-top: 8px;
 }
 
 .Review_txt {
-    color: #FFFFFF !important;
-    font-family: Gilroy-Regular !important;
-    font-size: 14px !important;
-    padding-top: 20px;
+  color: #ffffff !important;
+  font-family: Gilroy-Regular !important;
+  font-size: 14px !important;
+  padding-top: 20px;
 }
 
 .Review_txt11 {
-    color: #FFFFFF !important;
-    font-family: Gilroy-Regular !important;
-    font-size: 14px !important;
-    padding-top: 6px;
+  color: #ffffff !important;
+  font-family: Gilroy-Regular !important;
+  font-size: 14px !important;
+  padding-top: 6px;
 }
 
 .deleteBtn {
-    align-items: baseline !important;
-
+  align-items: baseline !important;
 }
 
 .deleteBtn:hover {
-    background: transparent !important;
+  background: transparent !important;
 }
 
 .avtaradataedit {
-    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%), #000000;
-    width: 33PX !important;
-    height: 33px !important;
+  background: linear-gradient(180deg, #046da8 0%, #07a4e7 100%), #000000;
+  width: 33px !important;
+  height: 33px !important;
 }
 
 .Menu_Item {
-    background-color: #332E59;
-    padding: 10px;
+  background-color: #332e59;
+  padding: 10px;
 }
 
 .Filter_btns {
-    margin-top: 5px !important;
-    border-radius: 20px !important;
-    font-size: 15px !important;
-    font-family: Gilroy-Regular !important;
-    text-transform: capitalize !important;
+  margin-top: 5px !important;
+  border-radius: 20px !important;
+  font-size: 15px !important;
+  font-family: Gilroy-Regular !important;
+  text-transform: capitalize !important;
 }
 
 .Filter_head {
-    font-family: 'Gilroy-Medium' !important;
-    font-size: 18px !important;
-    color: #FFFFFF;
-    opacity: 0.55;
-    margin-bottom: 5px !important;
+  font-family: "Gilroy-Medium" !important;
+  font-size: 18px !important;
+  color: #ffffff;
+  opacity: 0.55;
+  margin-bottom: 5px !important;
 }
 
 .Btn_rows {
-    display: flex;
-    justify-content: 'center';
-    gap: 7px;
-
+  display: flex;
+  justify-content: "center";
+  gap: 7px;
 }
 
 .listmenumen {
-    display: flex;
-    padding: 0px 26px 0px 26px;
+  display: flex;
+  padding: 0px 26px 0px 26px;
 }
 
 .listbtn_fitar {
-    background: #332E59;
-    border: 1px solid #FFFFFF !important;
-    border-radius: 5px !important;
-    padding: 7px 7px !important;
-    margin-right: 20px !important;
+  background: #332e59;
+  border: 1px solid #ffffff !important;
+  border-radius: 5px !important;
+  padding: 7px 7px !important;
+  margin-right: 20px !important;
 }
 
 .livetapoand p {
-    font-size: 32px !important;
-    font-family: Gilroy-Bold !important;
-    color: #FFFFFF;
+  font-size: 32px !important;
+  font-family: Gilroy-Bold !important;
+  color: #ffffff;
 }
 
 .Listdatacom {
-    padding: 0px 27px !important;
+  padding: 0px 27px !important;
 }
 
 .listpopuy22 {
-    padding: 50px 18px 40px 50px !important;
-    background: #282043;
+  padding: 50px 18px 40px 50px !important;
+  background: #282043;
 }
 
 .Llistsffsffs img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  //   height: 100%;
+  overflow: hidden;
 }
 
 .Llistsffsffs {
-    width: 100%;
-    height: 135px;
+  width: 100%;
+  height: 135px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .Llistsffsffs22 img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  //   height: 100%;
+  overflow: hidden;
 }
 
 .Llistsffsffs22 {
-    width: 230px;
-    height: 165px;
+  width: 230px;
+  height: 165px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 .avtaruplo {
-    border-radius: 5px;
-    width: 20%;
-    height: 35vh;
-    background: #332E59;
+  border-radius: 5px;
+  width: 20%;
+  height: 35vh;
+  background: #332e59;
 }
 
 .iconbtnop {
-    position: relative !important;
-    top: 21px;
-    right: 51px;
+  position: relative !important;
+  top: 21px;
+  right: 51px;
 }
 
 .listmenuuppohot {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .inputnamelist {
-    width: 96%;
-    margin-top: 20px !important;
+  width: 96%;
+  margin-top: 20px !important;
 
-    div {
-        height: 46px;
-        background: #332E59;
-        border-radius: 10px;
-        border-radius: 5px;
-        color: #ffffff;
-        font-size: 14px;
-        font-family: Gilroy-Medium !important;
-    }
-
+  div {
+    height: 46px;
+    background: #332e59;
+    border-radius: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: Gilroy-Medium !important;
+  }
 }
 
 .Reply_text_area {
-    border-radius: 5px;
-    height: 100px !important;
-    width: 96%;
-    background: #332E59;
-    margin-top: 20px;
-    font-family: Gilroy-Regular !important;
-    padding: 15px;
-    color: white;
+  border-radius: 5px;
+  height: 100px !important;
+  width: 96%;
+  background: #332e59;
+  margin-top: 20px;
+  font-family: Gilroy-Regular !important;
+  padding: 15px;
+  color: white;
 }
 
 .listboxbtn {
-    padding: 30px 0px 0px 0px;
-    display: flex;
-    justify-content: center;
+  padding: 30px 0px 0px 0px;
+  display: flex;
+  justify-content: center;
 }
 
 .listupdetbtn {
-    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
-    border: 1px solid #1976d2 !important;
-    border-radius: 10px !important;
-    width: 170px;
-    color: #FFFFFF !important;
-    font-size: 18px !important;
-    text-transform: capitalize !important;
-    font-family: 'Gilroy-Light' !important;
-    margin-right: 20px !important;
+  background: linear-gradient(180deg, #046da8 0%, #07a4e7 100%);
+  border: 1px solid #1976d2 !important;
+  border-radius: 10px !important;
+  width: 170px;
+  color: #ffffff !important;
+  font-size: 18px !important;
+  text-transform: capitalize !important;
+  font-family: "Gilroy-Light" !important;
+  margin-right: 20px !important;
 }
 
 .listupdetbtn2 {
-    border: 1px solid #1976d2 !important;
-    border-radius: 10px !important;
-    width: 170px;
-    color: #FFFFFF !important;
-    font-size: 18px !important;
-    text-transform: capitalize !important;
-    font-family: 'Gilroy-Light' !important;
+  border: 1px solid #1976d2 !important;
+  border-radius: 10px !important;
+  width: 170px;
+  color: #ffffff !important;
+  font-size: 18px !important;
+  text-transform: capitalize !important;
+  font-family: "Gilroy-Light" !important;
 }
 
 .listupdetbtn3 {
-    background: linear-gradient(180deg, rgba(4, 109, 168, 0.45) 0%, rgba(7, 164, 231, 0.45) 100%);
-    border: 1px solid #1976d2 !important;
-    border-radius: 10px !important;
-    width: 170px;
-    color: #FFFFFF !important;
-    font-size: 18px !important;
-    text-transform: capitalize !important;
-    font-family: 'Gilroy-Light' !important;
-    margin-right: 20px !important;
-
+  background: linear-gradient(
+    180deg,
+    rgba(4, 109, 168, 0.45) 0%,
+    rgba(7, 164, 231, 0.45) 100%
+  );
+  border: 1px solid #1976d2 !important;
+  border-radius: 10px !important;
+  width: 170px;
+  color: #ffffff !important;
+  font-size: 18px !important;
+  text-transform: capitalize !important;
+  font-family: "Gilroy-Light" !important;
+  margin-right: 20px !important;
 }
 
 .listupdetbtn2:hover {
-    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
-    border: 1px solid #1976d2 !important;
+  background: linear-gradient(180deg, #046da8 0%, #07a4e7 100%);
+  border: 1px solid #1976d2 !important;
 }
 
 .listupdetbtn:hover {
-    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
-    border: 1px solid #1976d2 !important;
+  background: linear-gradient(180deg, #046da8 0%, #07a4e7 100%);
+  border: 1px solid #1976d2 !important;
 }
 
 @media only screen and (max-width: 900px) {
+  .listmenumen {
+    display: block;
+    padding: 0px 20px 0px 50px;
+  }
 
-    .listmenumen {
-        display: block;
-        padding: 0px 20px 0px 50px;
-    }
+  .Tabs_ {
+    width: 226px !important;
+  }
 
-    .Tabs_ {
-        width: 226px !important;
-    }
+  .listgridcode {
+    display: block !important;
+  }
 
-    .listgridcode {
-        display: block !important;
-    }
+  .lisrdatanaftevb {
+    padding-bottom: 20px;
+  }
 
-    .lisrdatanaftevb {
-        padding-bottom: 20px;
-    }
+  .listgridmnew {
+    display: block;
+  }
 
-    .listgridmnew {
-        display: block;
-    }
+  .User_Image {
+    width: 405px;
+    height: 194px;
+    margin: 0px 0px 0px 26px;
+  }
 
-    .User_Image {
-        width: 405px;
-        height: 194px;
-        margin: 0px 0px 0px 26px;
+  .userdataanfdata {
+    padding: 10px 15px 0px 19px;
+  }
 
-    }
+  .Tab_panel_ {
+    padding: 27px 17px 0px 50px !important;
+  }
 
-    .userdataanfdata {
-        padding: 10px 15px 0px 19px;
-    }
+  .Listdatacom {
+    padding: 0px 0px 0px 50px !important;
+  }
 
-    .Tab_panel_ {
-        padding: 27px 17px 0px 50px !important;
-    }
+  .User_Image11 {
+    width: 405px;
+    height: 194px;
+    margin: 0px 0px 0px 17px;
+  }
 
-    .Listdatacom {
-        padding: 0px 0px 0px 50px !important;
-    }
+  .nametextgerid {
+    padding: 0px 0px 13px 23px;
+  }
 
-    .User_Image11 {
-        width: 405px;
-        height: 194px;
-        margin: 0px 0px 0px 17px;
-    }
-
-    .nametextgerid {
-        padding: 0px 0px 13px 23px;
-    }
-
-    .listgridmnew11 {
-        margin-bottom: 20px;
-    }
+  .listgridmnew11 {
+    margin-bottom: 20px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
+  .listmenumen {
+    display: block;
+    padding: 0px 27px 0px 27px;
+  }
 
-    .listmenumen {
-        display: block;
-        padding: 0px 27px 0px 27px;
+  .Tabs_ {
+    width: 160px !important;
+  }
 
-    }
+  .listgridcode {
+    display: block !important;
+  }
 
-    .Tabs_ {
-        width: 160px !important;
-    }
+  .lisrdatanaftevb {
+    padding-bottom: 20px;
+  }
 
-    .listgridcode {
-        display: block !important;
-    }
+  .listgridmnew {
+    display: block;
+  }
 
-    .lisrdatanaftevb {
-        padding-bottom: 20px;
-    }
+  .User_Image {
+    width: 274px;
+    height: 194px;
+    margin: 0px 0px 0px 26px;
+  }
 
-    .listgridmnew {
-        display: block;
-    }
+  .userdataanfdata {
+    padding: 10px 15px 0px 19px;
+  }
 
-    .User_Image {
-        width: 274px;
-        height: 194px;
-        margin: 0px 0px 0px 26px;
+  .Tab_panel_ {
+    padding: 27px 17px 0px 27px !important;
+  }
 
-    }
+  .Listdatacom {
+    padding: 0px 0px 0px 27px !important;
+  }
 
-    .userdataanfdata {
-        padding: 10px 15px 0px 19px;
-    }
+  .User_Image11 {
+    width: 274px;
+    height: 194px;
+    margin: 0px 0px 0px 17px;
+  }
 
-    .Tab_panel_ {
-        padding: 27px 17px 0px 27px !important;
-    }
+  .nametextgerid {
+    padding: 0px 0px 13px 23px;
+  }
 
-    .Listdatacom {
-        padding: 0px 0px 0px 27px !important;
-    }
-
-    .User_Image11 {
-        width: 274px;
-        height: 194px;
-        margin: 0px 0px 0px 17px;
-    }
-
-    .nametextgerid {
-        padding: 0px 0px 13px 23px;
-    }
-
-    .listgridmnew11 {
-        margin-bottom: 20px;
-    }
+  .listgridmnew11 {
+    margin-bottom: 20px;
+  }
 }

@@ -219,6 +219,10 @@
   margin-top: 20px;
 }
 
+.Review_box_Active{
+  border: 1px solid red;
+}
+
 .User_Image {
   border-radius: 50%;
   width: 92px;
