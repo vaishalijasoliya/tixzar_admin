@@ -13,7 +13,6 @@ import moment from "moment";
 import { Top_3_boxes } from "../Layout/Dashboardpage";
 // import Chart from "react-apexcharts";
 import dynamic from "next/dynamic";
-const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export const data = [
   ["x", "tickets"],
@@ -31,12 +30,12 @@ export const Usercount = (props) => {
   const [signupCount, setSignupCount] = React.useState(0);
   const [activeCount, setActiveCount] = React.useState(0);
   const [inactiveCount, setInactiveCount] = React.useState(0);
-  const [age, setAge] = React.useState("year");
+  const [age, setAge] = React.useState("today");
   const [startDate, setDateStart] = React.useState("");
   const [dateEnd, setDateEnd] = React.useState("");
   const [CharacterData, setDatachart] = React.useState(["Year", "x"]);
   const [chartData, setChartData] = React.useState([]);
-  const [selectedDate, setSelectedDate] = React.useState("year");
+  const [selectedDate, setSelectedDate] = React.useState("today");
   const [dateArray_data, setDateArray_Data] = React.useState([]);
   const [reviewArray_data, setReviewArray_data] = React.useState([]);
 
@@ -143,10 +142,6 @@ export const Usercount = (props) => {
 
   const Select_Array = [
     {
-      value: "year",
-      name: "This year",
-    },
-    {
       value: "today",
       name: "Today",
     },
@@ -159,8 +154,12 @@ export const Usercount = (props) => {
       name: "This month",
     },
     {
+      value: "year",
+      name: "This year",
+    },
+    {
       value: "custome",
-      name: "Custome",
+      name: "Custom Range",
     },
   ];
 
@@ -346,13 +345,6 @@ export const Usercount = (props) => {
                 options={options2}
                 style={{ borderRadius: "15px" }}
               />
-
-              {/* <Chart
-                options={ChartDetails.options}
-                series={ChartDetails.series}
-                // height={"315"}
-                type="line"
-              /> */}
             </Box>
           </Grid>
         </Grid>

@@ -771,6 +771,14 @@ a {
   background: #634bbf;
   width: 100% !important;
   height: 100vh !important;
+  margin: 0 !important;
+}
+
+.Login_page_main {
+  background: #634bbf;
+  width: 100% !important;
+  height: 100vh !important;
+  margin: 0 !important;
 }
 
 .apexcharts-data-labels {
@@ -820,12 +828,13 @@ a {
 }
 
 // PLACE HOLDER STYLE
-.rs-picker-toggle .rs-picker-toggle-placeholder{
+.rs-picker-toggle .rs-picker-toggle-placeholder {
   color: white !important;
 }
 
 //DATEPICKER STYLES
-.rs-picker-menu, .rs-picker-toggle-caret{
+.rs-picker-menu,
+.rs-picker-toggle-caret {
   left: 50% !important;
 }
 
@@ -912,6 +921,32 @@ a {
   left: 0;
   top: 6px;
 }
+
+// SEARCH__DESIGN
+.Search_Bar_input {
+  background: #332e59;
+  border: 1px solid #634bbf;
+  border-radius: 10px;
+  height: 62px;
+  width: 100%;
+
+  justify-content: center;
+}
+
+.Search_Bar_input fieldset {
+  border-color: transparent !important;
+}
+
+.Search_Bar_input label {
+  border-color: transparent !important;
+}
+
+.Search_Bar_input input {
+  font-family: "Poppims-400";
+  color: #bdbdbd;
+  font-size: 20px;
+}
+
 .css-1aquho2-MuiTabs-indicator {
   // background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%) !important;
   transition: 0.5s !important;
@@ -982,5 +1017,11 @@ a {
   .mainView_of_all_pages {
     // padding: 20px 35px 40px 73px;
     padding: 20px 40px 40px 73px;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .Login_page_main {
+    height: 100% !important;
   }
 }

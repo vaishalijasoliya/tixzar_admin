@@ -121,7 +121,7 @@ const ManageFaq = (props) => {
     props.props.loaderRef(false);
     if (!!data) {
       if (data.status == true) {
-        toast.success(data.message);
+        toast.success("FAQ delete successfully ");
         getAccounts();
       } else {
         toast.error(data.message);

@@ -3,11 +3,19 @@ import Mobile from "../component/monumber";
 import style from "../styles/login.module.css";
 import { connect } from "react-redux";
 import { Types } from "/src/constants/actionTypes";
+import { Grid } from "@mui/material";
 
 const Phone = (props) => {
   return (
     <>
-      <Mobile props={props} />
+      <Grid
+        container
+        spacing={1}
+        style={{ height: "100%" }}
+        className="Login_page_main"
+      >
+        <Mobile props={props} />
+      </Grid>
     </>
   );
 };

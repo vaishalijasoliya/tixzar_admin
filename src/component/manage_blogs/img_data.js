@@ -11,12 +11,7 @@ export const Movie_Box = ({ data }) => {
     <>
       <Box
         className={Styles.movie_box}
-        // onClick={() => {
-        //     router.push({
-        //         pathname: './movie_review',
-        //         query: { emailID: item.id }
-        //     });
-        // }}
+   
       >
         <>
           <div className={Styles.Llistsffsffs}>

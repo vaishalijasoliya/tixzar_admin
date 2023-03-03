@@ -1,189 +1,183 @@
 @font-face {
-
-    font-family: "Gilroy-regular";
-    src: url(../styles/font/Gilroy-Font/Gilroy-Medium.ttf);
+  font-family: "Gilroy-regular";
+  src: url(../styles/font/Gilroy-Font/Gilroy-Medium.ttf);
 }
 
 @font-face {
-    font-family: Popins;
-    src: url(../styles/font/Poppins/Poppins-Medium.ttf);
+  font-family: Popins;
+  src: url(../styles/font/Poppins/Poppins-Medium.ttf);
 }
 
 @font-face {
-    font-family: "Gilroy-bolt";
-    src: url(../styles/font/Gilroy/Gilroy-Heavy.ttf);
+  font-family: "Gilroy-bolt";
+  src: url(../styles/font/Gilroy/Gilroy-Heavy.ttf);
 }
 
 @font-face {
-    font-family: Poppins-400;
-    src: url(../styles/font/Poppins/Poppins-Regular.ttf);
+  font-family: Poppins-400;
+  src: url(../styles/font/Poppins/Poppins-Regular.ttf);
 }
 
 @font-face {
-    font-family: Poppins-500;
-    src: url(../styles/font/Poppins/Poppins-Medium.ttf);
+  font-family: Poppins-500;
+  src: url(../styles/font/Poppins/Poppins-Medium.ttf);
 }
 
 .listcontenatlogin {
-    background-color: #282042 !important;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+  background-color: #282042 !important;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .listgrifanfbox {
-    background: #332E59;
-    box-shadow: 0px 4px 21px 12px rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-    padding: 0px 60px 0px 60px;
+  background: #332e59;
+  box-shadow: 0px 4px 21px 12px rgb(0 0 0 / 5%);
+  border-radius: 10px;
+  padding: 20px 40px;
 }
 
 .listboxmailtext {
-    padding-top: 70px;
-    padding-bottom: 25px;
+  padding-top: 70px;
+  padding-bottom: 25px;
 }
 
 .listboxmailtext p {
-    font-family: "Gilroy-bolt";
-    font-size: 46px;
-    color: #FFFFFF;
+  font-family: "Gilroy-bolt";
+  font-size: 46px;
+  color: #ffffff;
 }
 
 .patretextlog p {
-    font-family: "Gilroy-regular";
-    font-size: 18px;
-    text-align: center;
-    color: #D7D1FF;
+  font-family: "Gilroy-regular";
+  font-size: 18px;
+  text-align: center;
+  color: #d7d1ff;
 }
 
 .listbuttomopen button {
-    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
-    border-radius: 10px;
-    font-size: 20px;
-    color: #FFFFFF;
-    font-family: "Gilroy-regular";
-    width: 100%;
-    height: 58px;
-    text-transform: capitalize;
+  background: linear-gradient(180deg, #046da8 0%, #07a4e7 100%);
+  border-radius: 10px;
+  font-size: 20px;
+  color: #ffffff;
+  font-family: "Gilroy-regular";
+  width: 100%;
+  height: 58px;
+  text-transform: capitalize;
 }
 
 .listbuttomopen {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 
 .listbuttomopen22 {
-    padding-top: 30px;
-    padding-bottom: 60px;
+  padding-top: 30px;
+  padding-bottom: 60px;
 }
 
 .listbuttomopen22 button {
-    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
-    border-radius: 10px;
-    font-size: 20px;
-    color: #FFFFFF;
-    text-transform: capitalize;
-    font-family: "Gilroy-regular";
-    width: 100%;
-    height: 58px;
-
+  background: linear-gradient(180deg, #046da8 0%, #07a4e7 100%);
+  border-radius: 10px;
+  font-size: 20px;
+  color: #ffffff;
+  text-transform: capitalize;
+  font-family: "Gilroy-regular";
+  width: 100%;
+  height: 58px;
 }
 .listbuttomopen2223 {
-    padding-top: 30px;
-    padding-bottom: 40px;
+  /* padding-top: 30px; */
+  /* padding-bottom: 40px; */
+  margin-top: 10px;
 }
 
 .listbuttomopen2223 button {
-    background: linear-gradient(180deg, #046DA8 0%, #07A4E7 100%);
-    border-radius: 10px;
-    font-size: 20px;
-    color: #FFFFFF;
-    text-transform: capitalize;
-    font-family: "Gilroy-regular";
-    width: 100%;
-    height: 58px;
-
+  background: linear-gradient(180deg, #046da8 0%, #07a4e7 100%);
+  border-radius: 10px;
+  font-size: 20px;
+  color: #ffffff;
+  text-transform: capitalize;
+  font-family: "Gilroy-regular";
+  width: 100%;
+  height: 58px;
 }
 .ategandperegaf {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 70px;
-    padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 70px;
+  padding-top: 20px;
 }
 
 .listskipanda {
-    color: #079EE0 !important;
-    font-family: "Gilroy-regular";
-    font-size: 20px;
-
+  color: #079ee0 !important;
+  font-family: "Gilroy-regular";
+  font-size: 20px;
 }
 
 .ategandperegaf p {
-    color: #FFFFFF !important;
-    font-family: "Gilroy-regular";
-    font-size: 20px;
+  color: #ffffff !important;
+  font-family: "Gilroy-regular";
+  font-size: 20px;
 }
 
 .inputintextline {
-    width: 100%;
-    /* background-color: #282042; */
+  width: 100%;
+  /* background-color: #282042; */
 }
 
 .inputintextline div {
-    background: #282042;
-    /* border-radius: 10px; */
-    height: 40px !important;
-    width: 100%;
-    font-size: 20px;
-    font-family: "Gilroy-regular" !important;
+  background: #282042;
+  /* border-radius: 10px; */
+  height: 40px !important;
+  width: 100%;
+  font-size: 20px;
+  font-family: "Gilroy-regular" !important;
 
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 .inputintextline input {
-    background: #332E59;
-    padding: 10px 14px;
-
+  background: #332e59;
+  padding: 10px 14px;
 }
 
 .inputintextline p {
-    background: #332E59;
-
+  background: #332e59;
 }
 
 .inputintextline fieldset legend {
-    float: left;
+  float: left;
 }
 
 .inputintextline fieldset {
-    /* background: #282042; */
-    border-radius: 10px;
-    color: #FFFFFF;
-
+  /* background: #282042; */
+  border-radius: 10px;
+  color: #ffffff;
 }
 
 .listinputbox {
-    padding-top: 10px;
+  /* padding-top: 10px; */
 }
 
 .listemailtext {
-    color: #FFFFFF !important;
-    font-family: "Gilroy-regular" !important;
-    font-size: 20px !important;
-    padding-bottom: 8px;
-    padding-top: 5px;
+  color: #ffffff !important;
+  font-family: "Gilroy-regular" !important;
+  font-size: 20px !important;
+  padding-bottom: 8px;
+  /* padding-top: 5px; */
 }
 
 .inpurdata1 {
-    width: 100%;
-    background: #282042;
+  width: 100%;
+  background: #282042;
 }
 
 .inpurdata1 div {
-    height: 58px !important;
-    color: #FFFFFF !important;
-    font-family: "Gilroy-regular" !important;
-    font-size: 20px !important;
+  height: 58px !important;
+  color: #ffffff !important;
+  font-family: "Gilroy-regular" !important;
+  font-size: 20px !important;
 }
 
 /* .menolistlogo {
@@ -194,83 +188,82 @@
 } */
 
 .menolistlogo {
-    color: #FFFFFF !important;
-    min-width: 30px !important;
+  color: #ffffff !important;
+  min-width: 30px !important;
 }
 
 .listboxmailtext22 {
-    padding-top: 50px;
-    padding-bottom: 25px;
+  padding-top: 50px;
+  padding-bottom: 25px;
 }
 
 .listboxmailtext22 p {
-    font-family: "Gilroy-bolt";
-    font-size: 43px;
-    color: #FFFFFF;
+  font-family: "Gilroy-bolt";
+  font-size: 43px;
+  color: #ffffff;
 }
 .listboxmailtext2223 {
-    padding-top: 20px;
-    padding-bottom: 25px;
+  /* padding-top: 20px; */
+  /* padding-bottom: 25px; */
 }
 
 .listboxmailtext2223 p {
-    font-family: "Gilroy-bolt";
-    font-size: 43px;
-    color: #FFFFFF;
+  font-family: "Gilroy-bolt";
+  font-size: 43px;
+  color: #ffffff;
 }
-.forgotadatext{
-    color: white;
-    font-family: Poppins-400 !important;
-    font-size: 14px;
-    text-decoration: none !important;
-    text-align: end;
-    display: flex;
-    justify-content: end;
-    padding-top: 10px;
-    cursor: pointer;
+.forgotadatext {
+  color: white;
+  font-family: Poppins-400 !important;
+  font-size: 14px;
+  text-decoration: none !important;
+  text-align: end;
+  display: flex;
+  justify-content: end;
+  padding-top: 10px;
+  cursor: pointer;
 }
-.forgotadatext:hover{
-    color: white;
-    font-family: Poppins-400 !important;
-    font-size: 14px;
-    text-decoration: none !important;
+.forgotadatext:hover {
+  color: white;
+  font-family: Poppins-400 !important;
+  font-size: 14px;
+  text-decoration: none !important;
 }
 .Search_Bar_input {
-    background: #282042;
-    border: 1px solid #634BBF !important;
-    border-radius: 10px;
-    height: 62px;
-    width: 100%;
-    /* justify-content: center; */
+  background: #282042;
+  border: 1px solid #634bbf !important;
+  border-radius: 10px;
+  height: 62px;
+  width: 100%;
+  /* justify-content: center; */
 }
 
 .Search_Bar_input fieldset {
-    border-color: transparent !important;
+  border-color: transparent !important;
 }
 
 .Search_Bar_input label {
-    border-color: transparent !important;
+  border-color: transparent !important;
 }
 
 .Search_Bar_input input {
-    font-family: Poppins-400 !important;
-    color: #BDBDBD;
-    font-size: 20px;
+  font-family: Poppins-400 !important;
+  color: #bdbdbd;
+  font-size: 20px;
 }
-
-
 
 @media only screen and (max-width: 900px) {
-
-    .listgrifanfbox {
-        padding: 0px 30px 0px 30px;
-margin: 0px 30px 0px 30px !important;
-    }
+  .listgrifanfbox {
+    padding: 20px;
+    margin: 0px 30px 0px 30px !important;
+  }
 }
 @media only screen and (max-width: 500px) {
-
-    .listgrifanfbox {
-        padding: 0px 30px 0px 30px;
-margin: 0px 0px 0px 0px !important;
-    }
+  .listgrifanfbox {
+    padding: 0px 30px 0px 30px;
+    margin: 0px 0px 0px 0px !important;
+  }
+  .listcontenatlogin {
+    height: 100%;
+  }
 }

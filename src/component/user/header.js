@@ -423,7 +423,6 @@ const Nevbar = (props) => {
             </div>
           </Menu>
           <div className={styles.pohotloho1}>
-            {/* <img src={props.props.profile.profile_photo} /> */}
             <Avatar
               src={userImage ? userImage : "./image/User_img.svg"}
               className={styles.pohotloho}

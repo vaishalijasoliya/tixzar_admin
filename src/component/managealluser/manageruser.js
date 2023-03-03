@@ -6,6 +6,9 @@ import {
   TableBody,
   Tab,
   Tabs,
+  TextField,
+  InputAdornment,
+  Button,
 } from "@mui/material";
 import React, { useEffect, useMemo, useState } from "react";
 import Styles from "./manageruser.module.css";
@@ -65,12 +68,8 @@ const Movie_review_Pages = (props) => {
     props.props.loaderRef(false);
     if (!!data) {
       if (data.status == true) {
-        const accoyty = [];
-        const csvall = [];
-
         const Flaged_data_list = [];
         const All_data_list = [];
-
         for (let index = 0; index < data.data.length; index++) {
           const element = data.data[index];
           const object = {
@@ -84,7 +83,6 @@ const Movie_review_Pages = (props) => {
           if (object.status == "flaged") {
             Flaged_data_list.push(object);
           }
-
           All_data_list.push(object);
         }
         setFlaged_review_list(Flaged_data_list);
@@ -120,6 +118,7 @@ const Movie_review_Pages = (props) => {
     if (!!data) {
       if (data.status == true) {
         toast.success(data.message);
+        adminUserList();
       } else {
         toast.error(data.message);
       }
@@ -141,7 +140,35 @@ const Movie_review_Pages = (props) => {
   return (
     <Box className="mainView_of_all_pages">
       <Box className={Styles.Movie_main_box}>
-        <Box className={Styles.Content_div}>
+        <TextField
+          placeholder="Search"
+          className={"Search_Bar_input"}
+          id="input-with-icon-textfield"
+          // onChange={(e) => {
+          //   console.log(e.target.value, "is_value____");
+          //   Search_bar_(e);
+          // }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <img src="./image/MagnifyingGlass.svg" />
+              </InputAdornment>
+            ),
+            endAdornment: (
+              <Button
+                size="small"
+                style={{
+                  minWidth: "35px",
+                }}
+                // onClick={handleClick}
+              >
+                <img src="./image/Faders.svg" />
+              </Button>
+            ),
+          }}
+          variant="outlined"
+        />
+        <Box className={Styles.Content_div} sx={{ marginTop: "10px" }}>
           <TabContext value={value}>
             <Tabs
               value={value}

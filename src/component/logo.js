@@ -49,8 +49,8 @@ const Newpass = (props) => {
 
   const onLoginPress = async () => {
     var body = {
-      email: formik.values.newPassword,
-      password: formik.values.reTypePassword,
+      email: formik.values.email,
+      password: formik.values.Password,
     };
     var headers = {
       "Content-Type": "application/json",
@@ -80,13 +80,15 @@ const Newpass = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      newPassword: "",
-      reTypePassword: "",
+      email: "",
+      Password: "",
     },
 
     validationSchema: Yup.object({
-      newPassword: Yup.string().min(8).required("Email is required"),
-      reTypePassword: Yup.string().required("Password is required"),
+      email: Yup.string()
+        .required("Email is required")
+        .email("Please Enter Valid Email"),
+      Password: Yup.string().required("Password is required"),
     }),
     onSubmit: () => {
       onLoginPress();
@@ -111,19 +113,15 @@ const Newpass = (props) => {
               <Typography className={styles.listemailtext}>Email</Typography>
               <Box style={{ display: "flex", paddingBottom: "20px" }}>
                 <TextField
-                  error={Boolean(
-                    formik.touched.newPassword && formik.errors.newPassword
-                  )}
+                  error={Boolean(formik.touched.email && formik.errors.email)}
                   id="outlined-required"
                   type={"text"}
-                  helperText={
-                    formik.touched.newPassword && formik.errors.newPassword
-                  }
+                  helperText={formik.touched.email && formik.errors.email}
                   placeholder="Email"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
-                  name="newPassword"
-                  value={formik.values.newPassword}
+                  name="email"
+                  value={formik.values.email}
                   className={styles.Search_Bar_input}
                 />
               </Box>
@@ -131,20 +129,16 @@ const Newpass = (props) => {
               <Box style={{ display: "flex" }}>
                 <TextField
                   error={Boolean(
-                    formik.touched.reTypePassword &&
-                      formik.errors.reTypePassword
+                    formik.touched.Password && formik.errors.Password
                   )}
                   // type="password"
-                  helperText={
-                    formik.touched.reTypePassword &&
-                    formik.errors.reTypePassword
-                  }
+                  helperText={formik.touched.Password && formik.errors.Password}
                   className={styles.Search_Bar_input}
                   id="outlined-required"
                   placeholder="Password"
                   variant="outlined"
-                  name="reTypePassword"
-                  value={formik.values.reTypePassword}
+                  name="Password"
+                  value={formik.values.Password}
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   type={showPassword ? "text" : "password"}

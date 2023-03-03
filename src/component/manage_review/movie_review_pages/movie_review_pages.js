@@ -37,11 +37,12 @@ const Movie_review_Pages = (props) => {
   const [setdata, setSetadata] = React.useState([]);
   const [reset, setRrset] = React.useState([]);
   const [flagedReview, setFlagedReview] = React.useState([]);
+  const [allReview, setAllReview] = React.useState([]);
 
   const [reatiang, setRtiangstar] = React.useState();
   const [datatab, setDatatab] = React.useState("active");
   const [stardata, setStardata] = React.useState(0);
-  console.log(datatab, "reatiang");
+  console.log(stardata, "reatiang");
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -52,17 +53,29 @@ const Movie_review_Pages = (props) => {
       !!props.props.profile.token &&
       router.query.emailID
     ) {
-      adminReviewlist(router.query.emailID);
+      adminReviewlist();
     }
-  }, [props.router, datatab, stardata]);
+  }, [props.router, stardata]);
 
   const adminReviewlist = async (value) => {
-    var body = {
-      id_imdb_movie: value,
-      // status: datatab,
-      star: stardata,
-      type: datatab,
-    };
+    let body = {};
+
+    if (stardata == 0) {
+      body = {
+        id_imdb_movie: router.query.emailID,
+        // status: datatab,
+        // star: stardata,
+        type: "active",
+      };
+    } else {
+      body = {
+        id_imdb_movie: router.query.emailID,
+        // status: datatab,
+        star: stardata,
+        type: "active",
+      };
+    }
+
     var headers = {
       "Content-Type": "application/json",
       "x-access-token": props.props.profile.token,
@@ -74,41 +87,44 @@ const Movie_review_Pages = (props) => {
       headers
     );
     props.props.loaderRef(false);
+    if (!!data) {
+      if (data.status == true) {
+        setDatatital(data.data.title);
+        setDeshcaripsan(data.data.description);
+        setImgurldata(data.data.image_url);
+        setRtiangstar(data.data.tixzarRating);
+        const Flaged_data = [];
+        const All_data = [];
+        for (let index = 0; index < data.data.reviewList.length; index++) {
+          const element = data.data.reviewList[index];
+          const object = {
+            id: element.id,
+            title: element.userDetails.name,
+            description: element.description,
+            logoUrl: element.userDetails.profile_photo,
+            avg: element.avg,
+            status: element.status,
+            // type: element.type,
+          };
 
-    console.log(data, "is_____data");
-    if (data.status == true) {
-      setDatatital(data.data.title);
-      setDeshcaripsan(data.data.description);
-      setImgurldata(data.data.image_url);
-      setRtiangstar(data.data.tixzarRating);
-      const accoyty = [];
-      const csvall = [];
-      const Flaged_data = [];
-      for (let index = 0; index < data.data.reviewList.length; index++) {
-        const element = data.data.reviewList[index];
-        console.log(element, "is_flaged_review");
-        const object = {
-          id: element.userDetails.id,
-          title: element.userDetails.name,
-          description: element.description,
-          logoUrl: element.userDetails.profile_photo,
-          avg: element.avg,
-          status: element.userDetails.status,
-          // type: element.type,
-        };
-
-        accoyty.push(JSON.parse(JSON.stringify(object)));
+          if (element.status == "flaged") {
+            Flaged_data.push(JSON.parse(JSON.stringify(object)));
+          }
+          All_data.push(JSON.parse(JSON.stringify(object)));
+          // accoyty.push(JSON.parse(JSON.stringify(object)));
+        }
+        setFlagedReview(Flaged_data);
+        setAllReview(All_data);
+      } else {
+        toast.error(data.message);
       }
-
-      setFlagedReview(accoyty);
-      setDatamenu(accoyty);
-      setSetadata(accoyty);
     } else {
+      toast.error("Something went wrong!");
     }
   };
-  const EDITPATT = async (value) => {
+  const reviewDelete = async (value) => {
     var body = {
-      id_user: value,
+      id_review: value,
     };
     var headers = {
       "Content-Type": "application/json",
@@ -116,25 +132,43 @@ const Movie_review_Pages = (props) => {
     };
     props.props.loaderRef(true);
     var data = await ApiServices.PostApiCall(
-      ApiEndpoint.ADMIN_USER_DELETE,
+      ApiEndpoint.ADMIN_REVIEW_DELETE,
       JSON.stringify(body),
       headers
     );
     props.props.loaderRef(false);
+    console.log(data, body, "datadata______");
+
     if (!!data) {
       if (data.status == true) {
         toast.success(data.message);
+        adminReviewlist(router.query.emailID);
       } else {
         toast.error(data.message);
       }
     } else {
       toast.error("Something went wrong.");
     }
-
-    console.log(data, "datadata");
   };
 
-  // const reviewList
+  const onFilterData = (star) => {
+    const value = star;
+    console.log(value, "is_value_______");
+    // if (typeof value !== "object") {
+    //   if (!value || value == "") {
+    //     setDatamenu(setdata);
+    //   } else {
+    //     var filteredData = datamenu.filter((item) => {
+    //       console.log(item.name, "filtrer");
+    //       let searchValue = item.title.toLowerCase();
+    //       return searchValue.includes(value.toString().toLowerCase());
+    //     });
+    //     setDatamenu(filteredData);
+    //   }
+    // } else {
+    //   setDatamenu(setdata);
+    // }
+  };
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -222,7 +256,7 @@ const Movie_review_Pages = (props) => {
                   style={{ fontSize: "33px", color: "#FFE600" }}
                 />
                 <Typography textAlign={"center"} className={Styles.Heading_Des}>
-                  {reatiang == null ? "" : reatiang.toFixed(2)}/10
+                  {reatiang == null ? "" : parseInt(reatiang.toFixed(2))}/10
                 </Typography>
               </Box>
             </Grid>
@@ -342,6 +376,7 @@ const Movie_review_Pages = (props) => {
                       // adminReviewlist(router.query.emailID);
                       setStardata(5);
                       setAnchorEl(null);
+                      onFilterData(5);
                     }}
                     color="primary"
                     variant="contained"
@@ -354,6 +389,7 @@ const Movie_review_Pages = (props) => {
                       // adminReviewlist(router.query.emailID);
                       setStardata(4);
                       setAnchorEl(null);
+                      onFilterData(4);
                     }}
                     color="primary"
                     variant="contained"
@@ -366,6 +402,7 @@ const Movie_review_Pages = (props) => {
                       // adminReviewlist(router.query.emailID);
                       setStardata(3);
                       setAnchorEl(null);
+                      onFilterData(3);
                     }}
                     color="primary"
                     variant="contained"
@@ -380,6 +417,7 @@ const Movie_review_Pages = (props) => {
                       // adminReviewlist(router.query.emailID);
                       setStardata(2);
                       setAnchorEl(null);
+                      onFilterData(2);
                     }}
                     color="primary"
                     variant="contained"
@@ -392,6 +430,7 @@ const Movie_review_Pages = (props) => {
                       // adminReviewlist(router.query.emailID);
                       setStardata(1);
                       setAnchorEl(null);
+                      onFilterData(1);
                     }}
                     color="primary"
                     variant="contained"
@@ -419,7 +458,7 @@ const Movie_review_Pages = (props) => {
                 className={datatab == "active" ? Styles.Tabs_321 : Styles.Tabs_}
                 onClick={() => {
                   setDatatab("active");
-                  setStardata("");
+                  // setStardata("");
                 }}
                 value={"All Reviews"}
               />
@@ -428,14 +467,13 @@ const Movie_review_Pages = (props) => {
                 className={datatab == "flaged" ? Styles.Tabs_321 : Styles.Tabs_}
                 onClick={() => {
                   setDatatab("flaged");
-                  setStardata("");
+                  // setStardata("");
                 }}
                 value="flaged"
               />
             </Tabs>
             <TabPanel className={Styles.Tab_panel_22} value={"All Reviews"}>
-              {datamenu.map((data) => {
-                console.log(data, "is_review_array___");
+              {allReview.map((data) => {
                 return (
                   // <Grid container className={Styles.listcontenar}>
                   //   <Grid item xs={12} sm={12} md={2} lg={1.5} xl={1.5}>
@@ -542,13 +580,17 @@ const Movie_review_Pages = (props) => {
                   //     ""
                   //   )}
                   // </Grid>
-                  <Review_box data={data} status={"All"} />
+                  <Review_box
+                    data={data}
+                    status={"All"}
+                    userDelete={reviewDelete}
+                    props={props}
+                  />
                 );
               })}
             </TabPanel>
             <TabPanel className={Styles.Tab_panel_22} value={"flaged"}>
-              {datamenu.map((data) => {
-                console.log(data, "is_review_array___");
+              {flagedReview.map((data) => {
                 return (
                   // <Grid container className={Styles.listcontenar}>
                   //   <Grid item xs={12} sm={12} md={2} lg={1.5} xl={1.5}>
@@ -654,7 +696,12 @@ const Movie_review_Pages = (props) => {
                   //     ""
                   //   )}
                   // </Grid>
-                  <Review_box data={data} status={"flaged"} />
+                  <Review_box
+                    data={data}
+                    status={"flaged"}
+                    userDelete={reviewDelete}
+                    props={props}
+                  />
                 );
               })}
             </TabPanel>

@@ -11,9 +11,41 @@ import { purple } from "@mui/material/colors";
 import React from "react";
 import Styles from "../manage_review.module.css";
 import FlagCircleRoundedIcon from "@mui/icons-material/FlagCircleRounded";
+import ApiServices from "../../../config/ApiServices";
+import ApiEndpoint from "../../../config/ApiEndpoint";
+import { toast } from "react-toastify";
 
-const Review_box = ({ data, status }) => {
-  console.log(data, "prorrfff");
+const Review_box = ({ data, status, userDelete, props }) => {
+  // const reviewDelete = async (value) => {
+  //   var body = {
+  //     id_review: value,
+  //   };
+  //   var headers = {
+  //     "Content-Type": "application/json",
+  //     "x-access-token": props.props.profile.token,
+  //   };
+  //   props.props.loaderRef(true);
+  //   var data = await ApiServices.PostApiCall(
+  //     ApiEndpoint.ADMIN_REVIEW_DELETE,
+  //     JSON.stringify(body),
+  //     headers
+  //   );
+  //   props.props.loaderRef(false);
+  //   console.log(data, body, "datadata______");
+
+  //   if (!!data) {
+  //     if (data.status == true) {
+  //       toast.success(data.message);
+  //       adminReviewlist(router.query.emailID);
+  //     } else {
+  //       toast.error(data.message);
+  //     }
+  //   } else {
+  //     toast.error("Something went wrong.");
+  //   }
+  // };
+
+  console.log(data, "prorrfff____");
   const [value, setValue] = React.useState(2);
   const theme = createTheme({
     palette: {
@@ -25,11 +57,12 @@ const Review_box = ({ data, status }) => {
       },
     },
   });
+  const Rating_avg = data.avg / 2;
 
   return (
     <Box
       className={
-        status == "flaged"
+        data.status == "flaged"
           ? [Styles.Review_box_, Styles.Review_box_Active]
           : Styles.Review_box_
       }
@@ -51,13 +84,15 @@ const Review_box = ({ data, status }) => {
           >
             <Rating
               className={Styles.Rating_star}
-              value={data.avg}
+              value={Rating_avg}
               onChange={(event, newValue) => {
                 setValue(newValue);
               }}
               readOnly
             />
-            <Typography className={Styles.Rating_number}>{data.avg}</Typography>
+            <Typography className={Styles.Rating_number}>
+              {parseFloat(Rating_avg.toFixed(2))}
+            </Typography>
           </Box>
         </Grid>
         <Grid
@@ -70,14 +105,20 @@ const Review_box = ({ data, status }) => {
           sx={{ justifyContent: "flex-end", display: "flex" }}
         >
           <Box style={{ justifyContent: "flex-end", display: "flex" }}>
-            <Button className={Styles.deleteBtn} onClick={() => {}}>
+            <Button
+              className={Styles.deleteBtn}
+              onClick={() => {
+                userDelete(data.id);
+                // reviewDelete(data.id);
+              }}
+            >
               <img src="./image/dustbin.svg" />
             </Button>
           </Box>
         </Grid>
       </Grid>
       {status ? (
-        status == "flaged" ? (
+        data.status == "flaged" ? (
           <Grid container>
             <Grid item xs={12} sm={12} md={1.5} lg={1.5} xl={1.5} />
             <Grid
