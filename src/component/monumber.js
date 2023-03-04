@@ -38,8 +38,6 @@ const Mobile = (props) => {
     if (!!data) {
       if (data.status == true) {
         toast.success(data.message);
-        console.log(formik.values.email, "emaillist");
-
         router.push({
           pathname: "./codevrfy",
           query: { email: data.data.id },

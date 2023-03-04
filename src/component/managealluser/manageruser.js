@@ -89,7 +89,7 @@ const Movie_review_Pages = (props) => {
         setAll_review_list(All_data_list);
         setCurrentPage(1);
         setCurrentPageFlaged(1);
-
+        setDatalistlogin(All_data_list)
         // setDatalistlogin(accoyty);
       } else {
         // setDatalistlogin("");
@@ -144,10 +144,25 @@ const Movie_review_Pages = (props) => {
           placeholder="Search"
           className={"Search_Bar_input"}
           id="input-with-icon-textfield"
-          // onChange={(e) => {
           //   console.log(e.target.value, "is_value____");
-          //   Search_bar_(e);
-          // }}
+          onChange={(e) => {
+              setPage(0)
+              var value =e.target.value
+            //  setSaesData(e.target.value)
+            //  onChange={(e) => setText(e.target.value)}
+              if (typeof value !== 'object') {
+                if (!value || value == '') {
+                  setAll_review_list(userSearchmenu);
+                } else {
+                  var filteredData = userSearchmenu.filter((item) => {
+                    let searchValue = item.name.toLowerCase();
+                    return searchValue.includes(value.toString().toLowerCase())
+                  })
+                  console.log(filteredData,'filteredData')
+                  setAll_review_list(filteredData);
+                }
+              }
+            }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

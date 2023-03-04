@@ -53,26 +53,28 @@ const Movie_review_Pages = (props) => {
       !!props.props.profile.token &&
       router.query.emailID
     ) {
-      adminReviewlist();
+      adminReviewlist(router.query.emailID);
     }
   }, [props.router, stardata]);
 
   const adminReviewlist = async (value) => {
-    let body = {};
+    let body = {
+
+    };
 
     if (stardata == 0) {
       body = {
-        id_imdb_movie: router.query.emailID,
+        id_imdb_movie: value,
         // status: datatab,
         // star: stardata,
-        type: "active",
+        // type: "active",
       };
     } else {
       body = {
-        id_imdb_movie: router.query.emailID,
+        id_imdb_movie: value,
         // status: datatab,
         star: stardata,
-        type: "active",
+        // type: "active",
       };
     }
 
@@ -87,6 +89,7 @@ const Movie_review_Pages = (props) => {
       headers
     );
     props.props.loaderRef(false);
+    console.log(data, 'datadata');
     if (!!data) {
       if (data.status == true) {
         setDatatital(data.data.title);
@@ -372,6 +375,7 @@ const Movie_review_Pages = (props) => {
                 <Typography className={Styles.Filter_head}>Reviews</Typography>
                 <Box className={Styles.Btn_rows}>
                   <Button
+
                     onClick={() => {
                       // adminReviewlist(router.query.emailID);
                       setStardata(5);
@@ -380,7 +384,7 @@ const Movie_review_Pages = (props) => {
                     }}
                     color="primary"
                     variant="contained"
-                    className={Styles.Filter_btns}
+                    className={stardata == 5 ? Styles.btn5data : Styles.Filter_btns}
                   >
                     <Btn_txt data={"5 Star"} />
                   </Button>
@@ -393,7 +397,7 @@ const Movie_review_Pages = (props) => {
                     }}
                     color="primary"
                     variant="contained"
-                    className={Styles.Filter_btns}
+                    className={stardata == 4 ? Styles.btn5data : Styles.Filter_btns}
                   >
                     <Btn_txt data={"4 Star"} />
                   </Button>
@@ -406,7 +410,7 @@ const Movie_review_Pages = (props) => {
                     }}
                     color="primary"
                     variant="contained"
-                    className={Styles.Filter_btns}
+                    className={stardata == 3 ? Styles.btn5data : Styles.Filter_btns}
                   >
                     <Btn_txt data={"3 Star"} />
                   </Button>
@@ -421,7 +425,7 @@ const Movie_review_Pages = (props) => {
                     }}
                     color="primary"
                     variant="contained"
-                    className={Styles.Filter_btns}
+                    className={stardata == 2 ? Styles.btn5data : Styles.Filter_btns}
                   >
                     <Btn_txt data={"2 Star"} />
                   </Button>
@@ -434,7 +438,7 @@ const Movie_review_Pages = (props) => {
                     }}
                     color="primary"
                     variant="contained"
-                    className={Styles.Filter_btns}
+                    className={stardata == 1 ? Styles.btn5data : Styles.Filter_btns}
                   >
                     <Btn_txt data={"1 Star"} />
                   </Button>
@@ -475,111 +479,6 @@ const Movie_review_Pages = (props) => {
             <TabPanel className={Styles.Tab_panel_22} value={"All Reviews"}>
               {allReview.map((data) => {
                 return (
-                  // <Grid container className={Styles.listcontenar}>
-                  //   <Grid item xs={12} sm={12} md={2} lg={1.5} xl={1.5}>
-                  //     <img src={data.logoUrl} className={Styles.User_Image} />
-                  //   </Grid>
-                  //   <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
-                  //     <Typography className={Styles.User_name_bold}>
-                  //       {data.title}
-                  //     </Typography>
-                  //     <Typography className={Styles.Review_txt}>
-                  //       {data.description}
-                  //     </Typography>
-                  //     <Box
-                  //       className={Styles.Rating_start_box}
-                  //       style={{ justifyContent: "flex-start" }}
-                  //     >
-                  //       <Rating
-                  //         className={Styles.Rating_star}
-                  //         value={(parseFloat(data.avg) / 2).toFixed(2)}
-                  //         onChange={(event, newValue) => {
-                  //           setValue(newValue);
-                  //         }}
-                  //         readOnly
-                  //       />
-                  //       <Typography className={Styles.Rating_number}>
-                  //         {(parseFloat(data.avg) / 2).toFixed(2)}
-                  //       </Typography>
-                  //     </Box>
-                  //   </Grid>
-                  //   <Grid
-                  //     item
-                  //     xs={12}
-                  //     sm={12}
-                  //     md={1}
-                  //     lg={1.5}
-                  //     xl={1.5}
-                  //     sx={{ justifyContent: "flex-end", display: "flex" }}
-                  //   >
-                  //     <Box
-                  //       style={{ justifyContent: "flex-end", display: "flex" }}
-                  //     >
-                  //       <Button
-                  //         className={Styles.deleteBtn}
-                  //         onClick={() => {
-                  //           EDITPATT(data.id);
-                  //         }}
-                  //       >
-                  //         <img src="./image/dustbin.svg" />
-                  //       </Button>
-                  //     </Box>
-                  //   </Grid>
-
-                  //   {data.status == "flaged" ? (
-                  //     <Grid container>
-                  //       <Grid item xs={12} sm={12} md={1.5} lg={1.5} xl={1.5} />
-                  //       <Grid
-                  //         item
-                  //         xs={12}
-                  //         sm={12}
-                  //         md={10.5}
-                  //         lg={10.5}
-                  //         xl={10.5}
-                  //         sx={{
-                  //           justifyContent: "space-between",
-                  //           display: "flex",
-                  //           alignItems: "center",
-                  //         }}
-                  //       >
-                  //         <ThemeProvider theme={theme}>
-                  //           <Box>
-                  //             <Button
-                  //               className={Styles.Flaged_button}
-                  //               variant="contained"
-                  //               color="secondary"
-                  //             >
-                  //               <Typography
-                  //                 color={"#FF0000"}
-                  //                 textTransform="capitalize"
-                  //                 fontSize={"16px"}
-                  //               >
-                  //                 Click Here
-                  //               </Typography>
-                  //             </Button>
-                  //             <Button
-                  //               className={Styles.Flaged_button}
-                  //               style={{ marginLeft: "5px" }}
-                  //               variant="contained"
-                  //               color="secondary"
-                  //             >
-                  //               <Typography
-                  //                 color={"#FF0000"}
-                  //                 textTransform="capitalize"
-                  //                 fontSize={"16px"}
-                  //               >
-                  //                 Click Here
-                  //               </Typography>
-                  //             </Button>
-                  //           </Box>
-                  //           <FlagCircleRoundedIcon color="primary" />
-                  //         </ThemeProvider>
-                  //       </Grid>
-                  //     </Grid>
-                  //   ) : (
-                  //     ""
-                  //   )}
-                  // </Grid>
                   <Review_box
                     data={data}
                     status={"All"}
@@ -592,110 +491,6 @@ const Movie_review_Pages = (props) => {
             <TabPanel className={Styles.Tab_panel_22} value={"flaged"}>
               {flagedReview.map((data) => {
                 return (
-                  // <Grid container className={Styles.listcontenar}>
-                  //   <Grid item xs={12} sm={12} md={2} lg={1.5} xl={1.5}>
-                  //     <img src={data.logoUrl} className={Styles.User_Image} />
-                  //   </Grid>
-                  //   <Grid item xs={12} sm={12} md={9} lg={9} xl={9}>
-                  //     <Typography className={Styles.User_name_bold}>
-                  //       {data.title}
-                  //     </Typography>
-                  //     <Typography className={Styles.Review_txt}>
-                  //       {data.description}
-                  //     </Typography>
-                  //     <Box
-                  //       className={Styles.Rating_start_box}
-                  //       style={{ justifyContent: "flex-start" }}
-                  //     >
-                  //       <Rating
-                  //         className={Styles.Rating_star}
-                  //         value={(parseFloat(data.avg) / 2).toFixed(2)}
-                  //         onChange={(event, newValue) => {
-                  //           setValue(newValue);
-                  //         }}
-                  //         readOnly
-                  //       />
-                  //       <Typography className={Styles.Rating_number}>
-                  //         {(parseFloat(data.avg) / 2).toFixed(2)}
-                  //       </Typography>
-                  //     </Box>
-                  //   </Grid>
-                  //   <Grid
-                  //     item
-                  //     xs={12}
-                  //     sm={12}
-                  //     md={1}
-                  //     lg={1.5}
-                  //     xl={1.5}
-                  //     sx={{ justifyContent: "flex-end", display: "flex" }}
-                  //   >
-                  //     <Box
-                  //       style={{ justifyContent: "flex-end", display: "flex" }}
-                  //     >
-                  //       <Button
-                  //         className={Styles.deleteBtn}
-                  //         onClick={() => {
-                  //           EDITPATT(data.id);
-                  //         }}
-                  //       >
-                  //         <img src="./image/dustbin.svg" />
-                  //       </Button>
-                  //     </Box>
-                  //   </Grid>
-                  //   {data.status == "flaged" ? (
-                  //     <Grid container>
-                  //       <Grid item xs={12} sm={12} md={1.5} lg={1.5} xl={1.5} />
-                  //       <Grid
-                  //         item
-                  //         xs={12}
-                  //         sm={12}
-                  //         md={10.5}
-                  //         lg={10.5}
-                  //         xl={10.5}
-                  //         sx={{
-                  //           justifyContent: "space-between",
-                  //           display: "flex",
-                  //           alignItems: "center",
-                  //         }}
-                  //       >
-                  //         <ThemeProvider theme={theme}>
-                  //           <Box>
-                  //             <Button
-                  //               className={Styles.Flaged_button}
-                  //               variant="contained"
-                  //               color="secondary"
-                  //             >
-                  //               <Typography
-                  //                 color={"#FF0000"}
-                  //                 textTransform="capitalize"
-                  //                 fontSize={"16px"}
-                  //               >
-                  //                 Click Here
-                  //               </Typography>
-                  //             </Button>
-                  //             <Button
-                  //               className={Styles.Flaged_button}
-                  //               style={{ marginLeft: "5px" }}
-                  //               variant="contained"
-                  //               color="secondary"
-                  //             >
-                  //               <Typography
-                  //                 color={"#FF0000"}
-                  //                 textTransform="capitalize"
-                  //                 fontSize={"16px"}
-                  //               >
-                  //                 Click Here
-                  //               </Typography>
-                  //             </Button>
-                  //           </Box>
-                  //           <FlagCircleRoundedIcon color="primary" />
-                  //         </ThemeProvider>
-                  //       </Grid>
-                  //     </Grid>
-                  //   ) : (
-                  //     ""
-                  //   )}
-                  // </Grid>
                   <Review_box
                     data={data}
                     status={"flaged"}

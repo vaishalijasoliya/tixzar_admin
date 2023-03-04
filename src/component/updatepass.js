@@ -17,16 +17,19 @@ import { useRouter } from "next/router";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import * as React from "react";
+import ApiServices from "../config/ApiServices";
+import ApiEndpoint from "../config/ApiEndpoint";
+import { toast } from "react-toastify";
 
 const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
   textAlign: "center",
 }));
 
-const Newpass = () => {
+const Newpass = (props) => {
   const [showPasswordlistdata, setShowPasswordlistdata] = useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
-
+  const [idobj, setIdobjdat] = useState([])
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
@@ -41,17 +44,75 @@ const Newpass = () => {
     event.preventDefault();
   };
   const router = useRouter();
-  const onLoginPress = () => {
+  // const onLoginPress = () => {
+  //   var body = {
+  //     newPassword: formik.values.newPassword,
+  //     reTypePassword: formik.values.reTypePassword,
+  //   };
+  //   var headers = {
+  //     "Content-Type": "application/json",
+  //   };
+  //   console.log(body);
+  //   var data = (JSON.stringify(body), headers);
+  // };
+  React.useEffect(() => {
+    updateAccessToken(router.query.token);
+  }, [router.isReady])
+  const onLoginPress = async (value) => {
     var body = {
-      newPassword: formik.values.newPassword,
-      reTypePassword: formik.values.reTypePassword,
+      id: idobj.id,
+      password: formik.values.reTypePassword
     };
     var headers = {
       "Content-Type": "application/json",
+      "x-access-token": idobj.tokan,
     };
-    console.log(body);
-    var data = (JSON.stringify(body), headers);
+console.log(headers,'bodybody')
+    props.props.loaderRef(true);
+    var data = await ApiServices.PostApiCall(
+      ApiEndpoint.USER_PASS_CREATE,
+      JSON.stringify(body),
+      headers
+    );
+    props.props.loaderRef(false);
+    if (!!data) {
+      if (data.status == true) {
+        toast.success(data.message);
+        router.push("/");
+      } else {
+        toast.error(data.message);
+      }
+    } else {
+      toast.error("Something went wrong.");
+    }
   };
+  const updateAccessToken = async (token) => {
+    var headers = {
+      "Content-Type": "application/json",
+      "x-access-token": token
+    }
+
+    // console.log(props.profile.accountId,'props.profile.accountId');
+    props.props.loaderRef(true)
+    var data = await ApiServices.GetApiCall(
+      ApiEndpoint.ADMIN_TOKAN_UPDET,
+      headers
+    );
+    props.props.loaderRef(false)
+    console.log('updateAccount...', data)
+    if (data.status == true) {
+      var obg = {
+        id: data.userId,
+        tokan: token
+      }
+      setIdobjdat(obg)
+      // onLoginPress(obg)
+    } else {
+
+    }
+
+  }
+  console.log(router.query.token, 'KKKKKKK');
 
   const formik = useFormik({
     initialValues: {
@@ -67,9 +128,9 @@ const Newpass = () => {
         .required("Repassword is required"),
     }),
     onSubmit: () => {
-      onLoginPress();
-      router.push("/");
-      console.log();
+      
+      // router.push("/");
+      // console.log();
     },
   });
 
@@ -133,7 +194,7 @@ const Newpass = () => {
                 <TextField
                   error={Boolean(
                     formik.touched.reTypePassword &&
-                      formik.errors.reTypePassword
+                    formik.errors.reTypePassword
                   )}
                   // type="password"
                   helperText={
@@ -169,7 +230,7 @@ const Newpass = () => {
             </form>
           </Box>
           <Box className={styles.listbuttomopen22}>
-            <Button>Continue</Button>
+            <Button onClick={onLoginPress}>Continue</Button>
           </Box>
         </Grid>
       </Grid>

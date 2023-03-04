@@ -28,4 +28,6 @@ export default {
   ADMIN_MOVIE_EDIT: Constants.BASE_API_URL + "admin/movie/edit",
   ADMIN_USER_DELETE: Constants.BASE_API_URL + "admin/user/delete",
   ADMIN_REVIEW_DELETE: Constants.BASE_API_URL + "admin/review/delete",
+  ADMIN_TOKAN_UPDET :Constants.BASE_API_URL +"admin/checktoken",
+  USER_PASS_CREATE:Constants.BASE_API_URL+'user/password/create',
 };

@@ -305,7 +305,11 @@
   justify-content: "center";
   gap: 7px;
 }
-
+.btn5data{
+  background-color: #07a4e7 !important;
+  margin-top: 5px !important;
+  border-radius: 20px !important;
+}
 @media only screen and (max-width: 600px) {
   .movie_box {
     max-width: 100% !important;
