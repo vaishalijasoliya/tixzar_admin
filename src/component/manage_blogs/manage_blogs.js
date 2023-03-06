@@ -175,6 +175,7 @@ const Movie_review_Pages = (props) => {
     console.log(data, "datadata");
   };
   const chartloginuser = async () => {
+    setBlogCurrentPage(2);
     var headers = {
       "Content-Type": "application/json",
       "x-access-token": props.props.profile.token,
@@ -217,6 +218,7 @@ const Movie_review_Pages = (props) => {
         }
         setDatalistlogin(activeBlog);
         setData(blogList);
+        setBlogCurrentPage(1);
       }
     }
   };
@@ -577,7 +579,7 @@ const Movie_review_Pages = (props) => {
                 );
               })}
             </Grid>
-            <Box sx={{ marginTop: '10px' }}>
+            <Box sx={{ marginTop: "10px" }}>
               <Pagination
                 className="pagination-bar"
                 currentPage={blogCurrentPage}

@@ -54,8 +54,11 @@ const Mobile = (props) => {
       email: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().min(10).required("Email digit Number"),
+      email: Yup.string()
+        .required("Email is required")
+        .email("Please Enter Valid Email"),
     }),
+
     onSubmit: () => {
       onLoginPress();
     },

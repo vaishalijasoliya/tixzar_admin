@@ -105,19 +105,34 @@ const Review_box = ({ data, status, userDelete, props }) => {
           sx={{ justifyContent: "flex-end", display: "flex" }}
         >
           <Box style={{ justifyContent: "flex-end", display: "flex" }}>
-            <Button
-              className={Styles.deleteBtn}
-              onClick={() => {
-                userDelete(data.id);
-                // reviewDelete(data.id);
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                // columnGap: "10px",
+                justifyContent: "space-evenly",
               }}
             >
-              <img src="./image/dustbin.svg" />
-            </Button>
+              <Button
+                className={Styles.deleteBtn}
+                onClick={() => {
+                  userDelete(data.id);
+                  // reviewDelete(data.id);
+                }}
+              >
+                <img src="./image/dustbin.svg" />
+              </Button>
+
+              <ThemeProvider theme={theme}>
+                {data.status == "flaged" ? (
+                  <FlagCircleRoundedIcon color="primary" />
+                ) : null}
+              </ThemeProvider>
+            </div>
           </Box>
         </Grid>
       </Grid>
-      {status ? (
+      {/* {data.status ? (
         data.status == "flaged" ? (
           <Grid container>
             <Grid item xs={12} sm={12} md={1.5} lg={1.5} xl={1.5} />
@@ -173,7 +188,7 @@ const Review_box = ({ data, status, userDelete, props }) => {
         )
       ) : (
         ""
-      )}
+      )} */}
     </Box>
   );
 };

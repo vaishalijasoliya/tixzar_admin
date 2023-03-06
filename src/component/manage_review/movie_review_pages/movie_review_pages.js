@@ -42,6 +42,8 @@ const Movie_review_Pages = (props) => {
   const [reatiang, setRtiangstar] = React.useState();
   const [datatab, setDatatab] = React.useState("active");
   const [stardata, setStardata] = React.useState(0);
+  const [all_search, setAll_search] = React.useState([]);
+  const [flaged_search, setFlaged_search] = React.useState([]);
   console.log(stardata, "reatiang");
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -58,9 +60,7 @@ const Movie_review_Pages = (props) => {
   }, [props.router, stardata]);
 
   const adminReviewlist = async (value) => {
-    let body = {
-
-    };
+    let body = {};
 
     if (stardata == 0) {
       body = {
@@ -89,7 +89,7 @@ const Movie_review_Pages = (props) => {
       headers
     );
     props.props.loaderRef(false);
-    console.log(data, 'datadata');
+    console.log(data, "datadata");
     if (!!data) {
       if (data.status == true) {
         setDatatital(data.data.title);
@@ -117,6 +117,8 @@ const Movie_review_Pages = (props) => {
           // accoyty.push(JSON.parse(JSON.stringify(object)));
         }
         setFlagedReview(Flaged_data);
+        setFlaged_search(Flaged_data);
+        setAll_search(All_data);
         setAllReview(All_data);
       } else {
         toast.error(data.message);
@@ -180,19 +182,37 @@ const Movie_review_Pages = (props) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const Search_bar_ = (e) => {
+
+  const all_search_func = (e) => {
     const value = e.target.value;
     console.log(value, "is_value_______");
     if (typeof value !== "object") {
       if (!value || value == "") {
-        setDatamenu(setdata);
+        setAllReview(all_search);
       } else {
-        var filteredData = datamenu.filter((item) => {
+        var filteredData = all_search.filter((item) => {
           console.log(item.name, "filtrer");
           let searchValue = item.title.toLowerCase();
           return searchValue.includes(value.toString().toLowerCase());
         });
-        setDatamenu(filteredData);
+        setAllReview(filteredData);
+      }
+    }
+  };
+
+  const flaged_search_func = (e) => {
+    const value = e.target.value;
+    console.log(value, "is_value_______");
+    if (typeof value !== "object") {
+      if (!value || value == "") {
+        setFlagedReview(flaged_search);
+      } else {
+        var filteredData = flaged_search.filter((item) => {
+          console.log(item.name, "filtrer");
+          let searchValue = item.title.toLowerCase();
+          return searchValue.includes(value.toString().toLowerCase());
+        });
+        setFlagedReview(filteredData);
       }
     } else {
       setDatamenu(setdata);
@@ -272,7 +292,12 @@ const Movie_review_Pages = (props) => {
             id="input-with-icon-textfield"
             onChange={(e) => {
               console.log(e.target.value, "is_value____");
-              Search_bar_(e);
+              // Search_bar_(e);
+              if (datatab == "active") {
+                all_search_func(e);
+              } else if (datatab == "flaged") {
+                flaged_search_func(e);
+              }
             }}
             InputProps={{
               startAdornment: (
@@ -375,7 +400,6 @@ const Movie_review_Pages = (props) => {
                 <Typography className={Styles.Filter_head}>Reviews</Typography>
                 <Box className={Styles.Btn_rows}>
                   <Button
-
                     onClick={() => {
                       // adminReviewlist(router.query.emailID);
                       setStardata(5);
@@ -384,7 +408,9 @@ const Movie_review_Pages = (props) => {
                     }}
                     color="primary"
                     variant="contained"
-                    className={stardata == 5 ? Styles.btn5data : Styles.Filter_btns}
+                    className={
+                      stardata == 5 ? Styles.btn5data : Styles.Filter_btns
+                    }
                   >
                     <Btn_txt data={"5 Star"} />
                   </Button>
@@ -397,7 +423,9 @@ const Movie_review_Pages = (props) => {
                     }}
                     color="primary"
                     variant="contained"
-                    className={stardata == 4 ? Styles.btn5data : Styles.Filter_btns}
+                    className={
+                      stardata == 4 ? Styles.btn5data : Styles.Filter_btns
+                    }
                   >
                     <Btn_txt data={"4 Star"} />
                   </Button>
@@ -410,7 +438,9 @@ const Movie_review_Pages = (props) => {
                     }}
                     color="primary"
                     variant="contained"
-                    className={stardata == 3 ? Styles.btn5data : Styles.Filter_btns}
+                    className={
+                      stardata == 3 ? Styles.btn5data : Styles.Filter_btns
+                    }
                   >
                     <Btn_txt data={"3 Star"} />
                   </Button>
@@ -425,7 +455,9 @@ const Movie_review_Pages = (props) => {
                     }}
                     color="primary"
                     variant="contained"
-                    className={stardata == 2 ? Styles.btn5data : Styles.Filter_btns}
+                    className={
+                      stardata == 2 ? Styles.btn5data : Styles.Filter_btns
+                    }
                   >
                     <Btn_txt data={"2 Star"} />
                   </Button>
@@ -438,7 +470,9 @@ const Movie_review_Pages = (props) => {
                     }}
                     color="primary"
                     variant="contained"
-                    className={stardata == 1 ? Styles.btn5data : Styles.Filter_btns}
+                    className={
+                      stardata == 1 ? Styles.btn5data : Styles.Filter_btns
+                    }
                   >
                     <Btn_txt data={"1 Star"} />
                   </Button>
@@ -481,7 +515,6 @@ const Movie_review_Pages = (props) => {
                 return (
                   <Review_box
                     data={data}
-                    status={"All"}
                     userDelete={reviewDelete}
                     props={props}
                   />
@@ -493,7 +526,6 @@ const Movie_review_Pages = (props) => {
                 return (
                   <Review_box
                     data={data}
-                    status={"flaged"}
                     userDelete={reviewDelete}
                     props={props}
                   />

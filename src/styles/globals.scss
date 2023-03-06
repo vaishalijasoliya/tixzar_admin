@@ -20,6 +20,10 @@ body {
   font-family: Gilroy-Regular;
   src: url(../styles/font/Gilroy-Font/Gilroy-Regular.ttf);
 }
+@font-face {
+  font-family: Poppins-400;
+  src: url(../styles/font/Poppins/Poppins-Medium.ttf);
+}
 
 a {
   color: inherit;
@@ -942,7 +946,7 @@ a {
 }
 
 .Search_Bar_input input {
-  font-family: "Poppims-400";
+  font-family: "Poppins-400";
   color: #bdbdbd;
   font-size: 20px;
 }
@@ -952,6 +956,13 @@ a {
   transition: 0.5s !important;
   width: 50% !important;
   background-color: transparent !important;
+}
+
+// HELPER TEXT OR /ERROR TEXT STYLES
+.css-1wc848c-MuiFormHelperText-root {
+  margin-right: 0px !important;
+  margin-top: 0px !important;
+  margin-left: 0px !important;
 }
 
 .Btn_grad_ {

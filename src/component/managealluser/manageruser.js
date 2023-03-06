@@ -26,26 +26,26 @@ let PageSize = 10;
 
 const Movie_review_Pages = (props) => {
   const [value, setValue] = React.useState("All Reviews");
-  const [page, setPage] = React.useState(0);
-  const [datalist, setData] = React.useState();
   const [userSearchmenu, setDatalistlogin] = React.useState([]);
   const [datatab, setDatatab] = React.useState("active");
   const [all_review_list, setAll_review_list] = React.useState([]);
   const [flaged_review_list, setFlaged_review_list] = React.useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPageFlaged, setCurrentPageFlaged] = React.useState(1);
+  const [reviewSearch, setReviewSearch] = React.useState([]);
+  const [flagedSearch, setFlagedSearch] = React.useState([]);
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPageFlaged - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return flaged_review_list.slice(firstPageIndex, lastPageIndex);
-  }, [currentPageFlaged]);
+  }, [currentPageFlaged, flaged_review_list]);
 
-  const allReviewData = useMemo(() => {
+  let allReviewData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return all_review_list.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
+  }, [currentPage, all_review_list]);
 
   const adminUserList = async () => {
     setCurrentPage(2);
@@ -87,9 +87,11 @@ const Movie_review_Pages = (props) => {
         }
         setFlaged_review_list(Flaged_data_list);
         setAll_review_list(All_data_list);
+        setFlagedSearch(Flaged_data_list);
         setCurrentPage(1);
         setCurrentPageFlaged(1);
-        setDatalistlogin(All_data_list)
+        setDatalistlogin(All_data_list);
+        setReviewSearch(All_data_list);
         // setDatalistlogin(accoyty);
       } else {
         // setDatalistlogin("");
@@ -133,6 +135,46 @@ const Movie_review_Pages = (props) => {
     }
   }, []);
 
+  const flaged_search = (e) => {
+    var value = e.target.value;
+    if (typeof value !== "object") {
+      if (!value || value == "") {
+        setFlaged_review_list(flagedSearch);
+        PageSize = 10;
+      } else {
+        var filteredData = flagedSearch.filter((item) => {
+          let searchValue = item.name.toLowerCase();
+          return searchValue.includes(value.toString().toLowerCase());
+        });
+
+        if (filteredData.length == 0) {
+          PageSize = 1;
+        } else PageSize = filteredData.length;
+        setFlaged_review_list(filteredData);
+      }
+    }
+  };
+
+  const all_search = (e) => {
+    var value = e.target.value;
+    if (typeof value !== "object") {
+      if (!value || value == "") {
+        setAll_review_list(reviewSearch);
+        PageSize = 10;
+      } else {
+        var filteredData = reviewSearch.filter((item) => {
+          let searchValue = item.name.toLowerCase();
+          return searchValue.includes(value.toString().toLowerCase());
+        });
+
+        if (filteredData.length == 0) {
+          PageSize = 1;
+        } else PageSize = filteredData.length;
+        setAll_review_list(filteredData);
+      }
+    }
+  };
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -146,23 +188,31 @@ const Movie_review_Pages = (props) => {
           id="input-with-icon-textfield"
           //   console.log(e.target.value, "is_value____");
           onChange={(e) => {
-              setPage(0)
-              var value =e.target.value
-            //  setSaesData(e.target.value)
-            //  onChange={(e) => setText(e.target.value)}
-              if (typeof value !== 'object') {
-                if (!value || value == '') {
-                  setAll_review_list(userSearchmenu);
-                } else {
-                  var filteredData = userSearchmenu.filter((item) => {
-                    let searchValue = item.name.toLowerCase();
-                    return searchValue.includes(value.toString().toLowerCase())
-                  })
-                  console.log(filteredData,'filteredData')
-                  setAll_review_list(filteredData);
-                }
-              }
-            }}
+            if (datatab == "active") {
+              all_search(e);
+            } else if (datatab == "flaged") {
+              flaged_search(e);
+            }
+
+            // setPage(0);
+            // var value = e.target.value;
+            // if (typeof value !== "object") {
+            //   if (!value || value == "") {
+            //     setAll_review_list(reviewSearch);
+            //     PageSize = 10;
+            //   } else {
+            //     var filteredData = reviewSearch.filter((item) => {
+            //       let searchValue = item.name.toLowerCase();
+            //       return searchValue.includes(value.toString().toLowerCase());
+            //     });
+
+            //     if (filteredData.length == 0) {
+            //       PageSize = 1;
+            //     } else PageSize = filteredData.length;
+            //     setAll_review_list(filteredData);
+            //   }
+            // }
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -175,7 +225,6 @@ const Movie_review_Pages = (props) => {
                 style={{
                   minWidth: "35px",
                 }}
-                // onClick={handleClick}
               >
                 <img src="./image/Faders.svg" />
               </Button>

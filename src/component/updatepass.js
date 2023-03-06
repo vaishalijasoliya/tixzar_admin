@@ -29,7 +29,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const Newpass = (props) => {
   const [showPasswordlistdata, setShowPasswordlistdata] = useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
-  const [idobj, setIdobjdat] = useState([])
+  const [idobj, setIdobjdat] = useState([]);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
@@ -56,18 +56,19 @@ const Newpass = (props) => {
   //   var data = (JSON.stringify(body), headers);
   // };
   React.useEffect(() => {
+    console.log(router.query.token, "is____route___quary");
     updateAccessToken(router.query.token);
-  }, [router.isReady])
+  }, [router.isReady]);
   const onLoginPress = async (value) => {
     var body = {
       id: idobj.id,
-      password: formik.values.reTypePassword
+      password: formik.values.reTypePassword,
     };
     var headers = {
       "Content-Type": "application/json",
       "x-access-token": idobj.tokan,
     };
-console.log(headers,'bodybody')
+    console.log(headers, "bodybody");
     props.props.loaderRef(true);
     var data = await ApiServices.PostApiCall(
       ApiEndpoint.USER_PASS_CREATE,
@@ -89,46 +90,37 @@ console.log(headers,'bodybody')
   const updateAccessToken = async (token) => {
     var headers = {
       "Content-Type": "application/json",
-      "x-access-token": token
-    }
+      "x-access-token": token,
+    };
 
-    // console.log(props.profile.accountId,'props.profile.accountId');
-    props.props.loaderRef(true)
+    props.props.loaderRef(true);
     var data = await ApiServices.GetApiCall(
       ApiEndpoint.ADMIN_TOKAN_UPDET,
       headers
     );
-    props.props.loaderRef(false)
-    console.log('updateAccount...', data)
+    props.props.loaderRef(false);
     if (data.status == true) {
       var obg = {
         id: data.userId,
-        tokan: token
-      }
-      setIdobjdat(obg)
-      // onLoginPress(obg)
+        tokan: token,
+      };
+      setIdobjdat(obg);
     } else {
-
     }
-
-  }
-  console.log(router.query.token, 'KKKKKKK');
-
+  };
   const formik = useFormik({
     initialValues: {
-      newPassword: "",
+      password: "",
       reTypePassword: "",
     },
 
     validationSchema: Yup.object({
-      newPassword: Yup.string().max(12).min(8).required("Password is required"),
+      password: Yup.string().required("Password is required"),
       reTypePassword: Yup.string()
-        .max(12)
-        .min(8)
-        .required("Repassword is required"),
+        .oneOf([Yup.ref("password")], "Passwords does not match")
+        .required("Confirm Password is required"),
     }),
     onSubmit: () => {
-      
       // router.push("/");
       // console.log();
     },
@@ -138,7 +130,7 @@ console.log(headers,'bodybody')
     <>
       <Grid container className={styles.listcontenatlogin}>
         <Grid item md={5} sm={8} className={styles.listgrifanfbox}>
-          <Box className={styles.listboxmailtext22}>
+          <Box className={styles.listboxmailtext2223}>
             <Typography>Create new password</Typography>
           </Box>
           <Box className={styles.patretextlog}>
@@ -187,14 +179,17 @@ console.log(headers,'bodybody')
 
                                 </Button> */}
               </Box>
-              <Typography className={styles.listemailtext}>
+              <Typography
+                className={styles.listemailtext}
+                sx={{ marginTop: "10px" }}
+              >
                 Retype Password
               </Typography>
               <Box style={{ display: "flex" }}>
                 <TextField
                   error={Boolean(
                     formik.touched.reTypePassword &&
-                    formik.errors.reTypePassword
+                      formik.errors.reTypePassword
                   )}
                   // type="password"
                   helperText={
@@ -229,7 +224,7 @@ console.log(headers,'bodybody')
               </Box>
             </form>
           </Box>
-          <Box className={styles.listbuttomopen22}>
+          <Box className={styles.listbuttomopen2223} sx={{ marginTop: "20px" }}>
             <Button onClick={onLoginPress}>Continue</Button>
           </Box>
         </Grid>
