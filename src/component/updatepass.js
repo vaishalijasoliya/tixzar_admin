@@ -107,7 +107,7 @@ const Newpass = (props) => {
       setIdobjdat(obg);
     } else {
       toast.error("Something went to wrong in link, please try again.");
-      // router.push("/");
+      router.push("/");
     }
   };
   const formik = useFormik({
