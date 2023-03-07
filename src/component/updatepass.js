@@ -106,6 +106,8 @@ const Newpass = (props) => {
       };
       setIdobjdat(obg);
     } else {
+      toast.error("Something went to wrong in link, please try again.");
+      // router.push("/");
     }
   };
   const formik = useFormik({
@@ -122,6 +124,7 @@ const Newpass = (props) => {
     }),
     onSubmit: () => {
       // router.push("/");
+      onLoginPress();
       // console.log();
     },
   });
@@ -140,7 +143,7 @@ const Newpass = (props) => {
             </Typography>
           </Box>
           <Box className={styles.listinputbox}>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
               <Typography className={styles.listemailtext}>Password</Typography>
               <Box style={{ display: "flex" }}>
                 <TextField
@@ -181,7 +184,7 @@ const Newpass = (props) => {
               </Box>
               <Typography
                 className={styles.listemailtext}
-                sx={{ marginTop: "10px" }}
+                sx={{ marginTop: "20px" }}
               >
                 Retype Password
               </Typography>
@@ -222,10 +225,15 @@ const Newpass = (props) => {
                   }}
                 />
               </Box>
+              <Box
+                className={styles.listbuttomopen2223}
+                sx={{ marginTop: "40px" }}
+              >
+                <Button onClick={()=>{
+                  // handleNext()
+                }} type="submit">Continue</Button>
+              </Box>
             </form>
-          </Box>
-          <Box className={styles.listbuttomopen2223} sx={{ marginTop: "20px" }}>
-            <Button onClick={onLoginPress}>Continue</Button>
           </Box>
         </Grid>
       </Grid>

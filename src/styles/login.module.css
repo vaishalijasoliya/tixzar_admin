@@ -237,6 +237,11 @@
   width: 100%;
   /* justify-content: center; */
 }
+.Search_Bar_input p {
+  margin-right: 0px !important;
+  margin-top: 0px !important;
+  margin-left: 0px !important;
+}
 
 .Search_Bar_input fieldset {
   border-color: transparent !important;
