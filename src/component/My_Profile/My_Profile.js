@@ -230,12 +230,7 @@ const ResponsiveAppBar = (props) => {
               src={createObjectURL ? createObjectURL : "./image/User_img.svg"}
               className={styles.avtaruplo}
             />
-            {/* <Avatar src={createObjectURL} className={styles.avtaruplo} /> */}
-            {/* <img
-              alt="Remy Sharp"
-              src="./image/Purple Logo png-01 1.svg"
-              className={styles.lianpohot}
-            /> */}
+
             <IconButton
               className={styles.iconbtnop}
               color="primary"
