@@ -23,6 +23,7 @@ import Databox from "./manage_box";
 import { Movie_Box } from "./img_data";
 import Pagination from "../Pagination/pagination";
 import { useRouter } from "next/router";
+import ReactHtmlParser from "react-html-parser";
 
 const Movie_review_Pages = (props) => {
   let PageSize = 4;
@@ -260,6 +261,13 @@ const Movie_review_Pages = (props) => {
       chartloginuser();
     }
   }, []);
+
+  function htmlToText(html) {
+    let temp = document.createElement("div");
+    temp.innerHTML = html;
+    return temp.textContent || temp.innerText || "";
+  }
+
   return (
     <Box className={Styles.listboscante}>
       <Box className={Styles.Movie_main_box}>
@@ -544,7 +552,10 @@ const Movie_review_Pages = (props) => {
                       {item.title}
                     </Typography>
                     <Typography className={Styles.Review_txt}>
-                      {item.description}
+                      {/* {item.description} */}
+                      {ReactHtmlParser(item.description)}
+
+                      {/* {dangerouslySetInnerHTML={{__html: title}}} */}
                     </Typography>
                   </Grid>
                   <Grid

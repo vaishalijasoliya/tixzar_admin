@@ -23,6 +23,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import dynamic from "next/dynamic";
 import { ContentState, EditorState } from "draft-js";
 import { stateToHTML } from "draft-js-export-html";
+import { stateFromHTML } from "draft-js-import-html";
 // const DynamicComponent = dynamic(
 //   () => import("react-draft-wysiwyg").then((mod) => mod.Editor),
 //   { ssr: false }
@@ -58,10 +59,7 @@ const Add_blog = (props) => {
   );
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
-    formik.setFieldValue(
-      "name",
-      htmlToText(stateToHTML(editorState.getCurrentContent()))
-    );
+    formik.setFieldValue("name", stateToHTML(editorState.getCurrentContent()));
   };
 
   const formik = useFormik({
@@ -263,10 +261,10 @@ const Add_blog = (props) => {
     if (!!patternDelete && patternDelete.status == true) {
       setCreateObjectURL(patternDelete.data.image_url);
       formik.setFieldValue("username", patternDelete.data.title);
-      formik.setFieldValue("name", patternDelete.data.description);
+      // formik.setFieldValue("name", patternDelete.data.description);
       setEditorState(
         EditorState.createWithContent(
-          ContentState.createFromText(patternDelete.data.description)
+          stateFromHTML(patternDelete.data.description)
         )
       );
 
