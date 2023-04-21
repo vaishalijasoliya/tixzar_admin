@@ -7,7 +7,7 @@ import ManageFaq from "../component/manageFAQ/manageFAQ";
 import Add_blog from "../component/manage_blogs/addBlogs";
 import { useRouter } from "next/router";
 
-const index = (props) => {
+const Addblog = (props) => {
   const router = useRouter();
   const data = {
     title: router.query.id ? "Edit Blog" : "Add blog",
@@ -45,4 +45,4 @@ const mapDispatchToProps = (dispatch) => ({
   save_user_data: (data) => dispatch({ type: Types.LOGIN, payload: data }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(index);
+export default connect(mapStateToProps, mapDispatchToProps)(Addblog);
