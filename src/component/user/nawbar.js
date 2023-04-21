@@ -137,7 +137,11 @@ const home = (props) => {
       variant="outlined"
       type="button"
       id={styles.butgri}
-      className={currentPath == "/manage_blogs" || currentPath == '/addBlog' ? styles.active : ""}
+      className={
+        currentPath == "/manage_blogs" || currentPath == "/addBlog"
+          ? styles.active
+          : ""
+      }
       onClick={() => {
         router.push("./manage_blogs");
       }}

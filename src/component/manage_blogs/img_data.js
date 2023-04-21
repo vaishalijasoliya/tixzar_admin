@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
 import Styles from "./manage_blogs.module.scss";
+import ReactHtmlParser from "react-html-parser";
 
 export function htmlToText(html) {
   let temp = document.createElement("div");
@@ -27,7 +28,7 @@ export const Movie_Box = ({ data }) => {
           </div>
           <Typography className={Styles.Movie_name_}>{data.title}</Typography>
           <Typography className={Styles.Review_txt11}>
-            {htmlToText(data.description)}
+            {ReactHtmlParser(data.description)}
             {/* {} */}
           </Typography>
         </>
