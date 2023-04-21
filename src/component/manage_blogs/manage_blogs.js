@@ -22,6 +22,7 @@ import { toast } from "react-toastify";
 import Databox from "./manage_box";
 import { Movie_Box } from "./img_data";
 import Pagination from "../Pagination/pagination";
+import { useRouter } from "next/router";
 
 const Movie_review_Pages = (props) => {
   let PageSize = 4;
@@ -38,6 +39,7 @@ const Movie_review_Pages = (props) => {
   const [dataeditbtn, setDataeditbtn] = React.useState("");
   const [editid, setEditid] = React.useState("");
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const router = useRouter();
 
   const allReviewData = useMemo(() => {
     const firstPageIndex = (blogCurrentPage - 1) * PageSize;
@@ -73,8 +75,12 @@ const Movie_review_Pages = (props) => {
       setCreateObjectURL(URL.createObjectURL(i));
     }
   };
-  const handleClickOpen = () => {
-    setOpenlist(true);
+  const handleClickOpen = (text) => {
+    if (text == "add") {
+      router.push({ pathname: "/addBlog" });
+    } else {
+      router.push({ pathname: "/addBlog", query: { id: text } });
+    }
   };
   const handleCloselist = () => {
     setOpenlist(false);
@@ -279,7 +285,7 @@ const Movie_review_Pages = (props) => {
                   <Button
                     className="Btn_grad_"
                     onClick={() => {
-                      handleClickOpen(), setDataeditbtn("ADD");
+                      handleClickOpen("add"), setDataeditbtn("ADD");
                     }}
                     color="primary"
                   >
@@ -375,6 +381,7 @@ const Movie_review_Pages = (props) => {
                                       onClick={() => {
                                         //  handleNext()
                                         // accounttype('active'),
+                                        EDITPATT("active");
                                         handleCloselist();
                                       }}
                                     >
@@ -384,6 +391,8 @@ const Movie_review_Pages = (props) => {
                                       type="submit"
                                       className={Styles.listupdetbtn3}
                                       onClick={() => {
+                                        EDITPATT("pending");
+
                                         // accounttype('pending'),
                                         handleCloselist();
                                       }}
@@ -394,6 +403,7 @@ const Movie_review_Pages = (props) => {
                                       type="submit"
                                       className={Styles.listupdetbtn2}
                                       onClick={() => {
+                                        EDITPATT("delete");
                                         // accounttype('delete'),
                                         handleCloselist();
                                       }}
@@ -550,9 +560,9 @@ const Movie_review_Pages = (props) => {
                       <Button
                         onClick={() => {
                           topBox_view(item.id),
-                            setDataeditbtn("EDIT"),
+                            setDataeditbtn("edit"),
                             setEditid(item.id),
-                            handleClickOpen();
+                            handleClickOpen(item.id);
                         }}
                         className={Styles.deleteBtn}
                       >
