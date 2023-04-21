@@ -261,7 +261,7 @@ const Add_blog = (props) => {
     if (!!patternDelete && patternDelete.status == true) {
       setCreateObjectURL(patternDelete.data.image_url);
       formik.setFieldValue("username", patternDelete.data.title);
-      // formik.setFieldValue("name", patternDelete.data.description);
+      formik.setFieldValue("name", patternDelete.data.description);
       setEditorState(
         EditorState.createWithContent(
           stateFromHTML(patternDelete.data.description)
