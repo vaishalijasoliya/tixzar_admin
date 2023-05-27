@@ -45,6 +45,7 @@ const home = (props) => {
   var currentPath = router.pathname;
   const buttons = [
     <Button
+    // key={post.id}
       className={currentPath == "/dashboard" ? styles.active : ""}
       id={styles.butgri}
       onClick={() => {
@@ -55,6 +56,7 @@ const home = (props) => {
       <span className={styles.btndtl}>Dashboard</span>
     </Button>,
     <Button
+    // key={post.id}
       onClick={() => {
         router.push("./Manage_FAQ");
       }}
@@ -112,6 +114,7 @@ const home = (props) => {
       <span className={styles.btndtl4}>Manage Movie Details</span>
     </Button>,
     <Button
+    //  key={post.id}
       onClick={() => {
         router.push("./Manage_Trending_Movies");
       }}
@@ -123,6 +126,7 @@ const home = (props) => {
       <span className={styles.btndtl5}>Manage Trending Movies</span>
     </Button>,
     <Button
+    // key={post.id}
       onClick={() => {
         router.push("./manageralluse");
       }}
@@ -134,6 +138,7 @@ const home = (props) => {
       <span className={styles.btndtl6}>Manage All Users</span>
     </Button>,
     <Button
+    // key={post.id}
       variant="outlined"
       type="button"
       id={styles.butgri}
@@ -149,6 +154,19 @@ const home = (props) => {
       <ConnectWithoutContactIcon className={styles.iconside} />
       <span className={styles.logout}> Manage Blogs </span>
     </Button>,
+
+    <Button
+    // key={post.id}
+    onClick={() => {
+      router.push("./manage_announcement");
+    }}
+    className={currentPath == "/manage_announcement" ? styles.active : ""}
+    variant="outlined"
+    id={styles.butgri}
+    >
+    <span className={styles.btndtl6}>Manage Announcements</span>
+    </Button>,
+
   ];
   return (
     <>

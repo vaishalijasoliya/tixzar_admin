@@ -9,7 +9,7 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useMemo } from "react";
-import Styles from "./manage_blogs.module.scss";
+import Styles from "../manage_blogs/manage_blogs.module.scss";
 import { TabContext, TabPanel } from "@mui/lab";
 import EditIcon from "@mui/icons-material/Edit";
 import { Avatar } from "@material-ui/core";
@@ -19,17 +19,42 @@ import * as Yup from "yup";
 import ApiServices from "../../config/ApiServices";
 import ApiEndpoint from "../../config/ApiEndpoint";
 import { toast } from "react-toastify";
-import Databox from "./manage_box";
-import { Movie_Box } from "./img_data";
+// import Databox from "./manage_box";
+import { Movie_Box } from "../manage_blogs/img_data";
 import Pagination from "../Pagination/pagination";
 import { useRouter } from "next/router";
 import ReactHtmlParser from "react-html-parser";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from '@mui/material/Checkbox';
 
-const Movie_review_Pages = (props) => {
+
+const datalist = [
+  {
+    title: "Lorem Ipsum",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.",
+  },
+  {
+    title: "Lorem Ipsum",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.",
+  },
+  {
+    title: "Lorem Ipsum",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.",
+  },
+ 
+];
+
+const Movie_announce_Pages = (props) => {
   let PageSize = 4;
 
   const [value, setValue] = React.useState("All Reviews");
-  const [datalist, setData] = React.useState([]);
+  // const [datalist, setData] = React.useState([]);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [createObjectURL, setCreateObjectURL] = React.useState(null);
   const [image, setImage] = React.useState(null);
@@ -42,7 +67,7 @@ const Movie_review_Pages = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const router = useRouter();
 
-  const allReviewData = useMemo(() => {
+  const allannounceData = useMemo(() => {
     const firstPageIndex = (blogCurrentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return datelistdes.slice(firstPageIndex, lastPageIndex);
@@ -56,11 +81,14 @@ const Movie_review_Pages = (props) => {
     validationSchema: Yup.object({
       username: Yup.string().max(255).required("Add Title is required"),
       name: Yup.string().max(255).required("Add Title is required"),
+      selectname: Yup.string().max(255).required("Add this is required"),
+
     }),
     onSubmit: () => {
       // onLoginPress()
     },
   });
+
   const handleChangeImage = (e) => {
     console.log(e.target.files[0], "myfile");
     const filetypes = e.target.files[0].type;
@@ -77,11 +105,12 @@ const Movie_review_Pages = (props) => {
     }
   };
   const handleClickOpen = (text) => {
-    if (text == "add") {
-      router.push({ pathname: "/addBlog" });
-    } else {
-      router.push({ pathname: "/addBlog", query: { id: text } });
-    }
+    // if (text == "add") {
+    //   router.push({ pathname: "/manage_announcement" });
+    // } else {
+    //   router.push({ pathname: "/manage_announcement", query: { id: text } });
+    // }
+    setOpenlist(true);
   };
   const handleCloselist = () => {
     setOpenlist(false);
@@ -224,7 +253,7 @@ const Movie_review_Pages = (props) => {
           activeBlog.push(JSON.parse(JSON.stringify(object)));
         }
         setDatalistlogin(activeBlog);
-        setData(blogList);
+        // setData(blogList);
         setBlogCurrentPage(1);
       }
     }
@@ -268,6 +297,12 @@ const Movie_review_Pages = (props) => {
     return temp.textContent || temp.innerText || "";
   }
 
+  const [latestselect, setlatestselect] = React.useState("");
+
+  const handleChange = (event) => {
+    setlatestselect(event.target.value);
+  };
+
   return (
     <Box className={Styles.listboscante}>
       <Box className={Styles.Movie_main_box}>
@@ -304,7 +339,7 @@ const Movie_review_Pages = (props) => {
                         marginLeft: "10px",
                       }}
                     >
-                      Add New Blog
+                      Add New Announcement
                       {/* Add New Movie */}
                     </Typography>
                   </Button>
@@ -313,14 +348,20 @@ const Movie_review_Pages = (props) => {
                     maxWidth={"md"}
                     open={openlist}
                     onClose={handleCloselist}
+                    // sx={{
+                    //           "& .MuiButtonBase-root": {
+                    //           color:"white"
+                    //         },
+                    //       }}
                   >
                     <Box className={Styles.listpopuy22}>
                       <form onSubmit={formik.handleSubmit}>
                         <div className={Styles.listmenuuppohot}>
                           <img
                             src={createObjectURL}
-                            className={Styles.avtaruplo}
-                          />
+                            className={Styles.avtaruplo_announce}                           
+                          >
+                          </img>
                           <div>
                             <IconButton
                               className={Styles.iconbtnop}
@@ -357,6 +398,39 @@ const Movie_review_Pages = (props) => {
                             onChange={formik.handleChange}
                             value={formik.values.username}
                           ></TextField>
+
+                          <Select
+                            value={latestselect}
+                            error={Boolean(
+                              formik.touched.username && formik.errors.username
+                            )}
+                            helperText={
+                              formik.touched.username && formik.errors.username
+                            }
+                            className={Styles.inputnamelist}
+                            onChange={handleChange}
+                            displayEmpty
+                            inputProps={{ "aria-label": "Without label" }}
+                            sx={{
+                              "& .MuiButtonBase-root": {
+                              color:"white"
+                            },
+                          }}
+                          >
+                            <MenuItem value="" >
+                              <em>Latest</em>
+                            </MenuItem>
+                            <MenuItem value={1}>All</MenuItem>
+                            <MenuItem value={2}>Movies</MenuItem>
+                            <MenuItem value={3}>Documentries</MenuItem>
+                            <MenuItem value={4}>Books</MenuItem>
+                            <MenuItem value={5}>TV</MenuItem>
+                            <MenuItem value={6}>Gaming</MenuItem>
+                            <MenuItem value={7}>Culrure</MenuItem>
+                            <MenuItem value={8}>Comics</MenuItem>
+                            <MenuItem value={9}>Celebrities</MenuItem>
+                            <MenuItem value={10}>Theater & Plays</MenuItem>
+                          </Select>
                         </Box>
                         <Box>
                           <TextareaAutosize
@@ -376,8 +450,27 @@ const Movie_review_Pages = (props) => {
                             className={Styles.Reply_text_area}
                           />
                         </Box>
+                        
+                        <Box style={{display:"flex"}}>
+                        <FormGroup >
+                          <FormControlLabel
+                            control={<Checkbox  style={{color:"#FFFFFF"}}  />}
+                            label="Push Notification"
+                            style={{color:"#FFFFFF"}}
+                          />
+                        </FormGroup>
+
+                        <FormGroup >
+                          <FormControlLabel
+                            control={<Checkbox  style={{color:"#FFFFFF"}}  />}
+                            label="App Notification"
+                            style={{color:"#FFFFFF"}}
+                          />
+                        </FormGroup>
+                        </Box>
+
                         <Grid item md={12} sm={12} xs={12}>
-                          <Box className={Styles.listboxbtn}>
+                          <Box className={Styles.listboxbtn_announce}>
                             {dataeditbtn == "ADD" ? (
                               <>
                                 {formik.values.username == "" ||
@@ -385,7 +478,7 @@ const Movie_review_Pages = (props) => {
                                   <>
                                     <Button
                                       type="submit"
-                                      className={Styles.listupdetbtn}
+                                      className={Styles.listupdetbtn_announce}
                                       onClick={() => {
                                         //  handleNext()
                                         // accounttype('active'),
@@ -393,64 +486,23 @@ const Movie_review_Pages = (props) => {
                                         handleCloselist();
                                       }}
                                     >
-                                      Publish
+                                      Add Announcement
                                     </Button>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn3}
-                                      onClick={() => {
-                                        EDITPATT("pending");
-
-                                        // accounttype('pending'),
-                                        handleCloselist();
-                                      }}
-                                    >
-                                      Draft
-                                    </Button>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn2}
-                                      onClick={() => {
-                                        EDITPATT("delete");
-                                        // accounttype('delete'),
-                                        handleCloselist();
-                                      }}
-                                    >
-                                      Unpublish
-                                    </Button>
+                                    
                                   </>
                                 ) : (
                                   <>
-                                    <Button
+                                  <Button
                                       type="submit"
-                                      className={Styles.listupdetbtn}
+                                      className={Styles.listupdetbtn_announce}
                                       onClick={() => {
                                         //  handleNext()
                                         // accounttype('active'),
+                                        EDITPATT("active");
                                         handleCloselist();
                                       }}
                                     >
-                                      Publish
-                                    </Button>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn3}
-                                      onClick={() => {
-                                        accounttype("pending"),
-                                          handleCloselist();
-                                      }}
-                                    >
-                                      Draft
-                                    </Button>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn2}
-                                      onClick={() => {
-                                        accounttype("delete"),
-                                          handleCloselist();
-                                      }}
-                                    >
-                                      Unpublish
+                                      Add Announcement
                                     </Button>
                                   </>
                                 )}
@@ -460,66 +512,32 @@ const Movie_review_Pages = (props) => {
                                 {formik.values.username == "" ||
                                 formik.values.name == "" ? (
                                   <>
-                                    <Button
+                                  <Button
                                       type="submit"
-                                      className={Styles.listupdetbtn}
+                                      className={Styles.listupdetbtn_announce}
                                       onClick={() => {
                                         //  handleNext()
                                         // accounttype('active'),
+                                        EDITPATT("active");
                                         handleCloselist();
                                       }}
                                     >
-                                      Publish
-                                    </Button>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn3}
-                                      onClick={() => {
-                                        // accounttype('pending'),
-                                        handleCloselist();
-                                      }}
-                                    >
-                                      Draft
-                                    </Button>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn2}
-                                      onClick={() => {
-                                        // accounttype('delete'),
-                                        handleCloselist();
-                                      }}
-                                    >
-                                      Unpublish
+                                      Add Announcement
                                     </Button>
                                   </>
                                 ) : (
                                   <>
-                                    <Button
+                                  <Button
                                       type="submit"
-                                      className={Styles.listupdetbtn}
+                                      className={Styles.listupdetbtn_announce}
                                       onClick={() => {
-                                        EDITPATT("active"), handleCloselist();
+                                        //  handleNext()
+                                        // accounttype('active'),
+                                        EDITPATT("active");
+                                        handleCloselist();
                                       }}
                                     >
-                                      Publish
-                                    </Button>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn3}
-                                      onClick={() => {
-                                        EDITPATT("pending"), handleCloselist();
-                                      }}
-                                    >
-                                      Draft
-                                    </Button>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn2}
-                                      onClick={() => {
-                                        EDITPATT("delete"), handleCloselist();
-                                      }}
-                                    >
-                                      Unpublish
+                                      Add Announcement
                                     </Button>
                                   </>
                                 )}
@@ -533,73 +551,76 @@ const Movie_review_Pages = (props) => {
                 </div>
               </Grid>
             </div>
-            <TabPanel className={Styles.Tab_panel_22} value={"All Reviews"}>
-              {datalist.map((item, idx) => (
-                <div className={Styles.listgridmnew} >
-                  <Grid item xs={12} sm={12} md={4}>
-                    <div className={Styles.Llistsffsffs22}>
-                      <img src={item.logoUrl} className={Styles.User_Image} />
-                    </div>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={7}
-                    className={Styles.userdataanfdata}
-                  >
-                    <Typography className={Styles.User_name_bold}>
-                      {item.title}
-                    </Typography>
-                    <Typography className={Styles.Review_txt}>
-                      {/* {item.description} */}
-                      {ReactHtmlParser(item.description)}
 
-                      {/* {dangerouslySetInnerHTML={{__html: title}}} */}
-                    </Typography>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={1}
-                    sx={{ justifyContent: "flex-end", display: "flex" }}
-                  >
-                    <Box
-                      style={{ justifyContent: "flex-end", display: "flex" }}
+            <TabPanel className={Styles.Tab_panel_22_announce} value={"All Reviews"}>
+              <box style={{ margin: "30px" }}>
+                {datalist.map((item, idx) => (
+                  <div className={Styles.listgridmnew_announce}>
+                    <Grid item xs={12} sm={12} md={4}>
+                      <div className={Styles.Llistsffsffs22}>
+                        <img
+                          src="/announceimage.png"
+                          className={Styles.User_Image}
+                        />
+                      </div>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={8}
+                      className={Styles.userdataanfdata_announce}
                     >
-                      <Button
-                        onClick={() => {
-                          topBox_view(item.id),
-                            setDataeditbtn("edit"),
-                            setEditid(item.id),
-                            handleClickOpen(item.id);
-                        }}
-                        className={Styles.deleteBtn}
+                      <Typography className={Styles.User_name_bold}>
+                        {item.title}
+                      </Typography>
+                      <Typography className={Styles.Review_txt}>
+                        {ReactHtmlParser(item.description)}
+                      </Typography>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md={1}
+                      sx={{ justifyContent: "flex-end", display: "flex" }}
+                    >
+                      <Box
+                        style={{ justifyContent: "flex-end", display: "flex" }}
                       >
-                        <Avatar className={Styles.avtaradataedit}>
-                          <EditIcon />
-                        </Avatar>
-                      </Button>
-                    </Box>
-                  </Grid>
-                </div>
-              ))}
+                        <Button
+                          onClick={() => {
+                            topBox_view(item.id),
+                              setDataeditbtn("edit"),
+                              setEditid(item.id),
+                              handleClickOpen(item.id);
+                          }}
+                          className={Styles.deleteBtn}
+                        >
+                          <Avatar className={Styles.avtaradataedit}>
+                            <EditIcon />
+                          </Avatar>
+                        </Button>
+                      </Box>
+                    </Grid>
+                  </div>
+                ))}
+              </box>
             </TabPanel>
           </TabContext>
         </Box>
         <Box className="mainView_of_all_pages11">
-          <Typography className={Styles.top_movie_txt}>Live Blogs</Typography>
+          {/* <Typography className={Styles.top_movie_txt}>Live Blogs</Typography> */}
           <Box className={Styles.Movie_main_box}>
-            <Grid container columnSpacing={2} rowSpacing={3} >
-              {allReviewData.map((item) => {
-                return (
-                  <Grid item sm={6} xs={12} md={4} lg={3} xl={2}>
-                    <Movie_Box data={item} />
-                  </Grid>
-                );
-              })}
-            </Grid>
+            {/* <Grid container columnSpacing={2} rowSpacing={3}>
+                {allannounceData.map((item) => {
+                  return (
+                    <Grid item sm={6} xs={12} md={4} lg={3} xl={2}>
+                      <Movie_Box data={item} />
+                    </Grid>
+                  );
+                })}
+              </Grid> */}
             <Box sx={{ marginTop: "10px" }}>
               <Pagination
                 className="pagination-bar"
@@ -616,4 +637,4 @@ const Movie_review_Pages = (props) => {
   );
 };
 
-export default Movie_review_Pages;
+export default Movie_announce_Pages;
