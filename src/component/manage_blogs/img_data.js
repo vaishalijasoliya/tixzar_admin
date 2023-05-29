@@ -23,13 +23,12 @@ export const Movie_Box = ({ data }) => {
               // width={190}
               // height={115}
               src={data.logoUrl}
-              className={Styles.Movie_img_}
+              className={Styles.Movie_img}
             />
           </div>
           <Typography className={Styles.Movie_name_}>{data.title}</Typography>
           <Typography className={Styles.Review_txt11}>
             {ReactHtmlParser(data.description)}
-            {/* {} */}
           </Typography>
         </>
       </Box>

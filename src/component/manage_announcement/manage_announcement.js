@@ -28,8 +28,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from '@mui/material/Checkbox';
-
+import Checkbox from "@mui/material/Checkbox";
 
 const datalist = [
   {
@@ -47,11 +46,25 @@ const datalist = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.",
   },
- 
+  {
+    title: "Loremefeger Ipsum",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.",
+  },
+  {
+    title: "Loremdvdfff Ipsum",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.",
+  },
+  {
+    title: "Loremgfgffff Ipsum",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.",
+  },
 ];
 
 const Movie_announce_Pages = (props) => {
-  let PageSize = 4;
+  let PageSize = 3;
 
   const [value, setValue] = React.useState("All Reviews");
   // const [datalist, setData] = React.useState([]);
@@ -70,19 +83,20 @@ const Movie_announce_Pages = (props) => {
   const allannounceData = useMemo(() => {
     const firstPageIndex = (blogCurrentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return datelistdes.slice(firstPageIndex, lastPageIndex);
+    return datalist.slice(firstPageIndex, lastPageIndex);
   }, [blogCurrentPage]);
+  // console.log(allannounceData, "allannounceDataallannounceData", datalist);
 
   const formik = useFormik({
     initialValues: {
       username: "",
       name: "",
+      latest: "",
     },
     validationSchema: Yup.object({
       username: Yup.string().max(255).required("Add Title is required"),
       name: Yup.string().max(255).required("Add Title is required"),
-      selectname: Yup.string().max(255).required("Add this is required"),
-
+      latest: Yup.string().max(255).required("this is required"),
     }),
     onSubmit: () => {
       // onLoginPress()
@@ -147,69 +161,71 @@ const Movie_announce_Pages = (props) => {
     }
     console.log(formdata, "iditems");
   };
-  const accounttype = async (value) => {
-    var body = {
-      image_url: itemimg,
-      title: formik.values.username,
-      description: formik.values.name,
-      status: value,
-    };
-    var headers = {
-      "Content-Type": "application/json",
-      "x-access-token": props.props.profile.token,
-    };
-    props.props.loaderRef(true);
-    var data = await ApiServices.PostApiCall(
-      ApiEndpoint.ADMIN_TOPBOX_ADD,
-      JSON.stringify(body),
-      headers
-    );
-    props.props.loaderRef(false);
-    if (!!data) {
-      if (data.status == true) {
-        toast.success(data.message);
-        chartloginuser();
-      } else {
-        toast.error(data.message);
-      }
-    } else {
-      toast.error("Something went wrong.");
-    }
+  // const accounttype = async (value) => {
+  //   var body = {
+  //     image_url: itemimg,
+  //     title: formik.values.username,
+  //     description: formik.values.name,
+  //     latest: formik.values.latest,
+  //     status: value,
+  //   };
+  //   var headers = {
+  //     "Content-Type": "application/json",
+  //     "x-access-token": props.props.profile.token,
+  //   };
+  //   props.props.loaderRef(true);
+  //   var data = await ApiServices.PostApiCall(
+  //     ApiEndpoint.ADMIN_TOPBOX_ADD,
+  //     JSON.stringify(body),
+  //     headers
+  //   );
+  //   props.props.loaderRef(false);
+  //   if (!!data) {
+  //     if (data.status == true) {
+  //       toast.success(data.message);
+  //       chartloginuser();
+  //     } else {
+  //       toast.error(data.message);
+  //     }
+  //   } else {
+  //     toast.error("Something went wrong.");
+  //   }
 
-    console.log(data, "datadata");
-  };
-  const EDITPATT = async (value) => {
-    var body = {
-      image_url: itemimg,
-      title: formik.values.username,
-      description: formik.values.name,
-      status: value,
-      id_topBox: editid,
-    };
-    var headers = {
-      "Content-Type": "application/json",
-      "x-access-token": props.props.profile.token,
-    };
-    props.props.loaderRef(true);
-    var data = await ApiServices.PostApiCall(
-      ApiEndpoint.ADMIN_TOPBOX_EDIT,
-      JSON.stringify(body),
-      headers
-    );
-    props.props.loaderRef(false);
-    if (!!data) {
-      if (data.status == true) {
-        toast.success(data.message);
-        chartloginuser();
-      } else {
-        toast.error(data.message);
-      }
-    } else {
-      toast.error("Something went wrong.");
-    }
+  //   console.log(data, "datadata");
+  // };
+  // const EDITPATT = async (value) => {
+  //   var body = {
+  //     image_url: itemimg,
+  //     title: formik.values.username,
+  //     description: formik.values.name,
+  //     latest: formik.values.latest,
+  //     status: value,
+  //     id_topBox: editid,
+  //   };
+  //   var headers = {
+  //     "Content-Type": "application/json",
+  //     "x-access-token": props.props.profile.token,
+  //   };
+  //   props.props.loaderRef(true);
+  //   var data = await ApiServices.PostApiCall(
+  //     ApiEndpoint.ADMIN_TOPBOX_EDIT,
+  //     JSON.stringify(body),
+  //     headers
+  //   );
+  //   props.props.loaderRef(false);
+  //   if (!!data) {
+  //     if (data.status == true) {
+  //       toast.success(data.message);
+  //       chartloginuser();
+  //     } else {
+  //       toast.error(data.message);
+  //     }
+  //   } else {
+  //     toast.error("Something went wrong.");
+  //   }
 
-    console.log(data, "datadata");
-  };
+  //   console.log(data, "datadata");
+  // };
   const chartloginuser = async () => {
     setBlogCurrentPage(2);
     var headers = {
@@ -274,22 +290,23 @@ const Movie_announce_Pages = (props) => {
       headers
     );
     props.props.loaderRef(false);
-    console.log(patternDelete.data.image_url, "patternDelete");
+    // console.log(patternDelete.data.image_url, "patternDelete");
 
-    if (!!patternDelete && patternDelete.status == true) {
-      setCreateObjectURL(patternDelete.data.image_url);
-      formik.setFieldValue("username", patternDelete.data.title);
-      formik.setFieldValue("name", patternDelete.data.description);
-      setIditem(patternDelete.data.image_url);
-    } else {
-      toast.error("Somethinggg went wrong.");
-    }
+    // if (!!patternDelete && patternDelete.status == true) {
+    //   setCreateObjectURL(patternDelete.data.image_url);
+    //   formik.setFieldValue("username", patternDelete.data.title);
+    //   formik.setFieldValue("name", patternDelete.data.description);
+    //   formik.setFieldValue("latest", patternDelete.data.description);
+    //   setIditem(patternDelete.data.image_url);
+    // } else {
+    //   toast.error("Somethinggg went wrong.");
+    // }
   };
-  React.useEffect(() => {
-    if (!!props.props.profile && !!props.props.profile.token) {
-      chartloginuser();
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   if (!!props.props.profile && !!props.props.profile.token) {
+  //     chartloginuser();
+  //   }
+  // }, []);
 
   function htmlToText(html) {
     let temp = document.createElement("div");
@@ -348,41 +365,66 @@ const Movie_announce_Pages = (props) => {
                     maxWidth={"md"}
                     open={openlist}
                     onClose={handleCloselist}
-                    // sx={{
-                    //           "& .MuiButtonBase-root": {
-                    //           color:"white"
-                    //         },
-                    //       }}
                   >
                     <Box className={Styles.listpopuy22}>
                       <form onSubmit={formik.handleSubmit}>
-                        <div className={Styles.listmenuuppohot}>
-                          <img
+                        {/* <div className={Styles.listmenuuppohot}> */}
+                        <img
                             src={createObjectURL}
-                            className={Styles.avtaruplo_announce}                           
-                          >
-                          </img>
+                            className={Styles.avtaruplo_announce}
+                          ></img>
                           <div>
-                            <IconButton
+                          
+                          <IconButton
                               className={Styles.iconbtnop}
                               color="primary"
-                              aria-label="upload picture"
+                              aria-label="upload picture"               
                               component="label"
+                              style={{display:"block"}}
                             >
+                           
                               <input
                                 type="file"
                                 name="myImage"
                                 hidden
                                 onChange={handleChangeImage}
                               />
-                              <Box className={Styles.deleteBtn}>
-                                <Avatar className={Styles.avtaradataedit}>
-                                  <EditIcon />
-                                </Avatar>
-                              </Box>
+                               
+                          <img src="/uploadimage.png" alt="image" />
+                            <Typography style={{color:"#0799DA", fontFamily:"Gilroy-Medium", fontSize:"22px"}}>
+                            Upload image</Typography>
+                            <Typography style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium", fontSize:"21px"}}>
+                            Or drop your image here</Typography>
                             </IconButton>
                           </div>
-                        </div>
+                           
+
+                          {/* <div> */}
+                         
+                            {/* <IconButton
+                              className={Styles.iconbtnop}
+                              color="primary"
+                              aria-label="upload picture"
+                              component="label"
+                            >
+                            
+                              <input
+                                type="file"
+                                name="myImage"
+                                hidden
+                                onChange={handleChangeImage}
+                              /> */}
+                            
+                              {/* <Box className={Styles.deleteBtn}> */}
+                                {/* <Avatar className={Styles.avtaradataedit}> */}
+                                  {/* <EditIcon /> */}
+                                  
+                                {/* </Avatar> */}
+                              {/* </Box> */}
+                            {/* </IconButton> */}
+                          {/* </div> */}
+                         
+                        {/* </div> */}
                         <Box>
                           <TextField
                             error={Boolean(
@@ -392,7 +434,7 @@ const Movie_announce_Pages = (props) => {
                               formik.touched.username && formik.errors.username
                             }
                             name="username"
-                            className={Styles.inputnamelist}
+                            className={Styles.inputnamelist_announce}
                             placeholder="Add Title"
                             onBlur={formik.handleBlur}
                             onChange={formik.handleChange}
@@ -400,36 +442,43 @@ const Movie_announce_Pages = (props) => {
                           ></TextField>
 
                           <Select
-                            value={latestselect}
                             error={Boolean(
-                              formik.touched.username && formik.errors.username
+                              formik.touched.latest && formik.errors.latest
                             )}
                             helperText={
-                              formik.touched.username && formik.errors.username
+                              formik.touched.latest && formik.errors.latest
                             }
-                            className={Styles.inputnamelist}
-                            onChange={handleChange}
+                            name="latest"
+                            value={formik.values.latest}
+                            // value={latestselect}
+                            className={Styles.inputnamelist_announce}
+                            // onChange={handleChange}
+                            onChange={formik.handleChange}
                             displayEmpty
                             inputProps={{ "aria-label": "Without label" }}
-                            sx={{
-                              "& .MuiButtonBase-root": {
-                              color:"white"
-                            },
-                          }}
+                            // sx={{
+                            //   "& .MuiButtonBase-root": {
+                            //     color: "white",
+                            //   },
+                            //   "& .MuiPaper-root ": {
+                            //     color: "white",
+                            //   },
+                            // }}
                           >
-                            <MenuItem value="" >
-                              <em>Latest</em>
+                            <MenuItem value="">
+                              <em style={{color:"#FFFFFF",fontFamily:"Gilroy-Medium"}}>Latest</em>
                             </MenuItem>
-                            <MenuItem value={1}>All</MenuItem>
-                            <MenuItem value={2}>Movies</MenuItem>
-                            <MenuItem value={3}>Documentries</MenuItem>
-                            <MenuItem value={4}>Books</MenuItem>
-                            <MenuItem value={5}>TV</MenuItem>
-                            <MenuItem value={6}>Gaming</MenuItem>
-                            <MenuItem value={7}>Culrure</MenuItem>
-                            <MenuItem value={8}>Comics</MenuItem>
-                            <MenuItem value={9}>Celebrities</MenuItem>
-                            <MenuItem value={10}>Theater & Plays</MenuItem>
+                            <MenuItem
+                             style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={1} >All</MenuItem>
+                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={2}>Movies</MenuItem>
+                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={3}>Documentries</MenuItem>
+                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={4}>Books</MenuItem>
+                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={5}>TV</MenuItem>
+                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={6}>Gaming</MenuItem>
+                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={7}>Culrure</MenuItem>
+                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={8}>Comics</MenuItem>
+                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={9}>Celebrities</MenuItem>
+                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={10}>Theater & Plays</MenuItem>
                           </Select>
                         </Box>
                         <Box>
@@ -447,26 +496,30 @@ const Movie_announce_Pages = (props) => {
                             placeholder="Description"
                             maxRows={10}
                             minRows={3}
-                            className={Styles.Reply_text_area}
+                            className={Styles.Reply_text_area_announce}
                           />
                         </Box>
-                        
-                        <Box style={{display:"flex"}}>
-                        <FormGroup >
-                          <FormControlLabel
-                            control={<Checkbox  style={{color:"#FFFFFF"}}  />}
-                            label="Push Notification"
-                            style={{color:"#FFFFFF"}}
-                          />
-                        </FormGroup>
 
-                        <FormGroup >
-                          <FormControlLabel
-                            control={<Checkbox  style={{color:"#FFFFFF"}}  />}
-                            label="App Notification"
-                            style={{color:"#FFFFFF"}}
-                          />
-                        </FormGroup>
+                        <Box style={{ display: "flex" }}>
+                          <FormGroup>
+                            <FormControlLabel
+                              control={
+                                <Checkbox style={{ color: "#FFFFFF" }} />
+                              }
+                              label="Push Notification"
+                              style={{ color: "#FFFFFF", fontFamily:"Gilroy-Medium"}}
+                            />
+                          </FormGroup>
+
+                          <FormGroup>
+                            <FormControlLabel
+                              control={
+                                <Checkbox style={{ color: "#FFFFFF" }} />
+                              }
+                              label="App Notification"
+                              style={{ color: "#FFFFFF",fontFamily:"Gilroy-Medium" }}
+                            />
+                          </FormGroup>
                         </Box>
 
                         <Grid item md={12} sm={12} xs={12}>
@@ -474,7 +527,8 @@ const Movie_announce_Pages = (props) => {
                             {dataeditbtn == "ADD" ? (
                               <>
                                 {formik.values.username == "" ||
-                                formik.values.name == "" ? (
+                                formik.values.name == "" ||
+                                formik.values.latest == "" ? (
                                   <>
                                     <Button
                                       type="submit"
@@ -482,23 +536,22 @@ const Movie_announce_Pages = (props) => {
                                       onClick={() => {
                                         //  handleNext()
                                         // accounttype('active'),
-                                        EDITPATT("active");
+                                        // EDITPATT("active");
                                         handleCloselist();
                                       }}
                                     >
                                       Add Announcement
                                     </Button>
-                                    
                                   </>
                                 ) : (
                                   <>
-                                  <Button
+                                    <Button
                                       type="submit"
                                       className={Styles.listupdetbtn_announce}
                                       onClick={() => {
                                         //  handleNext()
                                         // accounttype('active'),
-                                        EDITPATT("active");
+                                        // EDITPATT("active");
                                         handleCloselist();
                                       }}
                                     >
@@ -510,15 +563,16 @@ const Movie_announce_Pages = (props) => {
                             ) : (
                               <>
                                 {formik.values.username == "" ||
-                                formik.values.name == "" ? (
+                                formik.values.name == "" ||
+                                formik.values.username == "" ? (
                                   <>
-                                  <Button
+                                    <Button
                                       type="submit"
                                       className={Styles.listupdetbtn_announce}
                                       onClick={() => {
                                         //  handleNext()
                                         // accounttype('active'),
-                                        EDITPATT("active");
+                                        // EDITPATT("active");
                                         handleCloselist();
                                       }}
                                     >
@@ -527,13 +581,13 @@ const Movie_announce_Pages = (props) => {
                                   </>
                                 ) : (
                                   <>
-                                  <Button
+                                    <Button
                                       type="submit"
                                       className={Styles.listupdetbtn_announce}
                                       onClick={() => {
                                         //  handleNext()
                                         // accounttype('active'),
-                                        EDITPATT("active");
+                                        // EDITPATT("active");
                                         handleCloselist();
                                       }}
                                     >
@@ -552,10 +606,13 @@ const Movie_announce_Pages = (props) => {
               </Grid>
             </div>
 
-            <TabPanel className={Styles.Tab_panel_22_announce} value={"All Reviews"}>
+            <TabPanel
+              className={Styles.Tab_panel_22_announce}
+              value={"All Reviews"}
+            >
               <box style={{ margin: "30px" }}>
-                {datalist.map((item, idx) => (
-                  <div className={Styles.listgridmnew_announce}>
+                {allannounceData.map((item, idx) => (
+                  <div className={Styles.listgridmnew_announce} key={idx}>
                     <Grid item xs={12} sm={12} md={4}>
                       <div className={Styles.Llistsffsffs22}>
                         <img
@@ -605,22 +662,28 @@ const Movie_announce_Pages = (props) => {
                     </Grid>
                   </div>
                 ))}
+                <Pagination
+                  className="pagination-bar"
+                  currentPage={blogCurrentPage}
+                  totalCount={datalist.length}
+                  pageSize={PageSize}
+                  onPageChange={(page) => setBlogCurrentPage(page)}
+                />
               </box>
             </TabPanel>
           </TabContext>
         </Box>
-        <Box className="mainView_of_all_pages11">
-          {/* <Typography className={Styles.top_movie_txt}>Live Blogs</Typography> */}
+        {/* <Box className="mainView_of_all_pages11">
           <Box className={Styles.Movie_main_box}>
-            {/* <Grid container columnSpacing={2} rowSpacing={3}>
+            <Grid container columnSpacing={2} rowSpacing={3}>
                 {allannounceData.map((item) => {
                   return (
                     <Grid item sm={6} xs={12} md={4} lg={3} xl={2}>
-                      <Movie_Box data={item} />
+                      <Movie_announce_Pages data={item} /> 
                     </Grid>
                   );
                 })}
-              </Grid> */}
+              </Grid>
             <Box sx={{ marginTop: "10px" }}>
               <Pagination
                 className="pagination-bar"
@@ -631,7 +694,7 @@ const Movie_announce_Pages = (props) => {
               />
             </Box>
           </Box>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );

@@ -535,7 +535,7 @@ const Movie_review_Pages = (props) => {
             </div>
             <TabPanel className={Styles.Tab_panel_22} value={"All Reviews"}>
               {datalist.map((item, idx) => (
-                <div className={Styles.listgridmnew} >
+                <div className={Styles.listgridmnew} key={idx}>
                   <Grid item xs={12} sm={12} md={4}>
                     <div className={Styles.Llistsffsffs22}>
                       <img src={item.logoUrl} className={Styles.User_Image} />
