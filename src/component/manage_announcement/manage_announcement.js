@@ -29,6 +29,28 @@ import MenuItem from "@mui/material/MenuItem";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import { styled } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
+
+//for select box
+const BootstrapInput = styled(InputBase)(({ theme }) => ({
+  "label + &": {
+    marginTop: theme.spacing(3),
+  },
+  "& .MuiPaper-root": {
+    width: "200px",
+    minWidth: "200px",
+    maxheight: "400px",
+  },
+  "& .MuiInputBase-input": {
+    borderRadius: 4,
+    position: "relative",
+    fontSize: 16,
+    padding: "16.5px 14px",
+    // transition: theme.transitions.create(['border-color', 'box-shadow']),
+  },
+}));
+//**************** */
 
 const datalist = [
   {
@@ -370,61 +392,53 @@ const Movie_announce_Pages = (props) => {
                       <form onSubmit={formik.handleSubmit}>
                         {/* <div className={Styles.listmenuuppohot}> */}
                         <img
-                            src={createObjectURL}
-                            className={Styles.avtaruplo_announce}
-                          ></img>
-                          <div>
-                          
-                          <IconButton
-                              className={Styles.iconbtnop}
+                          src={createObjectURL}
+                          className={Styles.avtaruplo_announce}
+                        ></img>
+                        <div>
+                          <box style={{ display: "block" }}>
+                            <IconButton
+                              className={Styles.iconbtnop_announce}
                               color="primary"
-                              aria-label="upload picture"               
+                              aria-label="upload picture"
                               component="label"
-                              style={{display:"block"}}
+                              style={{
+                                display: "block",
+                                marginRight: "17pc",
+                                top: "23%",
+                              }}
                             >
-                           
                               <input
                                 type="file"
                                 name="myImage"
                                 hidden
                                 onChange={handleChangeImage}
                               />
-                               
-                          <img src="/uploadimage.png" alt="image" />
-                            <Typography style={{color:"#0799DA", fontFamily:"Gilroy-Medium", fontSize:"22px"}}>
-                            Upload image</Typography>
-                            <Typography style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium", fontSize:"21px"}}>
-                            Or drop your image here</Typography>
-                            </IconButton>
-                          </div>
-                           
 
-                          {/* <div> */}
-                         
-                            {/* <IconButton
-                              className={Styles.iconbtnop}
-                              color="primary"
-                              aria-label="upload picture"
-                              component="label"
-                            >
-                            
-                              <input
-                                type="file"
-                                name="myImage"
-                                hidden
-                                onChange={handleChangeImage}
-                              /> */}
-                            
-                              {/* <Box className={Styles.deleteBtn}> */}
-                                {/* <Avatar className={Styles.avtaradataedit}> */}
-                                  {/* <EditIcon /> */}
-                                  
-                                {/* </Avatar> */}
-                              {/* </Box> */}
-                            {/* </IconButton> */}
-                          {/* </div> */}
-                         
-                        {/* </div> */}
+                              <img src="/uploadimage.png" alt="image" />
+                              <Typography
+                                style={{
+                                  color: "#0799DA",
+                                  fontFamily: "Gilroy-Medium",
+                                  fontSize: "22px",
+                                }}
+                              >
+                                Upload image
+                              </Typography>
+                              <Typography
+                                style={{
+                                  color: "#FFFFFF",
+                                  fontFamily: "Gilroy-Medium",
+                                  fontSize: "21px",
+                                  opacity: 0.3,
+                                }}
+                              >
+                                Or drop your image here
+                              </Typography>
+                            </IconButton>
+                          </box>
+                        </div>
+
                         <Box>
                           <TextField
                             error={Boolean(
@@ -442,6 +456,8 @@ const Movie_announce_Pages = (props) => {
                           ></TextField>
 
                           <Select
+                            input={<BootstrapInput />}
+                            id="selectitembox"
                             error={Boolean(
                               formik.touched.latest && formik.errors.latest
                             )}
@@ -456,29 +472,139 @@ const Movie_announce_Pages = (props) => {
                             onChange={formik.handleChange}
                             displayEmpty
                             inputProps={{ "aria-label": "Without label" }}
-                            // sx={{
-                            //   "& .MuiButtonBase-root": {
-                            //     color: "white",
-                            //   },
-                            //   "& .MuiPaper-root ": {
-                            //     color: "white",
-                            //   },
-                            // }}
                           >
-                            <MenuItem value="">
-                              <em style={{color:"#FFFFFF",fontFamily:"Gilroy-Medium"}}>Latest</em>
+                            <MenuItem
+                              value=""
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                            >
+                              Latest
                             </MenuItem>
                             <MenuItem
-                             style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={1} >All</MenuItem>
-                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={2}>Movies</MenuItem>
-                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={3}>Documentries</MenuItem>
-                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={4}>Books</MenuItem>
-                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={5}>TV</MenuItem>
-                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={6}>Gaming</MenuItem>
-                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={7}>Culrure</MenuItem>
-                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={8}>Comics</MenuItem>
-                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={9}>Celebrities</MenuItem>
-                            <MenuItem style={{color:"#FFFFFF", fontFamily:"Gilroy-Medium"}} value={10}>Theater & Plays</MenuItem>
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={1}
+                            >
+                              All
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={2}
+                            >
+                              Movies
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={3}
+                            >
+                              Documentries
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={4}
+                            >
+                              Books
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={5}
+                            >
+                              TV
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={6}
+                            >
+                              Gaming
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={7}
+                            >
+                              Culrure
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={8}
+                            >
+                              Comics
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={9}
+                            >
+                              Celebrities
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={10}
+                            >
+                              Theater & Plays
+                            </MenuItem>
                           </Select>
                         </Box>
                         <Box>
@@ -507,7 +633,10 @@ const Movie_announce_Pages = (props) => {
                                 <Checkbox style={{ color: "#FFFFFF" }} />
                               }
                               label="Push Notification"
-                              style={{ color: "#FFFFFF", fontFamily:"Gilroy-Medium"}}
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                              }}
                             />
                           </FormGroup>
 
@@ -517,7 +646,10 @@ const Movie_announce_Pages = (props) => {
                                 <Checkbox style={{ color: "#FFFFFF" }} />
                               }
                               label="App Notification"
-                              style={{ color: "#FFFFFF",fontFamily:"Gilroy-Medium" }}
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                              }}
                             />
                           </FormGroup>
                         </Box>

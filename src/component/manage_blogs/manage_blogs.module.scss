@@ -561,7 +561,7 @@ color: #FFFFFF;
 }
 .Reply_text_area_announce{
   width: 96%;
-  border-radius: 5px;
+  border-radius: 10px;
   height: 100px !important;
   background: #332e59;
   margin-top: 20px;
@@ -569,4 +569,21 @@ color: #FFFFFF;
   padding: 15px;
   color: #FFFFFF;
   border: none;
+  opacity: 0.35;
+  font-size: 20px;
+  box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.25);
+}
+
+.iconbtnop_announce {
+  position: absolute !important;
+  top: 21px;
+  right: 51px;
+}
+.select {
+  cursor:pointer;
+  display:inline-block;
+  position:relative;
+  font:normal 11px/22px Arial, Sans-Serif;
+  color:black;
+  border:1px solid #ccc;
 }
