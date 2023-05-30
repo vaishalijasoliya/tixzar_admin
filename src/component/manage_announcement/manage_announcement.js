@@ -456,8 +456,14 @@ const Movie_announce_Pages = (props) => {
                           ></TextField>
 
                           <Select
-                            input={<BootstrapInput />}
-                            id="selectitembox"
+                            sx={{
+                              "& .MuiList-root": {
+                                border: "2px solid red",
+                              },
+                            }}
+                            // style={{
+                            //   border: "2px solid red",
+                            // }}
                             error={Boolean(
                               formik.touched.latest && formik.errors.latest
                             )}
@@ -468,10 +474,12 @@ const Movie_announce_Pages = (props) => {
                             value={formik.values.latest}
                             // value={latestselect}
                             className={Styles.inputnamelist_announce}
+
                             // onChange={handleChange}
                             onChange={formik.handleChange}
                             displayEmpty
                             inputProps={{ "aria-label": "Without label" }}
+                            id="selectitembox"
                           >
                             <MenuItem
                               value=""

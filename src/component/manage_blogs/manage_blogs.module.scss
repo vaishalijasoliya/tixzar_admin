@@ -470,19 +470,18 @@
   }
 }
 
-
 //announcepage css
-.User_Image{
-  width: 217PX;
-  height: 155PX;
+.User_Image {
+  width: 217px;
+  height: 155px;
 }
-.menuitem_box{
- margin-top: 20px !important;
-// width: 215px;
-// height: 432px;
-width: 100%;
-background-color: #332E59;
-color: #FFFFFF;
+.menuitem_box {
+  margin-top: 20px !important;
+  // width: 215px;
+  // height: 432px;
+  width: 100%;
+  background-color: #332e59;
+  color: #ffffff;
 }
 .listupdetbtn_announce {
   background: linear-gradient(180deg, #046da8 0%, #07a4e7 100%);
@@ -495,7 +494,7 @@ color: #FFFFFF;
   font-family: "Gilroy-Light" !important;
   margin-right: 20px !important;
 }
-.listboxbtn_announce{
+.listboxbtn_announce {
   padding: 30px 0px 0px 0px;
   display: flex;
   justify-content: unset;
@@ -504,10 +503,10 @@ color: #FFFFFF;
   border-radius: 10px;
   width: 96%;
   height: 296px;
-  border: 1px dashed #FFFFFF;
-  background: #231B40;
+  border: 1px dashed #ffffff;
+  background: #231b40;
 }
-.uploadlogo{
+.uploadlogo {
   width: 68.89px;
 }
 .listmenuuppohot_announce {
@@ -532,10 +531,10 @@ color: #FFFFFF;
   padding: 20px 0px 0px 0px;
   // margin-top: 17px;
 }
-.manuitems{
+.manuitems {
   color: #ffffff;
 }
-.inputnamelist_announce{
+.inputnamelist_announce {
   width: 96%;
   margin-top: 20px !important;
 
@@ -548,18 +547,18 @@ color: #FFFFFF;
     font-size: 14px;
     font-family: Gilroy-Medium !important;
   }
-
 }
-.select-items div,.select-selected {
+.select-items div,
+.select-selected {
   color: #ffffff;
   padding: 4px 16px;
-  width:200px;
+  width: 200px;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
   user-select: none;
 }
-.Reply_text_area_announce{
+.Reply_text_area_announce {
   width: 96%;
   border-radius: 10px;
   height: 100px !important;
@@ -567,11 +566,14 @@ color: #FFFFFF;
   margin-top: 20px;
   font-family: Gilroy-Regular !important;
   padding: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
   border: none;
   opacity: 0.35;
   font-size: 20px;
   box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.25);
+}
+ul.MuiList-root {
+  border: 3px solid blue;
 }
 
 .iconbtnop_announce {
@@ -580,10 +582,11 @@ color: #FFFFFF;
   right: 51px;
 }
 .select {
-  cursor:pointer;
-  display:inline-block;
-  position:relative;
-  font:normal 11px/22px Arial, Sans-Serif;
-  color:black;
-  border:1px solid #ccc;
+  // cursor: pointer;
+  // display: inline-block;
+  // position: relative;
+  // font: normal 11px/22px Arial, Sans-Serif;
+  // color: black;
+  // border: 1px solid #ccc;
+  width: 250px;
 }
