@@ -20,7 +20,6 @@ import ApiServices from "../../config/ApiServices";
 import ApiEndpoint from "../../config/ApiEndpoint";
 import { toast } from "react-toastify";
 // import Databox from "./manage_box";
-import { Movie_Box } from "../manage_blogs/img_data";
 import Pagination from "../Pagination/pagination";
 import { useRouter } from "next/router";
 import ReactHtmlParser from "react-html-parser";
@@ -33,23 +32,23 @@ import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 
 //for select box
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
-  "label + &": {
-    marginTop: theme.spacing(3),
-  },
-  "& .MuiPaper-root": {
-    width: "200px",
-    minWidth: "200px",
-    maxheight: "400px",
-  },
-  "& .MuiInputBase-input": {
-    borderRadius: 4,
-    position: "relative",
-    fontSize: 16,
-    padding: "16.5px 14px",
-    // transition: theme.transitions.create(['border-color', 'box-shadow']),
-  },
-}));
+// const BootstrapInput = styled(InputBase)(({ theme }) => ({
+//   "label + &": {
+//     marginTop: theme.spacing(3),
+//   },
+//   "& .MuiPaper-root": {
+//     width: "200px",
+//     minWidth: "200px",
+//     maxheight: "400px",
+//   },
+//   "& .MuiInputBase-input": {
+//     borderRadius: 4,
+//     position: "relative",
+//     fontSize: 16,
+//     padding: "16.5px 14px",
+//     // transition: theme.transitions.create(['border-color', 'box-shadow']),
+//   },
+// }));
 //**************** */
 
 const datalist = [
@@ -88,7 +87,7 @@ const datalist = [
 const Movie_announce_Pages = (props) => {
   let PageSize = 3;
 
-  const [value, setValue] = React.useState("All Reviews");
+  const [value, setValue] = React.useState("All Announcement");
   // const [datalist, setData] = React.useState([]);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [createObjectURL, setCreateObjectURL] = React.useState(null);
@@ -121,7 +120,7 @@ const Movie_announce_Pages = (props) => {
       latest: Yup.string().max(255).required("this is required"),
     }),
     onSubmit: () => {
-      // onLoginPress()
+      onLoginPress()
     },
   });
 
@@ -248,54 +247,54 @@ const Movie_announce_Pages = (props) => {
 
   //   console.log(data, "datadata");
   // };
-  const chartloginuser = async () => {
-    setBlogCurrentPage(2);
-    var headers = {
-      "Content-Type": "application/json",
-      "x-access-token": props.props.profile.token,
-    };
-    var body = {};
-    props.props.loaderRef(true);
-    var data = await ApiServices.PostApiCall(
-      ApiEndpoint.ADMIN_BLOGS_LIST,
-      JSON.stringify(body),
-      headers
-    );
-    props.props.loaderRef(false);
-    console.log(data, "mydatvvaLIST");
+  // const chartloginuser = async () => {
+  //   setBlogCurrentPage(2);
+  //   var headers = {
+  //     "Content-Type": "application/json",
+  //     "x-access-token": props.props.profile.token,
+  //   };
+  //   var body = {};
+  //   props.props.loaderRef(true);
+  //   var data = await ApiServices.PostApiCall(
+  //     ApiEndpoint.ADMIN_BLOGS_LIST,
+  //     JSON.stringify(body),
+  //     headers
+  //   );
+  //   props.props.loaderRef(false);
+  //   console.log(data, "mydatvvaLIST");
 
-    if (!!data) {
-      if (data.status == true) {
-        const blogList = [];
-        const activeBlog = [];
-        for (let index = 0; index < data.data.blogList.length; index++) {
-          const element = data.data.blogList[index];
-          console.log(element, "password514");
-          const object = {
-            id: element.id,
-            title: element.title,
-            description: element.description,
-            logoUrl: element.image_url,
-          };
-          blogList.push(JSON.parse(JSON.stringify(object)));
-        }
-        for (let index = 0; index < data.data.activeBlogList.length; index++) {
-          const element = data.data.activeBlogList[index];
-          console.log(element, "password514");
-          const object = {
-            id: element.id,
-            title: element.title,
-            description: element.description,
-            logoUrl: element.image_url,
-          };
-          activeBlog.push(JSON.parse(JSON.stringify(object)));
-        }
-        setDatalistlogin(activeBlog);
-        // setData(blogList);
-        setBlogCurrentPage(1);
-      }
-    }
-  };
+  //   if (!!data) {
+  //     if (data.status == true) {
+  //       const blogList = [];
+  //       const activeBlog = [];
+  //       for (let index = 0; index < data.data.blogList.length; index++) {
+  //         const element = data.data.blogList[index];
+  //         console.log(element, "password514");
+  //         const object = {
+  //           id: element.id,
+  //           title: element.title,
+  //           description: element.description,
+  //           logoUrl: element.image_url,
+  //         };
+  //         blogList.push(JSON.parse(JSON.stringify(object)));
+  //       }
+  //       for (let index = 0; index < data.data.activeBlogList.length; index++) {
+  //         const element = data.data.activeBlogList[index];
+  //         console.log(element, "password514");
+  //         const object = {
+  //           id: element.id,
+  //           title: element.title,
+  //           description: element.description,
+  //           logoUrl: element.image_url,
+  //         };
+  //         activeBlog.push(JSON.parse(JSON.stringify(object)));
+  //       }
+  //       setDatalistlogin(activeBlog);
+  //       // setData(blogList);
+  //       setBlogCurrentPage(1);
+  //     }
+  //   }
+  // };
   const topBox_view = async (value) => {
     var headers = {
       "Content-Type": "application/json",
@@ -330,17 +329,17 @@ const Movie_announce_Pages = (props) => {
   //   }
   // }, []);
 
-  function htmlToText(html) {
-    let temp = document.createElement("div");
-    temp.innerHTML = html;
-    return temp.textContent || temp.innerText || "";
-  }
+  // function htmlToText(html) {
+  //   let temp = document.createElement("div");
+  //   temp.innerHTML = html;
+  //   return temp.textContent || temp.innerText || "";
+  // }
 
-  const [latestselect, setlatestselect] = React.useState("");
+  // const [latestselect, setlatestselect] = React.useState("");
 
-  const handleChange = (event) => {
-    setlatestselect(event.target.value);
-  };
+  // const handleChange = (event) => {
+  //   setlatestselect(event.target.value);
+  // };
 
   return (
     <Box className={Styles.listboscante}>
@@ -461,9 +460,7 @@ const Movie_announce_Pages = (props) => {
                                 border: "2px solid red",
                               },
                             }}
-                            // style={{
-                            //   border: "2px solid red",
-                            // }}
+
                             error={Boolean(
                               formik.touched.latest && formik.errors.latest
                             )}
@@ -677,7 +674,7 @@ const Movie_announce_Pages = (props) => {
                                         //  handleNext()
                                         // accounttype('active'),
                                         // EDITPATT("active");
-                                        handleCloselist();
+                                        // handleCloselist();
                                       }}
                                     >
                                       Add Announcement
@@ -692,7 +689,7 @@ const Movie_announce_Pages = (props) => {
                                         //  handleNext()
                                         // accounttype('active'),
                                         // EDITPATT("active");
-                                        handleCloselist();
+                                        // handleCloselist();
                                       }}
                                     >
                                       Add Announcement
@@ -713,7 +710,7 @@ const Movie_announce_Pages = (props) => {
                                         //  handleNext()
                                         // accounttype('active'),
                                         // EDITPATT("active");
-                                        handleCloselist();
+                                        // handleCloselist();
                                       }}
                                     >
                                       Add Announcement
@@ -728,7 +725,7 @@ const Movie_announce_Pages = (props) => {
                                         //  handleNext()
                                         // accounttype('active'),
                                         // EDITPATT("active");
-                                        handleCloselist();
+                                        // handleCloselist();
                                       }}
                                     >
                                       Add Announcement
@@ -748,7 +745,7 @@ const Movie_announce_Pages = (props) => {
 
             <TabPanel
               className={Styles.Tab_panel_22_announce}
-              value={"All Reviews"}
+              value={"All Announcement"}
             >
               <box style={{ margin: "30px" }}>
                 {allannounceData.map((item, idx) => (

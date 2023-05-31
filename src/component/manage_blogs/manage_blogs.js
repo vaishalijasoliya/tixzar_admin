@@ -24,6 +24,13 @@ import { Movie_Box } from "./img_data";
 import Pagination from "../Pagination/pagination";
 import { useRouter } from "next/router";
 import ReactHtmlParser from "react-html-parser";
+import NotificationsIcon from '@mui/icons-material/Notifications';
+
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 const Movie_review_Pages = (props) => {
   let PageSize = 4;
@@ -37,6 +44,8 @@ const Movie_review_Pages = (props) => {
   const [datelistdes, setDatalistlogin] = React.useState([]);
   const [blogCurrentPage, setBlogCurrentPage] = React.useState(1);
   const [openlist, setOpenlist] = React.useState(false);
+  const [openlistanno, setOpenlistanno] = React.useState(false);
+
   const [dataeditbtn, setDataeditbtn] = React.useState("");
   const [editid, setEditid] = React.useState("");
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -52,10 +61,13 @@ const Movie_review_Pages = (props) => {
     initialValues: {
       username: "",
       name: "",
+      latest: "",
     },
     validationSchema: Yup.object({
       username: Yup.string().max(255).required("Add Title is required"),
       name: Yup.string().max(255).required("Add Title is required"),
+      latest: Yup.string().max(255).required("this is required"),
+
     }),
     onSubmit: () => {
       // onLoginPress()
@@ -77,15 +89,29 @@ const Movie_review_Pages = (props) => {
     }
   };
   const handleClickOpen = (text) => {
-    if (text == "add") {
-      router.push({ pathname: "/addBlog" });
-    } else {
-      router.push({ pathname: "/addBlog", query: { id: text } });
-    }
+    // if (text == "add") {
+    //   router.push({ pathname: "/addBlog" });
+    // } else {
+    //   router.push({ pathname: "/addBlog", query: { id: text } });
+    // }
+    setOpenlist(true);
   };
   const handleCloselist = () => {
     setOpenlist(false);
   };
+
+  const handleClickOpenanno = (text) => {
+    // if (text == "add") {
+    //   router.push({ pathname: "/addBlog" });
+    // } else {
+    //   router.push({ pathname: "/addBlog", query: { id: text } });
+    // }
+    setOpenlistanno(true);
+  };
+  const handleCloselistanno = () => {
+    setOpenlistanno(false);
+  };
+
 
   const uploadItem = async (file, type) => {
     var myHeaders = new Headers();
@@ -305,9 +331,9 @@ const Movie_review_Pages = (props) => {
                       }}
                     >
                       Add New Blog
-                      {/* Add New Movie */}
                     </Typography>
                   </Button>
+
                   <Dialog
                     fullWidth={fullWidth}
                     maxWidth={"md"}
@@ -530,6 +556,409 @@ const Movie_review_Pages = (props) => {
                       </form>
                     </Box>
                   </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <Dialog
+                    fullWidth={fullWidth}
+                    maxWidth={"md"}
+                    open={openlistanno}
+                    onClose={handleCloselistanno}
+                  >
+                    <Box className={Styles.listpopuy22}>
+                      <form onSubmit={formik.handleSubmit}>
+                        {/* <div className={Styles.listmenuuppohot}> */}
+                        <img
+                          src={createObjectURL}
+                          className={Styles.avtaruplo_announce}
+                        ></img>
+                        <div>
+                          <box style={{ display: "block" }}>
+                            <IconButton
+                              className={Styles.iconbtnop_announce}
+                              color="primary"
+                              aria-label="upload picture"
+                              component="label"
+                              style={{
+                                display: "block",
+                                marginRight: "17pc",
+                                top: "23%",
+                              }}
+                            >
+                              <input
+                                type="file"
+                                name="myImage"
+                                hidden
+                                onChange={handleChangeImage}
+                              />
+
+                              <img src="/uploadimage.png" alt="image" />
+                              <Typography
+                                style={{
+                                  color: "#0799DA",
+                                  fontFamily: "Gilroy-Medium",
+                                  fontSize: "22px",
+                                }}
+                              >
+                                Upload image
+                              </Typography>
+                              <Typography
+                                style={{
+                                  color: "#FFFFFF",
+                                  fontFamily: "Gilroy-Medium",
+                                  fontSize: "21px",
+                                  opacity: 0.3,
+                                }}
+                              >
+                                Or drop your image here
+                              </Typography>
+                            </IconButton>
+                          </box>
+                        </div>
+
+                        <Box>
+                          <TextField
+                            error={Boolean(
+                              formik.touched.username && formik.errors.username
+                            )}
+                            helperText={
+                              formik.touched.username && formik.errors.username
+                            }
+                            name="username"
+                            className={Styles.inputnamelist_announce}
+                            placeholder="Add Title"
+                            onBlur={formik.handleBlur}
+                            onChange={formik.handleChange}
+                            value={formik.values.username}
+                          ></TextField>
+
+                          <Select
+                            sx={{
+                              "& .MuiList-root": {
+                                border: "2px solid red",
+                              },
+                            }}
+                            // style={{
+                            //   border: "2px solid red",
+                            // }}
+                            error={Boolean(
+                              formik.touched.latest && formik.errors.latest
+                            )}
+                            helperText={
+                              formik.touched.latest && formik.errors.latest
+                            }
+                            name="latest"
+                            value={formik.values.latest}
+                            // value={latestselect}
+                            className={Styles.inputnamelist_announce}
+
+                            // onChange={handleChange}
+                            onChange={formik.handleChange}
+                            displayEmpty
+                            inputProps={{ "aria-label": "Without label" }}
+                            id="selectitembox"
+                          >
+                            <MenuItem
+                              value=""
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                            >
+                              Latest
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={1}
+                            >
+                              All
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={2}
+                            >
+                              Movies
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={3}
+                            >
+                              Documentries
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={4}
+                            >
+                              Books
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={5}
+                            >
+                              TV
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={6}
+                            >
+                              Gaming
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={7}
+                            >
+                              Culrure
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={8}
+                            >
+                              Comics
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={9}
+                            >
+                              Celebrities
+                            </MenuItem>
+                            <MenuItem
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                              value={10}
+                            >
+                              Theater & Plays
+                            </MenuItem>
+                          </Select>
+                        </Box>
+                        <Box>
+                          <TextareaAutosize
+                            onBlur={formik.handleBlur}
+                            error={Boolean(
+                              formik.touched.name && formik.errors.name
+                            )}
+                            helperText={
+                              formik.touched.name && formik.errors.name
+                            }
+                            name="name"
+                            value={formik.values.name}
+                            onChange={formik.handleChange}
+                            placeholder="Description"
+                            maxRows={10}
+                            minRows={3}
+                            className={Styles.Reply_text_area_announce}
+                          />
+                        </Box>
+
+                        <Box style={{ display: "flex" }}>
+                          <FormGroup>
+                            <FormControlLabel
+                              control={
+                                <Checkbox style={{ color: "#FFFFFF" }} />
+                              }
+                              label="Push Notification"
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                              }}
+                            />
+                          </FormGroup>
+
+                          <FormGroup>
+                            <FormControlLabel
+                              control={
+                                <Checkbox style={{ color: "#FFFFFF" }} />
+                              }
+                              label="App Notification"
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                              }}
+                            />
+                          </FormGroup>
+                        </Box>
+
+                        <Grid item md={12} sm={12} xs={12}>
+                          <Box className={Styles.listboxbtn_announce}>
+                            {dataeditbtn == "ADD" ? (
+                              <>
+                                {formik.values.username == "" ||
+                                formik.values.name == "" ||
+                                formik.values.latest == "" ? (
+                                  <>
+                                    <Button
+                                      type="submit"
+                                      className={Styles.listupdetbtn_announce}
+                                      onClick={() => {
+                                        //  handleNext()
+                                        // accounttype('active'),
+                                        // EDITPATT("active");
+                                        // handleCloselistanno();
+                                      }}
+                                    >
+                                      Add Announcement
+                                    </Button>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Button
+                                      type="submit"
+                                      className={Styles.listupdetbtn_announce}
+                                      onClick={() => {
+                                        //  handleNext()
+                                        // accounttype('active'),
+                                        // EDITPATT("active");
+                                        // handleCloselistanno();
+                                      }}
+                                    >
+                                      Add Announcement
+                                    </Button>
+                                  </>
+                                )}
+                              </>
+                            ) : (
+                              <>
+                                {formik.values.username == "" ||
+                                formik.values.name == "" ||
+                                formik.values.username == "" ? (
+                                  <>
+                                    <Button
+                                      type="submit"
+                                      className={Styles.listupdetbtn_announce}
+                                      onClick={() => {
+                                        //  handleNext()
+                                        // accounttype('active'),
+                                        // EDITPATT("active");
+                                        // handleCloselistanno();
+                                      }}
+                                    >
+                                      Add Announcement
+                                    </Button>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Button
+                                      type="submit"
+                                      className={Styles.listupdetbtn_announce}
+                                      onClick={() => {
+                                        //  handleNext()
+                                        // accounttype('active'),
+                                        // EDITPATT("active");
+                                        // handleCloselistanno();
+                                      }}
+                                    >
+                                      Add Announcement
+                                    </Button>
+                                  </>
+                                )}
+                              </>
+                            )}
+                          </Box>
+                        </Grid>
+                      </form>
+                    </Box>
+                  </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
               </Grid>
             </div>
@@ -580,7 +1009,18 @@ const Movie_review_Pages = (props) => {
                         <Avatar className={Styles.avtaradataedit}>
                           <EditIcon />
                         </Avatar>
+                     
                       </Button>
+
+                      <Button
+                        onClick={() => {
+                          handleClickOpenanno("add"), setDataeditbtn("ADD");
+                    }}
+                        className={Styles.deleteBtn}
+                        >
+                        <NotificationsIcon  style={{fontSize:"30px", color:"white"}} />
+                      </Button>
+
                     </Box>
                   </Grid>
                 </div>
