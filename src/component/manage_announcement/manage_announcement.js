@@ -122,6 +122,7 @@ const Movie_announce_Pages = (props) => {
     }),
     onSubmit: () => {
       accounttype()
+      formik.resetForm();
     },
   });
 
@@ -492,6 +493,18 @@ const Movie_announce_Pages = (props) => {
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
                             >
+                              category
+                            </MenuItem>
+                            <MenuItem
+                              value="Latest"
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                            >
                               Latest
                             </MenuItem>
                             <MenuItem
@@ -665,7 +678,26 @@ const Movie_announce_Pages = (props) => {
 
                         <Grid item md={12} sm={12} xs={12}>
                           <Box className={Styles.listboxbtn_announce}>
-                            {dataeditbtn == "ADD" ? (
+                            {Checkbox_list == '' ?
+                              <Button
+                                type="submit"
+                                className={Styles.listupdetbtn_announce}
+                                disabled
+                              >
+                                Add Announcement
+                              </Button> : <Button
+                                type="submit"
+                                className={Styles.listupdetbtn_announce}
+                                onClick={() => {
+                                  //  handleNext()
+                                  // accounttype('active'),
+                                  // EDITPATT("active");
+                                  // handleCloselist();
+                                }}
+                              >
+                                Add Announcement
+                              </Button>}
+                            {/* {dataeditbtn == "ADD" ? (
                               <>
                                 {formik.values.username == "" ||
                                   formik.values.name == "" ||
@@ -737,7 +769,7 @@ const Movie_announce_Pages = (props) => {
                                   </>
                                 )}
                               </>
-                            )}
+                            )} */}
                           </Box>
                         </Grid>
                       </form>

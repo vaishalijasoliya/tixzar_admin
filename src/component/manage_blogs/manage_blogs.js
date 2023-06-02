@@ -45,11 +45,12 @@ const Movie_review_Pages = (props) => {
   const [blogCurrentPage, setBlogCurrentPage] = React.useState(1);
   const [openlist, setOpenlist] = React.useState(false);
   const [openlistanno, setOpenlistanno] = React.useState(false);
-
+  const [Checkbox_list, setCheckbox] = React.useState('')
   const [dataeditbtn, setDataeditbtn] = React.useState("");
   const [editid, setEditid] = React.useState("");
   const [anchorEl, setAnchorEl] = React.useState(null);
   const router = useRouter();
+  const [imgurl_id, setImgUrl] = React.useState("");
 
   const allReviewData = useMemo(() => {
     const firstPageIndex = (blogCurrentPage - 1) * PageSize;
@@ -70,6 +71,9 @@ const Movie_review_Pages = (props) => {
 
     }),
     onSubmit: () => {
+      accounttype_jshsggsg()
+      formik.resetForm();
+
       // onLoginPress()
     },
   });
@@ -87,6 +91,41 @@ const Movie_review_Pages = (props) => {
       setImage(lissurl);
       setCreateObjectURL(URL.createObjectURL(i));
     }
+  };
+  const accounttype_jshsggsg = async (value) => {
+    var body = {
+      id_item: imgurl_id,
+      title: formik.values.username,
+      description: formik.values.name,
+      category: formik.values.latest,
+      notify_type: Checkbox_list,
+      an_type: "blog"
+    };
+    var headers = {
+      "Content-Type": "application/json",
+      "x-access-token": props.props.profile.token,
+    };
+    props.props.loaderRef(true);
+    var data = await ApiServices.PostApiCall(
+      ApiEndpoint.ADMIN_ANNOUNCEMENT_ADD,
+      JSON.stringify(body),
+      headers
+    );
+    props.props.loaderRef(false);
+    if (!!data) {
+      if (data.status == true) {
+        toast.success(data.message);
+        // topBox_view();
+        handleCloselist()
+        // chartloginuser();
+      } else {
+        toast.error(data.message);
+      }
+    } else {
+      toast.error("Something went wrong.");
+    }
+
+    console.log(data, "datadata");
   };
   const handleClickOpen = (text) => {
     // if (text == "add") {
@@ -139,6 +178,7 @@ const Movie_review_Pages = (props) => {
       if (data.status == true) {
         console.log(data.id, "id");
         console.log(data, "damydata");
+        setImgUrl(data.data.id)
         setIditem(data.data.itemUrl);
       }
     }
@@ -407,7 +447,7 @@ const Movie_review_Pages = (props) => {
                             {dataeditbtn == "ADD" ? (
                               <>
                                 {formik.values.username == "" ||
-                                formik.values.name == "" ? (
+                                  formik.values.name == "" ? (
                                   <>
                                     <Button
                                       type="submit"
@@ -484,7 +524,7 @@ const Movie_review_Pages = (props) => {
                             ) : (
                               <>
                                 {formik.values.username == "" ||
-                                formik.values.name == "" ? (
+                                  formik.values.name == "" ? (
                                   <>
                                     <Button
                                       type="submit"
@@ -556,24 +596,6 @@ const Movie_review_Pages = (props) => {
                       </form>
                     </Box>
                   </Dialog>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                   <Dialog
                     fullWidth={fullWidth}
@@ -684,6 +706,18 @@ const Movie_review_Pages = (props) => {
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
                             >
+                              category
+                            </MenuItem>
+                            <MenuItem
+                              value={'Latest'}
+                              style={{
+                                color: "#FFFFFF",
+                                fontFamily: "Gilroy-Medium",
+                                opacity: "0.55",
+                                borderBottom:
+                                  " 0.5px solid rgba(255, 255, 255, 0.25",
+                              }}
+                            >
                               Latest
                             </MenuItem>
                             <MenuItem
@@ -694,7 +728,7 @@ const Movie_review_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={1}
+                              value={'All'}
                             >
                               All
                             </MenuItem>
@@ -706,7 +740,7 @@ const Movie_review_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={2}
+                              value={'Movies'}
                             >
                               Movies
                             </MenuItem>
@@ -718,7 +752,7 @@ const Movie_review_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={3}
+                              value={'Documentries'}
                             >
                               Documentries
                             </MenuItem>
@@ -730,7 +764,7 @@ const Movie_review_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={4}
+                              value={'Books'}
                             >
                               Books
                             </MenuItem>
@@ -742,7 +776,7 @@ const Movie_review_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={5}
+                              value={'TV'}
                             >
                               TV
                             </MenuItem>
@@ -754,7 +788,7 @@ const Movie_review_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={6}
+                              value={'Gaming'}
                             >
                               Gaming
                             </MenuItem>
@@ -766,7 +800,7 @@ const Movie_review_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={7}
+                              value={'Comics'}
                             >
                               Culrure
                             </MenuItem>
@@ -778,7 +812,7 @@ const Movie_review_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={8}
+                              value={'Comics'}
                             >
                               Comics
                             </MenuItem>
@@ -790,7 +824,7 @@ const Movie_review_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={9}
+                              value={'Celebrities'}
                             >
                               Celebrities
                             </MenuItem>
@@ -802,7 +836,7 @@ const Movie_review_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={10}
+                              value={'Theater & Plays'}
                             >
                               Theater & Plays
                             </MenuItem>
@@ -831,7 +865,7 @@ const Movie_review_Pages = (props) => {
                           <FormGroup>
                             <FormControlLabel
                               control={
-                                <Checkbox style={{ color: "#FFFFFF" }} />
+                                <Checkbox onClick={() => { setCheckbox('app') }} style={{ color: "#FFFFFF" }} />
                               }
                               label="Push Notification"
                               style={{
@@ -844,7 +878,7 @@ const Movie_review_Pages = (props) => {
                           <FormGroup>
                             <FormControlLabel
                               control={
-                                <Checkbox style={{ color: "#FFFFFF" }} />
+                                <Checkbox onClick={() => { setCheckbox('app') }} style={{ color: "#FFFFFF" }} />
                               }
                               label="App Notification"
                               style={{
@@ -857,79 +891,26 @@ const Movie_review_Pages = (props) => {
 
                         <Grid item md={12} sm={12} xs={12}>
                           <Box className={Styles.listboxbtn_announce}>
-                            {dataeditbtn == "ADD" ? (
-                              <>
-                                {formik.values.username == "" ||
-                                formik.values.name == "" ||
-                                formik.values.latest == "" ? (
-                                  <>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn_announce}
-                                      onClick={() => {
-                                        //  handleNext()
-                                        // accounttype('active'),
-                                        // EDITPATT("active");
-                                        // handleCloselistanno();
-                                      }}
-                                    >
-                                      Add Announcement
-                                    </Button>
-                                  </>
-                                ) : (
-                                  <>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn_announce}
-                                      onClick={() => {
-                                        //  handleNext()
-                                        // accounttype('active'),
-                                        // EDITPATT("active");
-                                        // handleCloselistanno();
-                                      }}
-                                    >
-                                      Add Announcement
-                                    </Button>
-                                  </>
-                                )}
-                              </>
-                            ) : (
-                              <>
-                                {formik.values.username == "" ||
-                                formik.values.name == "" ||
-                                formik.values.username == "" ? (
-                                  <>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn_announce}
-                                      onClick={() => {
-                                        //  handleNext()
-                                        // accounttype('active'),
-                                        // EDITPATT("active");
-                                        // handleCloselistanno();
-                                      }}
-                                    >
-                                      Add Announcement
-                                    </Button>
-                                  </>
-                                ) : (
-                                  <>
-                                    <Button
-                                      type="submit"
-                                      className={Styles.listupdetbtn_announce}
-                                      onClick={() => {
-                                        //  handleNext()
-                                        // accounttype('active'),
-                                        // EDITPATT("active");
-                                        // handleCloselistanno();
-                                      }}
-                                    >
-                                      Add Announcement
-                                    </Button>
-                                  </>
-                                )}
-                              </>
-                            )}
+
+                            {Checkbox_list == '' ?
+                              <Button
+                                type="submit"
+                                className={Styles.listupdetbtn_announce}
+                                disabled
+                              >
+                                Add Announcement
+                              </Button> : <Button
+                                type="submit"
+                                className={Styles.listupdetbtn_announce}
+                                onClick={() => {
+                                  //  handleNext()
+                                  // accounttype('active'),
+                                  // EDITPATT("active");
+                                  // handleCloselist();
+                                }}
+                              >
+                                Add Announcement
+                              </Button>}
                           </Box>
                         </Grid>
                       </form>
@@ -1009,16 +990,16 @@ const Movie_review_Pages = (props) => {
                         <Avatar className={Styles.avtaradataedit}>
                           <EditIcon />
                         </Avatar>
-                     
+
                       </Button>
 
                       <Button
                         onClick={() => {
                           handleClickOpenanno("add"), setDataeditbtn("ADD");
-                    }}
+                        }}
                         className={Styles.deleteBtn}
-                        >
-                        <NotificationsIcon  style={{fontSize:"30px", color:"white"}} />
+                      >
+                        <NotificationsIcon style={{ fontSize: "30px", color: "white" }} />
                       </Button>
 
                     </Box>
