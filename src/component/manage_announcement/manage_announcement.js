@@ -97,15 +97,16 @@ const Movie_announce_Pages = (props) => {
   const [blogCurrentPage, setBlogCurrentPage] = React.useState(1);
   const [openlist, setOpenlist] = React.useState(false);
   const [dataeditbtn, setDataeditbtn] = React.useState("");
-  const [editid, setEditid] = React.useState("");
+  const [imgurl_id, setImgUrl] = React.useState("");
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [Checkbox_list, setCheckbox] = React.useState('')
   const router = useRouter();
-
+  console.log(imgurl_id, 'imgurl_id');
   const allannounceData = useMemo(() => {
     const firstPageIndex = (blogCurrentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
-    return datalist.slice(firstPageIndex, lastPageIndex);
-  }, [blogCurrentPage]);
+    return datelistdes.slice(firstPageIndex, lastPageIndex);
+  }, [blogCurrentPage, datelistdes]);
   // console.log(allannounceData, "allannounceDataallannounceData", datalist);
 
   const formik = useFormik({
@@ -120,7 +121,7 @@ const Movie_announce_Pages = (props) => {
       latest: Yup.string().max(255).required("this is required"),
     }),
     onSubmit: () => {
-      onLoginPress()
+      accounttype()
     },
   });
 
@@ -177,43 +178,48 @@ const Movie_announce_Pages = (props) => {
       if (data.status == true) {
         console.log(data.id, "id");
         console.log(data, "damydata");
+        setImgUrl(data.data.id)
         setIditem(data.data.itemUrl);
       }
     }
     console.log(formdata, "iditems");
   };
-  // const accounttype = async (value) => {
-  //   var body = {
-  //     image_url: itemimg,
-  //     title: formik.values.username,
-  //     description: formik.values.name,
-  //     latest: formik.values.latest,
-  //     status: value,
-  //   };
-  //   var headers = {
-  //     "Content-Type": "application/json",
-  //     "x-access-token": props.props.profile.token,
-  //   };
-  //   props.props.loaderRef(true);
-  //   var data = await ApiServices.PostApiCall(
-  //     ApiEndpoint.ADMIN_TOPBOX_ADD,
-  //     JSON.stringify(body),
-  //     headers
-  //   );
-  //   props.props.loaderRef(false);
-  //   if (!!data) {
-  //     if (data.status == true) {
-  //       toast.success(data.message);
-  //       chartloginuser();
-  //     } else {
-  //       toast.error(data.message);
-  //     }
-  //   } else {
-  //     toast.error("Something went wrong.");
-  //   }
+  console.log(formik.values.latest, 'formik.values.latest');
+  const accounttype = async (value) => {
+    var body = {
+      id_item: imgurl_id,
+      title: formik.values.username,
+      description: formik.values.name,
+      category: formik.values.latest,
+      notify_type: Checkbox_list,
+      an_type: "announcement"
+    };
+    var headers = {
+      "Content-Type": "application/json",
+      "x-access-token": props.props.profile.token,
+    };
+    props.props.loaderRef(true);
+    var data = await ApiServices.PostApiCall(
+      ApiEndpoint.ADMIN_ANNOUNCEMENT_ADD,
+      JSON.stringify(body),
+      headers
+    );
+    props.props.loaderRef(false);
+    if (!!data) {
+      if (data.status == true) {
+        toast.success(data.message);
+        topBox_view();
+        handleCloselist()
+        // chartloginuser();
+      } else {
+        toast.error(data.message);
+      }
+    } else {
+      toast.error("Something went wrong.");
+    }
 
-  //   console.log(data, "datadata");
-  // };
+    console.log(data, "datadata");
+  };
   // const EDITPATT = async (value) => {
   //   var body = {
   //     image_url: itemimg,
@@ -302,32 +308,30 @@ const Movie_announce_Pages = (props) => {
     };
 
     var body = {
-      id_topBox: value,
+      // id_topBox: value,
     };
     props.props.loaderRef(true);
     var patternDelete = await ApiServices.PostApiCall(
-      ApiEndpoint.USER_TOPBOX_VIEW,
+      ApiEndpoint.ADMIN_ANNOUNCEMENT_LIST,
       JSON.stringify(body),
       headers
     );
     props.props.loaderRef(false);
+    console.log('patternDelete', patternDelete)
     // console.log(patternDelete.data.image_url, "patternDelete");
 
-    // if (!!patternDelete && patternDelete.status == true) {
-    //   setCreateObjectURL(patternDelete.data.image_url);
-    //   formik.setFieldValue("username", patternDelete.data.title);
-    //   formik.setFieldValue("name", patternDelete.data.description);
-    //   formik.setFieldValue("latest", patternDelete.data.description);
-    //   setIditem(patternDelete.data.image_url);
-    // } else {
-    //   toast.error("Somethinggg went wrong.");
-    // }
+    if (!!patternDelete && patternDelete.status == true) {
+      setDatalistlogin(patternDelete.data)
+    } else {
+      toast.error("Somethinggg went wrong.");
+    }
   };
-  // React.useEffect(() => {
-  //   if (!!props.props.profile && !!props.props.profile.token) {
-  //     chartloginuser();
-  //   }
-  // }, []);
+  console.log(props.props.profile, 'props.props.profile ');
+  React.useEffect(() => {
+    if (!!props.props.profile && !!props.props.profile.token) {
+      topBox_view();
+    }
+  }, []);
 
   // function htmlToText(html) {
   //   let temp = document.createElement("div");
@@ -498,7 +502,7 @@ const Movie_announce_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={1}
+                              value={'All'}
                             >
                               All
                             </MenuItem>
@@ -510,7 +514,7 @@ const Movie_announce_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={2}
+                              value={'Movies'}
                             >
                               Movies
                             </MenuItem>
@@ -522,7 +526,7 @@ const Movie_announce_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={3}
+                              value={'Documentries'}
                             >
                               Documentries
                             </MenuItem>
@@ -534,7 +538,7 @@ const Movie_announce_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={4}
+                              value={'Books'}
                             >
                               Books
                             </MenuItem>
@@ -546,7 +550,7 @@ const Movie_announce_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={5}
+                              value={'TV'}
                             >
                               TV
                             </MenuItem>
@@ -558,7 +562,7 @@ const Movie_announce_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={6}
+                              value={'Gaming'}
                             >
                               Gaming
                             </MenuItem>
@@ -570,7 +574,7 @@ const Movie_announce_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={7}
+                              value={'Culrure'}
                             >
                               Culrure
                             </MenuItem>
@@ -582,7 +586,7 @@ const Movie_announce_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={8}
+                              value={'Comics'}
                             >
                               Comics
                             </MenuItem>
@@ -594,7 +598,7 @@ const Movie_announce_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={9}
+                              value={'Celebrities'}
                             >
                               Celebrities
                             </MenuItem>
@@ -606,7 +610,7 @@ const Movie_announce_Pages = (props) => {
                                 borderBottom:
                                   " 0.5px solid rgba(255, 255, 255, 0.25",
                               }}
-                              value={10}
+                              value={'Theater & Plays'}
                             >
                               Theater & Plays
                             </MenuItem>
@@ -635,7 +639,7 @@ const Movie_announce_Pages = (props) => {
                           <FormGroup>
                             <FormControlLabel
                               control={
-                                <Checkbox style={{ color: "#FFFFFF" }} />
+                                <Checkbox onClick={() => { setCheckbox('push') }} style={{ color: "#FFFFFF" }} />
                               }
                               label="Push Notification"
                               style={{
@@ -648,7 +652,7 @@ const Movie_announce_Pages = (props) => {
                           <FormGroup>
                             <FormControlLabel
                               control={
-                                <Checkbox style={{ color: "#FFFFFF" }} />
+                                <Checkbox onClick={() => { setCheckbox('app') }} style={{ color: "#FFFFFF" }} />
                               }
                               label="App Notification"
                               style={{
@@ -664,8 +668,8 @@ const Movie_announce_Pages = (props) => {
                             {dataeditbtn == "ADD" ? (
                               <>
                                 {formik.values.username == "" ||
-                                formik.values.name == "" ||
-                                formik.values.latest == "" ? (
+                                  formik.values.name == "" ||
+                                  formik.values.latest == "" ? (
                                   <>
                                     <Button
                                       type="submit"
@@ -700,8 +704,8 @@ const Movie_announce_Pages = (props) => {
                             ) : (
                               <>
                                 {formik.values.username == "" ||
-                                formik.values.name == "" ||
-                                formik.values.username == "" ? (
+                                  formik.values.name == "" ||
+                                  formik.values.username == "" ? (
                                   <>
                                     <Button
                                       type="submit"
@@ -753,7 +757,7 @@ const Movie_announce_Pages = (props) => {
                     <Grid item xs={12} sm={12} md={4}>
                       <div className={Styles.Llistsffsffs22}>
                         <img
-                          src="/announceimage.png"
+                          src={item.item_url}
                           className={Styles.User_Image}
                         />
                       </div>
@@ -772,7 +776,7 @@ const Movie_announce_Pages = (props) => {
                         {ReactHtmlParser(item.description)}
                       </Typography>
                     </Grid>
-                    <Grid
+                    {/* <Grid
                       item
                       xs={12}
                       sm={12}
@@ -784,7 +788,7 @@ const Movie_announce_Pages = (props) => {
                       >
                         <Button
                           onClick={() => {
-                            topBox_view(item.id),
+                            // topBox_view(item.id),
                               setDataeditbtn("edit"),
                               setEditid(item.id),
                               handleClickOpen(item.id);
@@ -796,13 +800,13 @@ const Movie_announce_Pages = (props) => {
                           </Avatar>
                         </Button>
                       </Box>
-                    </Grid>
+                    </Grid> */}
                   </div>
                 ))}
                 <Pagination
                   className="pagination-bar"
                   currentPage={blogCurrentPage}
-                  totalCount={datalist.length}
+                  totalCount={datelistdes.length}
                   pageSize={PageSize}
                   onPageChange={(page) => setBlogCurrentPage(page)}
                 />

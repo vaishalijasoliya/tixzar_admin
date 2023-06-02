@@ -30,4 +30,6 @@ export default {
   ADMIN_REVIEW_DELETE: Constants.BASE_API_URL + "admin/review/delete",
   ADMIN_TOKAN_UPDET :Constants.BASE_API_URL +"admin/checktoken",
   USER_PASS_CREATE:Constants.BASE_API_URL+'user/password/create',
+  ADMIN_ANNOUNCEMENT_LIST:Constants.BASE_API_URL+"admin/announcement/list",
+  ADMIN_ANNOUNCEMENT_ADD:Constants.BASE_API_URL+"admin/announcement/add",
 };
